@@ -1,7 +1,7 @@
 {
   "name": "strings",
   "version": "0.0.1",
-  "description": "",
+  "description": "Manipulate and rename strings using patterns, structures and presets.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
