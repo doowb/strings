@@ -4,7 +4,14 @@
   "description": "Manipulate and rename strings using patterns, structures and presets.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -r blanket -R html-cov > coverage.html",
+    "travis-cov": {
+      "threshold": 70
+    },
+    "blanket": {
+      "pattern": "lib",
+      "data-cover-never": "node_modules"
+    }
   },
   "repository": {
     "type": "git",
@@ -20,6 +27,8 @@
   },
   "devDependencies": {
     "chai": "~1.8.1",
-    "mocha": "~1.15.1"
+    "mocha": "~1.15.1",
+    "blanket": "~1.1.5",
+    "travis-cov": "~0.2.4"
   }
 }

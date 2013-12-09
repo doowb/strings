@@ -16,6 +16,7 @@ var inspect = require('util').inspect;
 var basename = require('path').basename;
 var extname = require('path').extname;
 
+
 var pathMiddleware = function(path) {
   return function() {
     return {
