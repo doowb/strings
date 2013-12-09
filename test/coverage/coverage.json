@@ -1,16 +1,16 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 26,
-  "hits": 25,
-  "misses": 1,
-  "coverage": 96.15384615384616,
+  "sloc": 24,
+  "hits": 24,
+  "misses": 0,
+  "coverage": 100,
   "files": [
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
-      "coverage": 96.15384615384616,
-      "hits": 25,
-      "misses": 1,
-      "sloc": 26,
+      "coverage": 100,
+      "hits": 24,
+      "misses": 0,
+      "sloc": 24,
       "source": {
         "1": {
           "source": "/**",
@@ -229,15 +229,7 @@
           "coverage": ""
         },
         "55": {
-          "source": "Strings.prototype.foo = function(bar) {",
-          "coverage": 1
-        },
-        "56": {
-          "source": "  console.log(bar);",
-          "coverage": 0
-        },
-        "57": {
-          "source": "};",
+          "source": "",
           "coverage": ""
         }
       }
@@ -249,15 +241,15 @@
     "passes": 7,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-09T17:46:12.260Z",
-    "end": "2013-12-09T17:46:12.266Z",
+    "start": "2013-12-09T18:18:39.994Z",
+    "end": "2013-12-09T18:18:40.000Z",
     "duration": 6
   },
   "tests": [
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with use",
@@ -272,12 +264,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with no exclusions",
@@ -287,7 +279,7 @@
     {
       "title": "should throw error with exclusions",
       "fullTitle": "strings run should throw error with exclusions",
-      "duration": 0
+      "duration": 1
     }
   ],
   "failures": [],
@@ -295,7 +287,7 @@
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with use",
@@ -310,12 +302,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with no exclusions",
@@ -325,7 +317,7 @@
     {
       "title": "should throw error with exclusions",
       "fullTitle": "strings run should throw error with exclusions",
-      "duration": 0
+      "duration": 1
     }
   ]
 }
