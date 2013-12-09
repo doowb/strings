@@ -9,19 +9,35 @@
  */
 
 var expect = require('chai').expect
+var assert = require('chai').assert;
+
 var strings = require('../');
 var inspect = require('util').inspect;
 var basename = require('path').basename;
 var extname = require('path').extname;
+
+var pathMiddleware = function(path) {
+  return function() {
+    return {
+      basename: basename(path, extname(path)),
+      extname: extname(path)
+    };
+  };
+};
+
+var excludeMiddleware = function() {
+  return ['extname'];
+};
+
+var testStructure = '/<%= basename %>/index<%= extname %>';
 
 describe('strings', function() {
 
   describe('structure', function() {
 
     it('should save the structure', function() {
-      var expected = '/{{basename}}/index.html';
-      var structure = strings(expected);
-      expect(structure.structure).to.equal(expected);
+      var structure = strings(testStructure);
+      expect(structure.structure).to.equal(testStructure);
     });
 
   });
@@ -29,44 +45,60 @@ describe('strings', function() {
   describe('middleware', function() {
 
     it('should add middleware with use', function() {
-      var middleware = function(path) {
-        return function() {
-          return {
-            basename: basename(path)
-          };
-        };
-      };
-
-      var expected = '/{{basename}}/index.html';
-      var structure = strings(expected);
-      structure.use(middleware('path/to/some/file.html'));
-
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
       expect(structure.middleware.length).to.equal(1);
-
     });
 
     it('should add middleware with exclude', function() {
-      var middleware = function(path) {
-        return function() {
-          return {
-            basename: basename(path),
-            extname: extname(path)
-          };
-        };
-      };
-
-      var exclude = function() {
-        return ['extname'];
-      };
-
-      var expected = '/{{basename}}/index.html';
-      var structure = strings(expected);
-      structure.use(middleware('path/to/some/file.html'));
-      structure.use(exclude);
-
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      structure.exclude(excludeMiddleware);
       expect(structure.middleware.length).to.equal(2);
+    });
 
+    it('should build context from middleware', function() {
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      var expected = {
+        basename: 'file',
+        extname: '.html'
+      };
+      var actual = structure.context();
+      expect(actual).to.eql(expected);
+    });
+
+    it('should build context from middleware with exclusions', function() {
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      structure.exclude(excludeMiddleware);
+      var expected = {
+        basename: 'file'
+      };
+      var actual = structure.context();
+      expect(actual).to.eql(expected);
     });
 
   });
+
+  describe('run', function() {
+
+    it('should build the final string with no exclusions', function() {
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      var expected = '/file/index.html';
+      var actual = structure.run();
+      expect(actual).to.eql(expected);
+    });
+
+    it('should throw error with exclusions', function() {
+      var structure = strings(testStructure);
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      structure.exclude(excludeMiddleware);
+      
+      assert.throw(structure.run, Error);
+    });
+
+  });
+
 });
