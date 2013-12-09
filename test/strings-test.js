@@ -9,11 +9,15 @@
  */
 
 var expect = require('chai').expect
+var strings = require('../');
+var inspect = require('util').inspect;
 
 describe('strings', function() {
 
-  it('should load', function(done) {
-    done();
+  it('should save the structure', function() {
+    var expected = '/{{basename}}/index.html';
+    var structure = strings(expected);
+    expect(structure.structure).to.equal(expected);
   });
-  
+
 });
