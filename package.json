@@ -14,5 +14,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sellside/strings/issues"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1"
   }
 }
