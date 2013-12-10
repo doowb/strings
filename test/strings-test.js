@@ -137,6 +137,19 @@ describe('strings', function() {
       expect(actual).to.eql(expected);
     });
 
+    it('should build the final string from a one time setup', function() {
+        var structure = getStrings();
+        structure.use(pathMiddleware('path/to/some/file.html'));
+
+        var expected = 'file';
+        var actual = structure.run(':basename');
+        expect(actual).to.eql(expected);
+
+        expected = '.html';
+        actual = structure.run(':ext');
+        expect(actual).to.eql(expected);
+    });
+
   });
 
 });

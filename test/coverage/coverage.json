@@ -66,7 +66,7 @@
         },
         "14": {
           "source": "  return new Strings(structure, options);",
-          "coverage": 10
+          "coverage": 11
         },
         "15": {
           "source": "};",
@@ -139,7 +139,7 @@
         },
         "15": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 10
+          "coverage": 11
         },
         "16": {
           "source": "    options = structure;",
@@ -155,7 +155,7 @@
         },
         "19": {
           "source": "    this.structure = structure || '';",
-          "coverage": 9
+          "coverage": 10
         },
         "20": {
           "source": "  }",
@@ -163,11 +163,11 @@
         },
         "21": {
           "source": "  this.options = options || {};",
-          "coverage": 10
+          "coverage": 11
         },
         "22": {
           "source": "  this.middleware = [];",
-          "coverage": 10
+          "coverage": 11
         },
         "23": {
           "source": "};",
@@ -183,11 +183,11 @@
         },
         "26": {
           "source": "  return function(context) {",
-          "coverage": 6
+          "coverage": 7
         },
         "27": {
           "source": "    return _.extend(context, middleware());",
-          "coverage": 4
+          "coverage": 6
         },
         "28": {
           "source": "  };",
@@ -231,11 +231,11 @@
         },
         "38": {
           "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 6
+          "coverage": 7
         },
         "39": {
           "source": "  return this;",
-          "coverage": 6
+          "coverage": 7
         },
         "40": {
           "source": "};",
@@ -271,11 +271,11 @@
         },
         "48": {
           "source": "  return _.reduce(this.middleware, function(ctx, middleware) {",
-          "coverage": 4
+          "coverage": 6
         },
         "49": {
           "source": "    return middleware(ctx);",
-          "coverage": 6
+          "coverage": 8
         },
         "50": {
           "source": "  }, {});",
@@ -295,19 +295,19 @@
         },
         "54": {
           "source": "  var context = this.context();",
-          "coverage": 2
+          "coverage": 4
         },
         "55": {
           "source": "  var patterns = [];",
-          "coverage": 2
+          "coverage": 4
         },
         "56": {
           "source": "  _.keys(context).map(function(key) {",
-          "coverage": 2
+          "coverage": 4
         },
         "57": {
           "source": "    patterns.push({pattern: new RegExp(':\\\\b' + key + '\\\\b'), replacement: context[key]});",
-          "coverage": 3
+          "coverage": 7
         },
         "58": {
           "source": "  });",
@@ -315,7 +315,7 @@
         },
         "59": {
           "source": "  return patterns;      ",
-          "coverage": 2
+          "coverage": 4
         },
         "60": {
           "source": "};",
@@ -331,7 +331,7 @@
         },
         "63": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 2
+          "coverage": 4
         },
         "64": {
           "source": "    options = structure;",
@@ -343,7 +343,7 @@
         },
         "66": {
           "source": "    this.structure = structure || this.structure || '';",
-          "coverage": 2
+          "coverage": 4
         },
         "67": {
           "source": "  }",
@@ -351,7 +351,7 @@
         },
         "68": {
           "source": "  return frep.strWithArr(this.structure, this.patterns());",
-          "coverage": 2
+          "coverage": 4
         },
         "69": {
           "source": "};",
@@ -370,12 +370,12 @@
   ],
   "stats": {
     "suites": 4,
-    "tests": 10,
-    "passes": 10,
+    "tests": 11,
+    "passes": 11,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-10T22:03:12.130Z",
-    "end": "2013-12-10T22:03:12.136Z",
+    "start": "2013-12-10T22:22:43.053Z",
+    "end": "2013-12-10T22:22:43.059Z",
     "duration": 6
   },
   "tests": [
@@ -397,7 +397,7 @@
     {
       "title": "should save the structure when options are passed in",
       "fullTitle": "strings structure should save the structure when options are passed in",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use",
@@ -412,21 +412,26 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
       "fullTitle": "strings run should build the final string with exclusions",
+      "duration": 1
+    },
+    {
+      "title": "should build the final string from a one time setup",
+      "fullTitle": "strings run should build the final string from a one time setup",
       "duration": 0
     }
   ],
@@ -450,7 +455,7 @@
     {
       "title": "should save the structure when options are passed in",
       "fullTitle": "strings structure should save the structure when options are passed in",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use",
@@ -465,21 +470,26 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
       "fullTitle": "strings run should build the final string with exclusions",
+      "duration": 1
+    },
+    {
+      "title": "should build the final string from a one time setup",
+      "fullTitle": "strings run should build the final string from a one time setup",
       "duration": 0
     }
   ]
