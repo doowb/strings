@@ -4,7 +4,7 @@
   "description": "Manipulate and rename strings using patterns, structures and presets.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r blanket -R html-cov > test\\coverage\\coverage.html && mocha -r blanket -R json-cov > test\\coverage\\coverage.json && mocha -r blanket -R travis-cov",
+    "test": "mocha && mocha -r blanket -R html-cov > test\\coverage\\coverage.html && mocha -r blanket -R json-cov > test\\coverage\\coverage.json && mocha -r blanket -R travis-cov",
     "travis-cov": {
       "threshold": 70
     },

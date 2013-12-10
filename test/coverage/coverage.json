@@ -1,16 +1,85 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 24,
-  "hits": 24,
+  "sloc": 25,
+  "hits": 25,
   "misses": 0,
   "coverage": 100,
   "files": [
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
       "coverage": 100,
-      "hits": 24,
+      "hits": 3,
       "misses": 0,
-      "sloc": 24,
+      "sloc": 3,
+      "source": {
+        "1": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "2": {
+          "source": " * Sellside",
+          "coverage": ""
+        },
+        "3": {
+          "source": " *",
+          "coverage": ""
+        },
+        "4": {
+          "source": " * Sellside <http://www.sellside.com>",
+          "coverage": ""
+        },
+        "5": {
+          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
+          "coverage": ""
+        },
+        "6": {
+          "source": " *",
+          "coverage": ""
+        },
+        "7": {
+          "source": " * Copyright (c) 2013 Sellside.",
+          "coverage": ""
+        },
+        "8": {
+          "source": " * Licensed under the MIT License (MIT).",
+          "coverage": ""
+        },
+        "9": {
+          "source": " */",
+          "coverage": ""
+        },
+        "10": {
+          "source": "",
+          "coverage": ""
+        },
+        "11": {
+          "source": "var Strings = require('./strings/');",
+          "coverage": 1
+        },
+        "12": {
+          "source": "",
+          "coverage": ""
+        },
+        "13": {
+          "source": "var strings = module.exports = function(structure, options) {",
+          "coverage": 1
+        },
+        "14": {
+          "source": "  return new Strings(structure, options);",
+          "coverage": 7
+        },
+        "15": {
+          "source": "};",
+          "coverage": ""
+        }
+      }
+    },
+    {
+      "filename": "c:/Work/sellside/strings/lib/strings/index.js",
+      "coverage": 100,
+      "hits": 22,
+      "misses": 0,
+      "sloc": 22,
       "source": {
         "1": {
           "source": "/**",
@@ -61,7 +130,7 @@
           "coverage": ""
         },
         "13": {
-          "source": "var Strings = function(structure, options) {",
+          "source": "var Strings = module.exports = function(structure, options) {",
           "coverage": 1
         },
         "14": {
@@ -85,124 +154,124 @@
           "coverage": ""
         },
         "19": {
-          "source": "var strings = module.exports = function(structure, options) {",
-          "coverage": 1
-        },
-        "20": {
-          "source": "  return new Strings(structure, options);",
-          "coverage": 7
-        },
-        "21": {
-          "source": "};",
-          "coverage": ""
-        },
-        "22": {
-          "source": "",
-          "coverage": ""
-        },
-        "23": {
           "source": "var extend = function(middleware) {",
           "coverage": 1
         },
-        "24": {
+        "20": {
           "source": "  return function(context) {",
           "coverage": 6
         },
-        "25": {
+        "21": {
           "source": "    return _.extend(context, middleware());",
           "coverage": 3
         },
-        "26": {
+        "22": {
           "source": "  };",
           "coverage": ""
         },
-        "27": {
+        "23": {
           "source": "};",
           "coverage": ""
         },
-        "28": {
+        "24": {
           "source": "",
           "coverage": ""
         },
-        "29": {
+        "25": {
           "source": "var remove = function(middleware) {",
           "coverage": 1
         },
-        "30": {
+        "26": {
           "source": "  return function(context) {",
           "coverage": 3
         },
-        "31": {
+        "27": {
           "source": "    return _.omit(context, middleware());",
           "coverage": 1
         },
-        "32": {
+        "28": {
           "source": "  };",
           "coverage": ""
         },
-        "33": {
+        "29": {
           "source": "};",
           "coverage": ""
         },
-        "34": {
+        "30": {
           "source": "",
           "coverage": ""
         },
-        "35": {
+        "31": {
           "source": "Strings.prototype.use = function(middleware) {",
           "coverage": 1
         },
-        "36": {
+        "32": {
           "source": "  this.middleware.push(extend(middleware));",
           "coverage": 6
         },
-        "37": {
+        "33": {
           "source": "  return this;",
           "coverage": 6
         },
-        "38": {
+        "34": {
           "source": "};",
           "coverage": ""
         },
-        "39": {
+        "35": {
           "source": "",
           "coverage": ""
         },
-        "40": {
+        "36": {
           "source": "Strings.prototype.exclude = function(middleware) {",
           "coverage": 1
         },
-        "41": {
+        "37": {
           "source": "  this.middleware.push(remove(middleware));",
           "coverage": 3
         },
-        "42": {
+        "38": {
           "source": "  return this;",
           "coverage": 3
         },
-        "43": {
+        "39": {
           "source": "};",
           "coverage": ""
         },
-        "44": {
+        "40": {
           "source": "",
           "coverage": ""
         },
-        "45": {
+        "41": {
           "source": "Strings.prototype.context = function() {",
           "coverage": 1
         },
-        "46": {
+        "42": {
           "source": "  return _.reduce(this.middleware, function(ctx, middleware) {",
           "coverage": 3
         },
-        "47": {
+        "43": {
           "source": "    return middleware(ctx);",
           "coverage": 4
         },
-        "48": {
+        "44": {
           "source": "  }, {});",
           "coverage": ""
+        },
+        "45": {
+          "source": "};",
+          "coverage": ""
+        },
+        "46": {
+          "source": "",
+          "coverage": ""
+        },
+        "47": {
+          "source": "Strings.prototype.run = function(options) {",
+          "coverage": 1
+        },
+        "48": {
+          "source": "  return _.template(this.structure, this.context());",
+          "coverage": 2
         },
         "49": {
           "source": "};",
@@ -213,22 +282,6 @@
           "coverage": ""
         },
         "51": {
-          "source": "Strings.prototype.run = function(options) {",
-          "coverage": 1
-        },
-        "52": {
-          "source": "  return _.template(this.structure, this.context());",
-          "coverage": 2
-        },
-        "53": {
-          "source": "};",
-          "coverage": ""
-        },
-        "54": {
-          "source": "",
-          "coverage": ""
-        },
-        "55": {
           "source": "",
           "coverage": ""
         }
@@ -241,15 +294,15 @@
     "passes": 7,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-09T18:18:39.994Z",
-    "end": "2013-12-09T18:18:40.000Z",
+    "start": "2013-12-10T20:15:25.645Z",
+    "end": "2013-12-10T20:15:25.651Z",
     "duration": 6
   },
   "tests": [
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use",
@@ -264,12 +317,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build the final string with no exclusions",
@@ -279,7 +332,7 @@
     {
       "title": "should throw error with exclusions",
       "fullTitle": "strings run should throw error with exclusions",
-      "duration": 1
+      "duration": 0
     }
   ],
   "failures": [],
@@ -287,7 +340,7 @@
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use",
@@ -302,12 +355,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build the final string with no exclusions",
@@ -317,7 +370,7 @@
     {
       "title": "should throw error with exclusions",
       "fullTitle": "strings run should throw error with exclusions",
-      "duration": 1
+      "duration": 0
     }
   ]
 }
