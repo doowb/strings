@@ -48,4 +48,38 @@ describe('middleware', function() {
   
   });
 
+  describe('paths-slugify', function() {
+  
+    var filePath = '/path_with/slugs_to/foo_bar.html';
+    var structure = null;
+    before(function() {
+      structure = strings().use(strings.paths(filePath, { slugify: true }));
+    });
+
+    it('should replace :basename and slugify', function() {
+      var expected = 'foo-bar';
+      var actual = structure.run(':basename');
+      expect(actual).to.eql(expected);
+    });
+
+    it('should replace :filename and slugify', function() {
+      var expected = 'foo-barhtml';
+      var actual = structure.run(':filename');
+      expect(actual).to.eql(expected);
+    });
+
+    it('should replace :ext and slugify', function() {
+      var expected = 'html';
+      var actual = structure.run(':ext');
+      expect(actual).to.eql(expected);
+    });
+
+    it('should replace :dir and slugify', function() {
+      var expected = 'path-withslugs-to';
+      var actual = structure.run(':dir');
+      expect(actual).to.eql(expected);
+    });
+  
+  });
+
 });
