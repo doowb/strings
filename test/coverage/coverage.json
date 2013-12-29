@@ -1,16 +1,16 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 73,
-  "hits": 71,
+  "sloc": 77,
+  "hits": 75,
   "misses": 2,
-  "coverage": 97.26027397260275,
+  "coverage": 97.40259740259741,
   "files": [
     {
       "filename": "c:/Work/sellside/strings/lib/index.js",
       "coverage": 100,
-      "hits": 7,
+      "hits": 8,
       "misses": 0,
-      "sloc": 7,
+      "sloc": 8,
       "source": {
         "1": {
           "source": "/**",
@@ -49,54 +49,66 @@
           "coverage": ""
         },
         "10": {
+          "source": "",
+          "coverage": ""
+        },
+        "11": {
+          "source": "'use strict';",
+          "coverage": 1
+        },
+        "12": {
+          "source": "",
+          "coverage": ""
+        },
+        "13": {
           "source": "var _ = require('lodash');",
           "coverage": 1
         },
-        "11": {
+        "14": {
           "source": "",
           "coverage": ""
         },
-        "12": {
+        "15": {
           "source": "var Strings = require('./strings');",
           "coverage": 1
         },
-        "13": {
-          "source": "",
-          "coverage": ""
-        },
-        "14": {
-          "source": "var strings = module.exports = function(structure, options) {",
-          "coverage": 1
-        },
-        "15": {
-          "source": "  return new Strings(structure, options);",
-          "coverage": 15
-        },
         "16": {
-          "source": "};",
+          "source": "",
           "coverage": ""
         },
         "17": {
+          "source": "var strings = module.exports = function(structure, options) {",
+          "coverage": 1
+        },
+        "18": {
+          "source": "  return new Strings(structure, options);",
+          "coverage": 15
+        },
+        "19": {
+          "source": "};",
+          "coverage": ""
+        },
+        "20": {
           "source": "",
           "coverage": ""
         },
-        "18": {
+        "21": {
           "source": "// middleware",
           "coverage": ""
         },
-        "19": {
+        "22": {
           "source": "var middleware = require('./middleware');",
           "coverage": 1
         },
-        "20": {
+        "23": {
           "source": "_.map(middleware, function(value, key) {",
           "coverage": 1
         },
-        "21": {
+        "24": {
           "source": "\tstrings[key] = value;",
           "coverage": 2
         },
-        "22": {
+        "25": {
           "source": "});",
           "coverage": ""
         }
@@ -170,9 +182,9 @@
     {
       "filename": "c:/Work/sellside/strings/lib/middleware/paths.js",
       "coverage": 100,
-      "hits": 11,
+      "hits": 12,
       "misses": 0,
-      "sloc": 11,
+      "sloc": 12,
       "source": {
         "1": {
           "source": "/**",
@@ -211,11 +223,11 @@
           "coverage": ""
         },
         "10": {
-          "source": "var _s = require('underscore.string');",
-          "coverage": 1
+          "source": "",
+          "coverage": ""
         },
         "11": {
-          "source": "var path = require('path');",
+          "source": "'use strict';",
           "coverage": 1
         },
         "12": {
@@ -223,78 +235,90 @@
           "coverage": ""
         },
         "13": {
-          "source": "var paths = module.exports = function(filePath, options) {",
+          "source": "var _s = require('underscore.string');",
           "coverage": 1
         },
         "14": {
+          "source": "var path = require('path');",
+          "coverage": 1
+        },
+        "15": {
           "source": "",
           "coverage": ""
         },
-        "15": {
-          "source": "\toptions = options || { slugify: false };",
-          "coverage": 2
-        },
         "16": {
-          "source": "\tvar slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
-          "coverage": 2
+          "source": "var paths = module.exports = function(filePath, options) {",
+          "coverage": 1
         },
         "17": {
           "source": "",
           "coverage": ""
         },
         "18": {
-          "source": "\tvar dir = path.dirname(filePath);",
+          "source": "\toptions = options || { slugify: false };",
           "coverage": 2
         },
         "19": {
-          "source": "\tvar ext = path.extname(filePath);",
+          "source": "\tvar slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
           "coverage": 2
         },
         "20": {
-          "source": "\tvar filename = path.basename(filePath);",
-          "coverage": 2
-        },
-        "21": {
-          "source": "\tvar basename = path.basename(filePath, ext);",
-          "coverage": 2
-        },
-        "22": {
           "source": "",
           "coverage": ""
         },
+        "21": {
+          "source": "\tvar dir = path.dirname(filePath);",
+          "coverage": 2
+        },
+        "22": {
+          "source": "\tvar ext = path.extname(filePath);",
+          "coverage": 2
+        },
         "23": {
-          "source": "\treturn function() {",
+          "source": "\tvar filename = path.basename(filePath);",
           "coverage": 2
         },
         "24": {
-          "source": "\t\treturn {",
-          "coverage": 8
+          "source": "\tvar basename = path.basename(filePath, ext);",
+          "coverage": 2
         },
         "25": {
-          "source": "\t\t\tbasename: slugify ? _s.slugify(basename) : basename,",
+          "source": "",
           "coverage": ""
         },
         "26": {
-          "source": "\t\t\tfilename: slugify ? _s.slugify(filename) : filename,",
-          "coverage": ""
+          "source": "\treturn function() {",
+          "coverage": 2
         },
         "27": {
-          "source": "\t\t\text: slugify ? _s.slugify(ext) : ext,",
-          "coverage": ""
+          "source": "\t\treturn {",
+          "coverage": 8
         },
         "28": {
-          "source": "\t\t\tdir: slugify ? _s.slugify(dir) : dir",
+          "source": "\t\t\tbasename: slugify ? _s.slugify(basename) : basename,",
           "coverage": ""
         },
         "29": {
-          "source": "\t\t};",
+          "source": "\t\t\tfilename: slugify ? _s.slugify(filename) : filename,",
           "coverage": ""
         },
         "30": {
-          "source": "\t};",
+          "source": "\t\t\text: slugify ? _s.slugify(ext) : ext,",
           "coverage": ""
         },
         "31": {
+          "source": "\t\t\tdir: slugify ? _s.slugify(dir) : dir",
+          "coverage": ""
+        },
+        "32": {
+          "source": "\t\t};",
+          "coverage": ""
+        },
+        "33": {
+          "source": "\t};",
+          "coverage": ""
+        },
+        "34": {
           "source": "};",
           "coverage": ""
         }
@@ -456,9 +480,9 @@
     {
       "filename": "c:/Work/sellside/strings/lib/pattern.js",
       "coverage": 100,
-      "hits": 3,
+      "hits": 4,
       "misses": 0,
-      "sloc": 3,
+      "sloc": 4,
       "source": {
         "1": {
           "source": "/**",
@@ -501,18 +525,26 @@
           "coverage": ""
         },
         "11": {
-          "source": "var Pattern = module.exports = function(pattern, replacement) {",
+          "source": "'use strict';",
           "coverage": 1
         },
         "12": {
+          "source": "",
+          "coverage": ""
+        },
+        "13": {
+          "source": "var Pattern = module.exports = function(pattern, replacement) {",
+          "coverage": 1
+        },
+        "14": {
           "source": "\tthis.pattern = pattern;",
           "coverage": 63
         },
-        "13": {
+        "15": {
           "source": "\tthis.replacement = replacement;",
           "coverage": 63
         },
-        "14": {
+        "16": {
           "source": "};",
           "coverage": ""
         }
@@ -520,10 +552,10 @@
     },
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
-      "coverage": 94.5945945945946,
-      "hits": 35,
+      "coverage": 94.73684210526315,
+      "hits": 36,
       "misses": 2,
-      "sloc": 37,
+      "sloc": 38,
       "source": {
         "1": {
           "source": "/**",
@@ -566,19 +598,19 @@
           "coverage": ""
         },
         "11": {
-          "source": "var _ = require('lodash');",
+          "source": "'use strict';",
           "coverage": 1
         },
         "12": {
-          "source": "var frep = require('frep');",
-          "coverage": 1
-        },
-        "13": {
           "source": "",
           "coverage": ""
         },
+        "13": {
+          "source": "var _ = require('lodash');",
+          "coverage": 1
+        },
         "14": {
-          "source": "var Pattern = require('./pattern');",
+          "source": "var frep = require('frep');",
           "coverage": 1
         },
         "15": {
@@ -586,254 +618,262 @@
           "coverage": ""
         },
         "16": {
-          "source": "var Strings = module.exports = function(structure, options) {",
+          "source": "var Pattern = require('./pattern');",
           "coverage": 1
         },
         "17": {
-          "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 15
+          "source": "",
+          "coverage": ""
         },
         "18": {
-          "source": "    options = structure;",
+          "source": "var Strings = module.exports = function(structure, options) {",
           "coverage": 1
         },
         "19": {
+          "source": "  if (_.isPlainObject(structure)) {",
+          "coverage": 15
+        },
+        "20": {
+          "source": "    options = structure;",
+          "coverage": 1
+        },
+        "21": {
           "source": "    this.structure = '';",
           "coverage": 1
         },
-        "20": {
-          "source": "  } else {",
-          "coverage": ""
-        },
-        "21": {
-          "source": "    this.structure = structure || '';",
-          "coverage": 14
-        },
         "22": {
-          "source": "  }",
+          "source": "  } else {",
           "coverage": ""
         },
         "23": {
-          "source": "  this.options = options || {};",
-          "coverage": 15
+          "source": "    this.structure = structure || '';",
+          "coverage": 14
         },
         "24": {
-          "source": "  this.middleware = [];",
-          "coverage": 15
-        },
-        "25": {
-          "source": "};",
-          "coverage": ""
-        },
-        "26": {
-          "source": "",
-          "coverage": ""
-        },
-        "27": {
-          "source": "var extend = function(middleware) {",
-          "coverage": 1
-        },
-        "28": {
-          "source": "  return function(context) {",
-          "coverage": 11
-        },
-        "29": {
-          "source": "    return _.extend(context, middleware());",
-          "coverage": 16
-        },
-        "30": {
-          "source": "  };",
-          "coverage": ""
-        },
-        "31": {
-          "source": "};",
-          "coverage": ""
-        },
-        "32": {
-          "source": "",
-          "coverage": ""
-        },
-        "33": {
-          "source": "var remove = function(middleware) {",
-          "coverage": 1
-        },
-        "34": {
-          "source": "  return function(context) {",
-          "coverage": 3
-        },
-        "35": {
-          "source": "    return _.omit(context, middleware());",
-          "coverage": 2
-        },
-        "36": {
-          "source": "  };",
-          "coverage": ""
-        },
-        "37": {
-          "source": "};",
-          "coverage": ""
-        },
-        "38": {
-          "source": "",
-          "coverage": ""
-        },
-        "39": {
-          "source": "Strings.prototype.use = function(middleware) {",
-          "coverage": 1
-        },
-        "40": {
-          "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 11
-        },
-        "41": {
-          "source": "  return this;",
-          "coverage": 11
-        },
-        "42": {
-          "source": "};",
-          "coverage": ""
-        },
-        "43": {
-          "source": "",
-          "coverage": ""
-        },
-        "44": {
-          "source": "Strings.prototype.exclude = function(middleware) {",
-          "coverage": 1
-        },
-        "45": {
-          "source": "  this.middleware.push(remove(middleware));",
-          "coverage": 3
-        },
-        "46": {
-          "source": "  return this;",
-          "coverage": 3
-        },
-        "47": {
-          "source": "};",
-          "coverage": ""
-        },
-        "48": {
-          "source": "",
-          "coverage": ""
-        },
-        "49": {
-          "source": "Strings.prototype.context = function() {",
-          "coverage": 1
-        },
-        "50": {
-          "source": "  return _.reduce(this.middleware, function(ctx, middleware) {",
-          "coverage": 16
-        },
-        "51": {
-          "source": "    return middleware(ctx);",
-          "coverage": 18
-        },
-        "52": {
-          "source": "  }, {});",
-          "coverage": ""
-        },
-        "53": {
-          "source": "};",
-          "coverage": ""
-        },
-        "54": {
-          "source": "",
-          "coverage": ""
-        },
-        "55": {
-          "source": "Strings.prototype.patterns = function() {",
-          "coverage": 1
-        },
-        "56": {
-          "source": "  var context = this.context();",
-          "coverage": 14
-        },
-        "57": {
-          "source": "  var patterns = _.map(context, function(value, key) {",
-          "coverage": 14
-        },
-        "58": {
-          "source": "    if(value instanceof Pattern) {",
-          "coverage": 63
-        },
-        "59": {
-          "source": "      return value;",
-          "coverage": 0
-        },
-        "60": {
-          "source": "    }",
-          "coverage": ""
-        },
-        "61": {
-          "source": "    return new Pattern(",
-          "coverage": 63
-        },
-        "62": {
-          "source": "      new RegExp(':\\\\b' + key + '\\\\b'), // pattern",
-          "coverage": ""
-        },
-        "63": {
-          "source": "      value // replacement",
-          "coverage": ""
-        },
-        "64": {
-          "source": "    );",
-          "coverage": ""
-        },
-        "65": {
-          "source": "  });",
-          "coverage": ""
-        },
-        "66": {
-          "source": "  return patterns;      ",
-          "coverage": 14
-        },
-        "67": {
-          "source": "};",
-          "coverage": ""
-        },
-        "68": {
-          "source": "",
-          "coverage": ""
-        },
-        "69": {
-          "source": "Strings.prototype.run = function(structure, options) {",
-          "coverage": 1
-        },
-        "70": {
-          "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 14
-        },
-        "71": {
-          "source": "    options = structure;",
-          "coverage": 0
-        },
-        "72": {
-          "source": "  } else {",
-          "coverage": ""
-        },
-        "73": {
-          "source": "    this.structure = structure || this.structure || '';",
-          "coverage": 14
-        },
-        "74": {
           "source": "  }",
           "coverage": ""
         },
-        "75": {
-          "source": "  return frep.strWithArr(this.structure, this.patterns());",
-          "coverage": 14
+        "25": {
+          "source": "  this.options = options || {};",
+          "coverage": 15
         },
-        "76": {
+        "26": {
+          "source": "  this.middleware = [];",
+          "coverage": 15
+        },
+        "27": {
           "source": "};",
           "coverage": ""
         },
-        "77": {
+        "28": {
           "source": "",
           "coverage": ""
         },
+        "29": {
+          "source": "var extend = function(middleware) {",
+          "coverage": 1
+        },
+        "30": {
+          "source": "  return function(context) {",
+          "coverage": 11
+        },
+        "31": {
+          "source": "    return _.extend(context, middleware());",
+          "coverage": 16
+        },
+        "32": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "33": {
+          "source": "};",
+          "coverage": ""
+        },
+        "34": {
+          "source": "",
+          "coverage": ""
+        },
+        "35": {
+          "source": "var remove = function(middleware) {",
+          "coverage": 1
+        },
+        "36": {
+          "source": "  return function(context) {",
+          "coverage": 3
+        },
+        "37": {
+          "source": "    return _.omit(context, middleware());",
+          "coverage": 2
+        },
+        "38": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "39": {
+          "source": "};",
+          "coverage": ""
+        },
+        "40": {
+          "source": "",
+          "coverage": ""
+        },
+        "41": {
+          "source": "Strings.prototype.use = function(middleware) {",
+          "coverage": 1
+        },
+        "42": {
+          "source": "  this.middleware.push(extend(middleware));",
+          "coverage": 11
+        },
+        "43": {
+          "source": "  return this;",
+          "coverage": 11
+        },
+        "44": {
+          "source": "};",
+          "coverage": ""
+        },
+        "45": {
+          "source": "",
+          "coverage": ""
+        },
+        "46": {
+          "source": "Strings.prototype.exclude = function(middleware) {",
+          "coverage": 1
+        },
+        "47": {
+          "source": "  this.middleware.push(remove(middleware));",
+          "coverage": 3
+        },
+        "48": {
+          "source": "  return this;",
+          "coverage": 3
+        },
+        "49": {
+          "source": "};",
+          "coverage": ""
+        },
+        "50": {
+          "source": "",
+          "coverage": ""
+        },
+        "51": {
+          "source": "Strings.prototype.context = function() {",
+          "coverage": 1
+        },
+        "52": {
+          "source": "  return _.reduce(this.middleware, function(ctx, middleware) {",
+          "coverage": 16
+        },
+        "53": {
+          "source": "    return middleware(ctx);",
+          "coverage": 18
+        },
+        "54": {
+          "source": "  }, {});",
+          "coverage": ""
+        },
+        "55": {
+          "source": "};",
+          "coverage": ""
+        },
+        "56": {
+          "source": "",
+          "coverage": ""
+        },
+        "57": {
+          "source": "Strings.prototype.patterns = function() {",
+          "coverage": 1
+        },
+        "58": {
+          "source": "  var context = this.context();",
+          "coverage": 14
+        },
+        "59": {
+          "source": "  var patterns = _.map(context, function(value, key) {",
+          "coverage": 14
+        },
+        "60": {
+          "source": "    if(value instanceof Pattern) {",
+          "coverage": 63
+        },
+        "61": {
+          "source": "      return value;",
+          "coverage": 0
+        },
+        "62": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "63": {
+          "source": "    return new Pattern(",
+          "coverage": 63
+        },
+        "64": {
+          "source": "      new RegExp(':\\\\b' + key + '\\\\b'), // pattern",
+          "coverage": ""
+        },
+        "65": {
+          "source": "      value // replacement",
+          "coverage": ""
+        },
+        "66": {
+          "source": "    );",
+          "coverage": ""
+        },
+        "67": {
+          "source": "  });",
+          "coverage": ""
+        },
+        "68": {
+          "source": "  return patterns;",
+          "coverage": 14
+        },
+        "69": {
+          "source": "};",
+          "coverage": ""
+        },
+        "70": {
+          "source": "",
+          "coverage": ""
+        },
+        "71": {
+          "source": "Strings.prototype.run = function(structure, options) {",
+          "coverage": 1
+        },
+        "72": {
+          "source": "  if (_.isPlainObject(structure)) {",
+          "coverage": 14
+        },
+        "73": {
+          "source": "    options = structure;",
+          "coverage": 0
+        },
+        "74": {
+          "source": "  } else {",
+          "coverage": ""
+        },
+        "75": {
+          "source": "    this.structure = structure || this.structure || '';",
+          "coverage": 14
+        },
+        "76": {
+          "source": "  }",
+          "coverage": ""
+        },
+        "77": {
+          "source": "  return frep.strWithArr(this.structure, this.patterns());",
+          "coverage": 14
+        },
         "78": {
+          "source": "};",
+          "coverage": ""
+        },
+        "79": {
+          "source": "",
+          "coverage": ""
+        },
+        "80": {
           "source": "",
           "coverage": ""
         }
@@ -846,8 +886,8 @@
     "passes": 21,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-29T05:05:51.727Z",
-    "end": "2013-12-29T05:05:51.739Z",
+    "start": "2013-12-29T05:07:20.760Z",
+    "end": "2013-12-29T05:07:20.772Z",
     "duration": 12
   },
   "tests": [
