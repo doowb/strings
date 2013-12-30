@@ -1,9 +1,9 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 77,
-  "hits": 75,
-  "misses": 2,
-  "coverage": 97.40259740259741,
+  "sloc": 93,
+  "hits": 92,
+  "misses": 1,
+  "coverage": 98.9247311827957,
   "files": [
     {
       "filename": "c:/Work/sellside/strings/lib/index.js",
@@ -82,7 +82,7 @@
         },
         "18": {
           "source": "  return new Strings(structure, options);",
-          "coverage": 15
+          "coverage": 16
         },
         "19": {
           "source": "};",
@@ -106,10 +106,391 @@
         },
         "24": {
           "source": "\tstrings[key] = value;",
-          "coverage": 2
+          "coverage": 3
         },
         "25": {
           "source": "});",
+          "coverage": ""
+        }
+      }
+    },
+    {
+      "filename": "c:/Work/sellside/strings/lib/middleware/dates.js",
+      "coverage": 100,
+      "hits": 16,
+      "misses": 0,
+      "sloc": 16,
+      "source": {
+        "1": {
+          "source": "/**",
+          "coverage": ""
+        },
+        "2": {
+          "source": " * Sellside",
+          "coverage": ""
+        },
+        "3": {
+          "source": " *",
+          "coverage": ""
+        },
+        "4": {
+          "source": " * Sellside <http://www.sellside.com>",
+          "coverage": ""
+        },
+        "5": {
+          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
+          "coverage": ""
+        },
+        "6": {
+          "source": " *",
+          "coverage": ""
+        },
+        "7": {
+          "source": " * Copyright (c) 2013 Sellside.",
+          "coverage": ""
+        },
+        "8": {
+          "source": " * Licensed under the MIT License (MIT).",
+          "coverage": ""
+        },
+        "9": {
+          "source": " */",
+          "coverage": ""
+        },
+        "10": {
+          "source": "",
+          "coverage": ""
+        },
+        "11": {
+          "source": "'use strict';",
+          "coverage": 1
+        },
+        "12": {
+          "source": "",
+          "coverage": ""
+        },
+        "13": {
+          "source": "var _s = require('underscore.string');",
+          "coverage": 1
+        },
+        "14": {
+          "source": "var moment = require('moment');",
+          "coverage": 1
+        },
+        "15": {
+          "source": "",
+          "coverage": ""
+        },
+        "16": {
+          "source": "var Pattern = require('../pattern');",
+          "coverage": 1
+        },
+        "17": {
+          "source": "",
+          "coverage": ""
+        },
+        "18": {
+          "source": "var slugified = function(str, slugify) {",
+          "coverage": 1
+        },
+        "19": {
+          "source": "  return slugify ? _s.slugify(str) : str;",
+          "coverage": 39
+        },
+        "20": {
+          "source": "};",
+          "coverage": ""
+        },
+        "21": {
+          "source": "",
+          "coverage": ""
+        },
+        "22": {
+          "source": "var format = function(d) {",
+          "coverage": 1
+        },
+        "23": {
+          "source": "  return function(f) {",
+          "coverage": 1
+        },
+        "24": {
+          "source": "    return moment(d).format(f);",
+          "coverage": 39
+        },
+        "25": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "26": {
+          "source": "};",
+          "coverage": ""
+        },
+        "27": {
+          "source": "",
+          "coverage": ""
+        },
+        "28": {
+          "source": "var dates = module.exports = function(d, options) {",
+          "coverage": 1
+        },
+        "29": {
+          "source": "",
+          "coverage": ""
+        },
+        "30": {
+          "source": "  options = options || { slugify: false };",
+          "coverage": 1
+        },
+        "31": {
+          "source": "  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
+          "coverage": 1
+        },
+        "32": {
+          "source": "",
+          "coverage": ""
+        },
+        "33": {
+          "source": "  var formatter = format(d);",
+          "coverage": 1
+        },
+        "34": {
+          "source": "",
+          "coverage": ""
+        },
+        "35": {
+          "source": "  var datePatterns = {",
+          "coverage": 1
+        },
+        "36": {
+          "source": "    // Full date",
+          "coverage": ""
+        },
+        "37": {
+          "source": "    'date': new Pattern(/:\\bdate\\b/,          slugified(formatter(\"YYYY/MM/DD\"), slugify)),",
+          "coverage": ""
+        },
+        "38": {
+          "source": "    // Long date formats",
+          "coverage": ""
+        },
+        "39": {
+          "source": "    'L': new Pattern(/:\\bL\\b/,                slugified(formatter(\"MM/DD/YYYY\"), slugify)),",
+          "coverage": ""
+        },
+        "40": {
+          "source": "    '1': new Pattern(/:\\b1\\b/,                slugified(formatter(\"M/D/YYYY\"), slugify)),",
+          "coverage": ""
+        },
+        "41": {
+          "source": "    // Year (2013, 13)",
+          "coverage": ""
+        },
+        "42": {
+          "source": "    'year': new Pattern(/:\\byear\\b/,          slugified(formatter(\"YYYY\"), slugify)),",
+          "coverage": ""
+        },
+        "43": {
+          "source": "    'YYYY': new Pattern(/:\\bYYYY\\b/,          slugified(formatter(\"YYYY\"), slugify)),",
+          "coverage": ""
+        },
+        "44": {
+          "source": "    'YY': new Pattern(/:\\bYY\\b/,              slugified(formatter(\"YY\"), slugify)),",
+          "coverage": ""
+        },
+        "45": {
+          "source": "    // Month name (January, Jan)",
+          "coverage": ""
+        },
+        "46": {
+          "source": "    'monthname': new Pattern(/:\\bmonthname\\b/,slugified(formatter(\"MMMM\"), slugify)),",
+          "coverage": ""
+        },
+        "47": {
+          "source": "    'MMMM': new Pattern(/:\\bMMMM\\b/,          slugified(formatter(\"MMMM\"), slugify)),",
+          "coverage": ""
+        },
+        "48": {
+          "source": "    'MMM': new Pattern(/:\\bMMM\\b/,            slugified(formatter(\"MMM\"), slugify)),",
+          "coverage": ""
+        },
+        "49": {
+          "source": "    // Month number (1, 01)",
+          "coverage": ""
+        },
+        "50": {
+          "source": "    'month': new Pattern(/:\\bmonth\\b/,        slugified(formatter(\"MM\"), slugify)),",
+          "coverage": ""
+        },
+        "51": {
+          "source": "    'MM': new Pattern(/:\\bMM\\b/,              slugified(formatter(\"MM\"), slugify)),",
+          "coverage": ""
+        },
+        "52": {
+          "source": "    'mo': new Pattern(/:\\bmo\\b/,              slugified(formatter(\"MM\"), slugify)),",
+          "coverage": ""
+        },
+        "53": {
+          "source": "    'M': new Pattern(/:\\bM\\b/,                slugified(formatter(\"M\"), slugify)),",
+          "coverage": ""
+        },
+        "54": {
+          "source": "    // Day of the year",
+          "coverage": ""
+        },
+        "55": {
+          "source": "    'DDDD': new Pattern(/:\\bDDDD\\b/,          slugified(formatter(\"DDDD\"), slugify)),",
+          "coverage": ""
+        },
+        "56": {
+          "source": "    'DDD': new Pattern(/:\\bDDD\\b/,            slugified(formatter(\"DDD\"), slugify)),",
+          "coverage": ""
+        },
+        "57": {
+          "source": "    // Day of the month",
+          "coverage": ""
+        },
+        "58": {
+          "source": "    'day': new Pattern(/:\\bday\\b/,            slugified(formatter(\"DD\"), slugify)),",
+          "coverage": ""
+        },
+        "59": {
+          "source": "    'DD': new Pattern(/:\\bDD\\b/,              slugified(formatter(\"DD\"), slugify)),",
+          "coverage": ""
+        },
+        "60": {
+          "source": "    'D': new Pattern(/:\\bD\\b/,                slugified(formatter(\"D\"), slugify)),",
+          "coverage": ""
+        },
+        "61": {
+          "source": "    // Day of the week (wednesday/wed)",
+          "coverage": ""
+        },
+        "62": {
+          "source": "    'dddd': new Pattern(/:\\bdddd\\b/,          slugified(formatter(\"dddd\"), slugify)),",
+          "coverage": ""
+        },
+        "63": {
+          "source": "    'ddd': new Pattern(/:\\bddd\\b/,            slugified(formatter(\"ddd\"), slugify)),",
+          "coverage": ""
+        },
+        "64": {
+          "source": "    'dd': new Pattern(/:\\bdd\\b/,              slugified(formatter(\"dd\"), slugify)),",
+          "coverage": ""
+        },
+        "65": {
+          "source": "    'd': new Pattern(/:\\bd\\b/,                slugified(formatter(\"d\"), slugify)),",
+          "coverage": ""
+        },
+        "66": {
+          "source": "    // Hour",
+          "coverage": ""
+        },
+        "67": {
+          "source": "    'hour': new Pattern(/:\\bhour\\b/,          slugified(formatter(\"HH\"), slugify)),",
+          "coverage": ""
+        },
+        "68": {
+          "source": "    'HH': new Pattern(/:\\bHH\\b/,              slugified(formatter(\"HH\"), slugify)),",
+          "coverage": ""
+        },
+        "69": {
+          "source": "    'H': new Pattern(/:\\bH\\b/,                slugified(formatter(\"H\"), slugify)),",
+          "coverage": ""
+        },
+        "70": {
+          "source": "    'hh': new Pattern(/:\\bhh\\b/,              slugified(formatter(\"hh\"), slugify)),",
+          "coverage": ""
+        },
+        "71": {
+          "source": "    'h': new Pattern(/:\\bh\\b/,                slugified(formatter(\"h\"), slugify)),",
+          "coverage": ""
+        },
+        "72": {
+          "source": "    // Minute",
+          "coverage": ""
+        },
+        "73": {
+          "source": "    'minute': new Pattern(/:\\bminute\\b/,      slugified(formatter(\"mm\"), slugify)),",
+          "coverage": ""
+        },
+        "74": {
+          "source": "    'min': new Pattern(/:\\bmin\\b/,            slugified(formatter(\"mm\"), slugify)),",
+          "coverage": ""
+        },
+        "75": {
+          "source": "    'mm': new Pattern(/:\\bmm\\b/,              slugified(formatter(\"mm\"), slugify)),",
+          "coverage": ""
+        },
+        "76": {
+          "source": "    'm': new Pattern(/:\\bm\\b/,                slugified(formatter(\"m\"), slugify)),",
+          "coverage": ""
+        },
+        "77": {
+          "source": "    // Second",
+          "coverage": ""
+        },
+        "78": {
+          "source": "    'second': new Pattern(/:\\bsecond\\b/,      slugified(formatter(\"ss\"), slugify)),",
+          "coverage": ""
+        },
+        "79": {
+          "source": "    'sec': new Pattern(/:\\bsec\\b/,            slugified(formatter(\"ss\"), slugify)),",
+          "coverage": ""
+        },
+        "80": {
+          "source": "    'ss': new Pattern(/:\\bss\\b/,              slugified(formatter(\"ss\"), slugify)),",
+          "coverage": ""
+        },
+        "81": {
+          "source": "    's': new Pattern(/:\\bs\\b/,                slugified(formatter(\"s\"), slugify)),",
+          "coverage": ""
+        },
+        "82": {
+          "source": "    // AM/PM, am/pm",
+          "coverage": ""
+        },
+        "83": {
+          "source": "    'A': new Pattern(/:\\bA\\b/,                slugified(formatter(\"A\"), slugify)),",
+          "coverage": ""
+        },
+        "84": {
+          "source": "    'a': new Pattern(/:\\ba\\b/,                slugified(formatter(\"a\"), slugify)),",
+          "coverage": ""
+        },
+        "85": {
+          "source": "    'P': new Pattern(/:\\bP\\b/,                slugified(formatter(\"P\"), slugify)),",
+          "coverage": ""
+        },
+        "86": {
+          "source": "    'p': new Pattern(/:\\bp\\b/,                slugified(formatter(\"p\"), slugify))",
+          "coverage": ""
+        },
+        "87": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "88": {
+          "source": "",
+          "coverage": ""
+        },
+        "89": {
+          "source": "",
+          "coverage": ""
+        },
+        "90": {
+          "source": "  return function() {",
+          "coverage": 1
+        },
+        "91": {
+          "source": "    return datePatterns;",
+          "coverage": 39
+        },
+        "92": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "93": {
+          "source": "};",
           "coverage": ""
         }
       }
@@ -166,14 +547,18 @@
           "coverage": 1
         },
         "12": {
-          "source": "\tpaths: require('./paths'),",
+          "source": "\tdates: require('./dates'),",
           "coverage": ""
         },
         "13": {
-          "source": "\turls: require('./urls')",
+          "source": "\tpaths: require('./paths'),",
           "coverage": ""
         },
         "14": {
+          "source": "\turls: require('./urls')",
+          "coverage": ""
+        },
+        "15": {
           "source": "};",
           "coverage": ""
         }
@@ -538,11 +923,11 @@
         },
         "14": {
           "source": "\tthis.pattern = pattern;",
-          "coverage": 63
+          "coverage": 102
         },
         "15": {
           "source": "\tthis.replacement = replacement;",
-          "coverage": 63
+          "coverage": 102
         },
         "16": {
           "source": "};",
@@ -552,9 +937,9 @@
     },
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
-      "coverage": 94.73684210526315,
-      "hits": 36,
-      "misses": 2,
+      "coverage": 97.36842105263158,
+      "hits": 37,
+      "misses": 1,
       "sloc": 38,
       "source": {
         "1": {
@@ -631,7 +1016,7 @@
         },
         "19": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 15
+          "coverage": 16
         },
         "20": {
           "source": "    options = structure;",
@@ -647,7 +1032,7 @@
         },
         "23": {
           "source": "    this.structure = structure || '';",
-          "coverage": 14
+          "coverage": 15
         },
         "24": {
           "source": "  }",
@@ -655,11 +1040,11 @@
         },
         "25": {
           "source": "  this.options = options || {};",
-          "coverage": 15
+          "coverage": 16
         },
         "26": {
           "source": "  this.middleware = [];",
-          "coverage": 15
+          "coverage": 16
         },
         "27": {
           "source": "};",
@@ -675,11 +1060,11 @@
         },
         "30": {
           "source": "  return function(context) {",
-          "coverage": 11
+          "coverage": 12
         },
         "31": {
           "source": "    return _.extend(context, middleware());",
-          "coverage": 16
+          "coverage": 55
         },
         "32": {
           "source": "  };",
@@ -723,11 +1108,11 @@
         },
         "42": {
           "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 11
+          "coverage": 12
         },
         "43": {
           "source": "  return this;",
-          "coverage": 11
+          "coverage": 12
         },
         "44": {
           "source": "};",
@@ -763,11 +1148,11 @@
         },
         "52": {
           "source": "  return _.reduce(this.middleware, function(ctx, middleware) {",
-          "coverage": 16
+          "coverage": 55
         },
         "53": {
           "source": "    return middleware(ctx);",
-          "coverage": 18
+          "coverage": 57
         },
         "54": {
           "source": "  }, {});",
@@ -787,19 +1172,19 @@
         },
         "58": {
           "source": "  var context = this.context();",
-          "coverage": 14
+          "coverage": 53
         },
         "59": {
           "source": "  var patterns = _.map(context, function(value, key) {",
-          "coverage": 14
+          "coverage": 53
         },
         "60": {
           "source": "    if(value instanceof Pattern) {",
-          "coverage": 63
+          "coverage": 1584
         },
         "61": {
           "source": "      return value;",
-          "coverage": 0
+          "coverage": 1521
         },
         "62": {
           "source": "    }",
@@ -827,7 +1212,7 @@
         },
         "68": {
           "source": "  return patterns;",
-          "coverage": 14
+          "coverage": 53
         },
         "69": {
           "source": "};",
@@ -843,7 +1228,7 @@
         },
         "72": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 14
+          "coverage": 53
         },
         "73": {
           "source": "    options = structure;",
@@ -855,7 +1240,7 @@
         },
         "75": {
           "source": "    this.structure = structure || this.structure || '';",
-          "coverage": 14
+          "coverage": 53
         },
         "76": {
           "source": "  }",
@@ -863,7 +1248,7 @@
         },
         "77": {
           "source": "  return frep.strWithArr(this.structure, this.patterns());",
-          "coverage": 14
+          "coverage": 53
         },
         "78": {
           "source": "};",
@@ -881,20 +1266,215 @@
     }
   ],
   "stats": {
-    "suites": 10,
-    "tests": 21,
-    "passes": 21,
+    "suites": 12,
+    "tests": 60,
+    "passes": 60,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-29T05:07:20.760Z",
-    "end": "2013-12-29T05:07:20.772Z",
-    "duration": 12
+    "start": "2013-12-30T05:33:38.170Z",
+    "end": "2013-12-30T05:33:38.202Z",
+    "duration": 32
   },
   "tests": [
     {
+      "title": "should replace :date",
+      "fullTitle": "middleware dates should replace :date",
+      "duration": 2
+    },
+    {
+      "title": "should replace :L",
+      "fullTitle": "middleware dates should replace :L",
+      "duration": 0
+    },
+    {
+      "title": "should replace :1",
+      "fullTitle": "middleware dates should replace :1",
+      "duration": 0
+    },
+    {
+      "title": "should replace :year",
+      "fullTitle": "middleware dates should replace :year",
+      "duration": 1
+    },
+    {
+      "title": "should replace :YYYY",
+      "fullTitle": "middleware dates should replace :YYYY",
+      "duration": 0
+    },
+    {
+      "title": "should replace :YY",
+      "fullTitle": "middleware dates should replace :YY",
+      "duration": 0
+    },
+    {
+      "title": "should replace :monthname",
+      "fullTitle": "middleware dates should replace :monthname",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MMMM",
+      "fullTitle": "middleware dates should replace :MMMM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MMM",
+      "fullTitle": "middleware dates should replace :MMM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :month",
+      "fullTitle": "middleware dates should replace :month",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MM",
+      "fullTitle": "middleware dates should replace :MM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :mo",
+      "fullTitle": "middleware dates should replace :mo",
+      "duration": 0
+    },
+    {
+      "title": "should replace :M",
+      "fullTitle": "middleware dates should replace :M",
+      "duration": 0
+    },
+    {
+      "title": "should replace :DDDD",
+      "fullTitle": "middleware dates should replace :DDDD",
+      "duration": 1
+    },
+    {
+      "title": "should replace :DDD",
+      "fullTitle": "middleware dates should replace :DDD",
+      "duration": 0
+    },
+    {
+      "title": "should replace :day",
+      "fullTitle": "middleware dates should replace :day",
+      "duration": 0
+    },
+    {
+      "title": "should replace :DD",
+      "fullTitle": "middleware dates should replace :DD",
+      "duration": 0
+    },
+    {
+      "title": "should replace :D",
+      "fullTitle": "middleware dates should replace :D",
+      "duration": 0
+    },
+    {
+      "title": "should replace :dddd",
+      "fullTitle": "middleware dates should replace :dddd",
+      "duration": 1
+    },
+    {
+      "title": "should replace :ddd",
+      "fullTitle": "middleware dates should replace :ddd",
+      "duration": 0
+    },
+    {
+      "title": "should replace :dd",
+      "fullTitle": "middleware dates should replace :dd",
+      "duration": 0
+    },
+    {
+      "title": "should replace :d",
+      "fullTitle": "middleware dates should replace :d",
+      "duration": 0
+    },
+    {
+      "title": "should replace :hour",
+      "fullTitle": "middleware dates should replace :hour",
+      "duration": 0
+    },
+    {
+      "title": "should replace :HH",
+      "fullTitle": "middleware dates should replace :HH",
+      "duration": 1
+    },
+    {
+      "title": "should replace :H",
+      "fullTitle": "middleware dates should replace :H",
+      "duration": 0
+    },
+    {
+      "title": "should replace :hh",
+      "fullTitle": "middleware dates should replace :hh",
+      "duration": 0
+    },
+    {
+      "title": "should replace :h",
+      "fullTitle": "middleware dates should replace :h",
+      "duration": 0
+    },
+    {
+      "title": "should replace :minute",
+      "fullTitle": "middleware dates should replace :minute",
+      "duration": 1
+    },
+    {
+      "title": "should replace :min",
+      "fullTitle": "middleware dates should replace :min",
+      "duration": 0
+    },
+    {
+      "title": "should replace :mm",
+      "fullTitle": "middleware dates should replace :mm",
+      "duration": 0
+    },
+    {
+      "title": "should replace :m",
+      "fullTitle": "middleware dates should replace :m",
+      "duration": 0
+    },
+    {
+      "title": "should replace :second",
+      "fullTitle": "middleware dates should replace :second",
+      "duration": 0
+    },
+    {
+      "title": "should replace :sec",
+      "fullTitle": "middleware dates should replace :sec",
+      "duration": 0
+    },
+    {
+      "title": "should replace :ss",
+      "fullTitle": "middleware dates should replace :ss",
+      "duration": 0
+    },
+    {
+      "title": "should replace :s",
+      "fullTitle": "middleware dates should replace :s",
+      "duration": 0
+    },
+    {
+      "title": "should replace :A",
+      "fullTitle": "middleware dates should replace :A",
+      "duration": 0
+    },
+    {
+      "title": "should replace :a",
+      "fullTitle": "middleware dates should replace :a",
+      "duration": 0
+    },
+    {
+      "title": "should replace :P",
+      "fullTitle": "middleware dates should replace :P",
+      "duration": 1
+    },
+    {
+      "title": "should replace :p",
+      "fullTitle": "middleware dates should replace :p",
+      "duration": 0
+    },
+    {
       "title": "should replace :basename",
       "fullTitle": "middleware paths should replace :basename",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :filename",
@@ -984,12 +1564,12 @@
     {
       "title": "should build the final string from a one time setup",
       "fullTitle": "strings run should build the final string from a one time setup",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol and slugify",
@@ -1000,9 +1580,204 @@
   "failures": [],
   "passes": [
     {
+      "title": "should replace :date",
+      "fullTitle": "middleware dates should replace :date",
+      "duration": 2
+    },
+    {
+      "title": "should replace :L",
+      "fullTitle": "middleware dates should replace :L",
+      "duration": 0
+    },
+    {
+      "title": "should replace :1",
+      "fullTitle": "middleware dates should replace :1",
+      "duration": 0
+    },
+    {
+      "title": "should replace :year",
+      "fullTitle": "middleware dates should replace :year",
+      "duration": 1
+    },
+    {
+      "title": "should replace :YYYY",
+      "fullTitle": "middleware dates should replace :YYYY",
+      "duration": 0
+    },
+    {
+      "title": "should replace :YY",
+      "fullTitle": "middleware dates should replace :YY",
+      "duration": 0
+    },
+    {
+      "title": "should replace :monthname",
+      "fullTitle": "middleware dates should replace :monthname",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MMMM",
+      "fullTitle": "middleware dates should replace :MMMM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MMM",
+      "fullTitle": "middleware dates should replace :MMM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :month",
+      "fullTitle": "middleware dates should replace :month",
+      "duration": 0
+    },
+    {
+      "title": "should replace :MM",
+      "fullTitle": "middleware dates should replace :MM",
+      "duration": 0
+    },
+    {
+      "title": "should replace :mo",
+      "fullTitle": "middleware dates should replace :mo",
+      "duration": 0
+    },
+    {
+      "title": "should replace :M",
+      "fullTitle": "middleware dates should replace :M",
+      "duration": 0
+    },
+    {
+      "title": "should replace :DDDD",
+      "fullTitle": "middleware dates should replace :DDDD",
+      "duration": 1
+    },
+    {
+      "title": "should replace :DDD",
+      "fullTitle": "middleware dates should replace :DDD",
+      "duration": 0
+    },
+    {
+      "title": "should replace :day",
+      "fullTitle": "middleware dates should replace :day",
+      "duration": 0
+    },
+    {
+      "title": "should replace :DD",
+      "fullTitle": "middleware dates should replace :DD",
+      "duration": 0
+    },
+    {
+      "title": "should replace :D",
+      "fullTitle": "middleware dates should replace :D",
+      "duration": 0
+    },
+    {
+      "title": "should replace :dddd",
+      "fullTitle": "middleware dates should replace :dddd",
+      "duration": 1
+    },
+    {
+      "title": "should replace :ddd",
+      "fullTitle": "middleware dates should replace :ddd",
+      "duration": 0
+    },
+    {
+      "title": "should replace :dd",
+      "fullTitle": "middleware dates should replace :dd",
+      "duration": 0
+    },
+    {
+      "title": "should replace :d",
+      "fullTitle": "middleware dates should replace :d",
+      "duration": 0
+    },
+    {
+      "title": "should replace :hour",
+      "fullTitle": "middleware dates should replace :hour",
+      "duration": 0
+    },
+    {
+      "title": "should replace :HH",
+      "fullTitle": "middleware dates should replace :HH",
+      "duration": 1
+    },
+    {
+      "title": "should replace :H",
+      "fullTitle": "middleware dates should replace :H",
+      "duration": 0
+    },
+    {
+      "title": "should replace :hh",
+      "fullTitle": "middleware dates should replace :hh",
+      "duration": 0
+    },
+    {
+      "title": "should replace :h",
+      "fullTitle": "middleware dates should replace :h",
+      "duration": 0
+    },
+    {
+      "title": "should replace :minute",
+      "fullTitle": "middleware dates should replace :minute",
+      "duration": 1
+    },
+    {
+      "title": "should replace :min",
+      "fullTitle": "middleware dates should replace :min",
+      "duration": 0
+    },
+    {
+      "title": "should replace :mm",
+      "fullTitle": "middleware dates should replace :mm",
+      "duration": 0
+    },
+    {
+      "title": "should replace :m",
+      "fullTitle": "middleware dates should replace :m",
+      "duration": 0
+    },
+    {
+      "title": "should replace :second",
+      "fullTitle": "middleware dates should replace :second",
+      "duration": 0
+    },
+    {
+      "title": "should replace :sec",
+      "fullTitle": "middleware dates should replace :sec",
+      "duration": 0
+    },
+    {
+      "title": "should replace :ss",
+      "fullTitle": "middleware dates should replace :ss",
+      "duration": 0
+    },
+    {
+      "title": "should replace :s",
+      "fullTitle": "middleware dates should replace :s",
+      "duration": 0
+    },
+    {
+      "title": "should replace :A",
+      "fullTitle": "middleware dates should replace :A",
+      "duration": 0
+    },
+    {
+      "title": "should replace :a",
+      "fullTitle": "middleware dates should replace :a",
+      "duration": 0
+    },
+    {
+      "title": "should replace :P",
+      "fullTitle": "middleware dates should replace :P",
+      "duration": 1
+    },
+    {
+      "title": "should replace :p",
+      "fullTitle": "middleware dates should replace :p",
+      "duration": 0
+    },
+    {
       "title": "should replace :basename",
       "fullTitle": "middleware paths should replace :basename",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :filename",
@@ -1092,12 +1867,12 @@
     {
       "title": "should build the final string from a one time setup",
       "fullTitle": "strings run should build the final string from a one time setup",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol and slugify",
