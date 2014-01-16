@@ -105,7 +105,7 @@
           "coverage": 1
         },
         "24": {
-          "source": "\tstrings[key] = value;",
+          "source": "  strings[key] = value;",
           "coverage": 3
         },
         "25": {
@@ -547,15 +547,15 @@
           "coverage": 1
         },
         "12": {
-          "source": "\tdates: require('./dates'),",
+          "source": "  dates: require('./dates'),",
           "coverage": ""
         },
         "13": {
-          "source": "\tpaths: require('./paths'),",
+          "source": "  paths: require('./paths'),",
           "coverage": ""
         },
         "14": {
-          "source": "\turls: require('./urls')",
+          "source": "  urls: require('./urls')",
           "coverage": ""
         },
         "15": {
@@ -640,11 +640,11 @@
           "coverage": ""
         },
         "18": {
-          "source": "\toptions = options || { slugify: false };",
+          "source": "  options = options || { slugify: false };",
           "coverage": 2
         },
         "19": {
-          "source": "\tvar slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
+          "source": "  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
           "coverage": 2
         },
         "20": {
@@ -652,19 +652,19 @@
           "coverage": ""
         },
         "21": {
-          "source": "\tvar dir = path.dirname(filePath);",
+          "source": "  var dir = path.dirname(filePath);",
           "coverage": 2
         },
         "22": {
-          "source": "\tvar ext = path.extname(filePath);",
+          "source": "  var ext = path.extname(filePath);",
           "coverage": 2
         },
         "23": {
-          "source": "\tvar filename = path.basename(filePath);",
+          "source": "  var filename = path.basename(filePath);",
           "coverage": 2
         },
         "24": {
-          "source": "\tvar basename = path.basename(filePath, ext);",
+          "source": "  var basename = path.basename(filePath, ext);",
           "coverage": 2
         },
         "25": {
@@ -672,35 +672,35 @@
           "coverage": ""
         },
         "26": {
-          "source": "\treturn function() {",
+          "source": "  return function() {",
           "coverage": 2
         },
         "27": {
-          "source": "\t\treturn {",
+          "source": "    return {",
           "coverage": 8
         },
         "28": {
-          "source": "\t\t\tbasename: slugify ? _s.slugify(basename) : basename,",
+          "source": "      basename: slugify ? _s.slugify(basename) : basename,",
           "coverage": ""
         },
         "29": {
-          "source": "\t\t\tfilename: slugify ? _s.slugify(filename) : filename,",
+          "source": "      filename: slugify ? _s.slugify(filename) : filename,",
           "coverage": ""
         },
         "30": {
-          "source": "\t\t\text: slugify ? _s.slugify(ext) : ext,",
+          "source": "      ext: slugify ? _s.slugify(ext) : ext,",
           "coverage": ""
         },
         "31": {
-          "source": "\t\t\tdir: slugify ? _s.slugify(dir) : dir",
+          "source": "      dir: slugify ? _s.slugify(dir) : dir",
           "coverage": ""
         },
         "32": {
-          "source": "\t\t};",
+          "source": "    };",
           "coverage": ""
         },
         "33": {
-          "source": "\t};",
+          "source": "  };",
           "coverage": ""
         },
         "34": {
@@ -769,7 +769,7 @@
           "coverage": 1
         },
         "14": {
-          "source": "\treturn slugify ? _s.slugify(str) : str;",
+          "source": "  return slugify ? _s.slugify(str) : str;",
           "coverage": 24
         },
         "15": {
@@ -789,11 +789,11 @@
           "coverage": ""
         },
         "19": {
-          "source": "\toptions = options || { slugify: false };",
+          "source": "  options = options || { slugify: false };",
           "coverage": 2
         },
         "20": {
-          "source": "\tvar slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
+          "source": "  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
           "coverage": 2
         },
         "21": {
@@ -801,7 +801,7 @@
           "coverage": ""
         },
         "22": {
-          "source": "\tvar parsed = url.parse(str);",
+          "source": "  var parsed = url.parse(str);",
           "coverage": 2
         },
         "23": {
@@ -809,7 +809,7 @@
           "coverage": ""
         },
         "24": {
-          "source": "\t// TODO: figure out if we need more info here.",
+          "source": "  // TODO: figure out if we need more info here.",
           "coverage": ""
         },
         "25": {
@@ -817,31 +817,31 @@
           "coverage": ""
         },
         "26": {
-          "source": "\treturn function() {",
+          "source": "  return function() {",
           "coverage": 2
         },
         "27": {
-          "source": "\t\tvar rtn = {};",
+          "source": "    var rtn = {};",
           "coverage": 2
         },
         "28": {
-          "source": "\t\tfor (var key in parsed) {",
+          "source": "    for (var key in parsed) {",
           "coverage": 2
         },
         "29": {
-          "source": "\t\t\tif (parsed.hasOwnProperty(key)) {",
+          "source": "      if (parsed.hasOwnProperty(key)) {",
           "coverage": 34
         },
         "30": {
-          "source": "\t\t\t\trtn[key] = slugified(parsed[key], slugify);",
+          "source": "        rtn[key] = slugified(parsed[key], slugify);",
           "coverage": 24
         },
         "31": {
-          "source": "\t\t\t}",
+          "source": "      }",
           "coverage": ""
         },
         "32": {
-          "source": "\t\t}",
+          "source": "    }",
           "coverage": ""
         },
         "33": {
@@ -849,11 +849,11 @@
           "coverage": ""
         },
         "34": {
-          "source": "\t\treturn rtn;",
+          "source": "    return rtn;",
           "coverage": 2
         },
         "35": {
-          "source": "\t};",
+          "source": "  };",
           "coverage": ""
         },
         "36": {
@@ -922,11 +922,11 @@
           "coverage": 1
         },
         "14": {
-          "source": "\tthis.pattern = pattern;",
+          "source": "  this.pattern = pattern;",
           "coverage": 102
         },
         "15": {
-          "source": "\tthis.replacement = replacement;",
+          "source": "  this.replacement = replacement;",
           "coverage": 102
         },
         "16": {
@@ -1271,9 +1271,9 @@
     "passes": 60,
     "pending": 0,
     "failures": 0,
-    "start": "2013-12-30T05:33:38.170Z",
-    "end": "2013-12-30T05:33:38.202Z",
-    "duration": 32
+    "start": "2014-01-16T21:06:19.699Z",
+    "end": "2014-01-16T21:06:19.732Z",
+    "duration": 33
   },
   "tests": [
     {
@@ -1289,7 +1289,7 @@
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :year",
@@ -1329,7 +1329,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mo",
@@ -1364,12 +1364,12 @@
     {
       "title": "should replace :D",
       "fullTitle": "middleware dates should replace :D",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :dddd",
       "fullTitle": "middleware dates should replace :dddd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :ddd",
@@ -1414,12 +1414,12 @@
     {
       "title": "should replace :minute",
       "fullTitle": "middleware dates should replace :minute",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mm",
@@ -1464,7 +1464,7 @@
     {
       "title": "should replace :P",
       "fullTitle": "middleware dates should replace :P",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :p",
@@ -1509,12 +1509,12 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should have an empty structure",
@@ -1564,7 +1564,7 @@
     {
       "title": "should build the final string from a one time setup",
       "fullTitle": "strings run should build the final string from a one time setup",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol",
@@ -1592,7 +1592,7 @@
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :year",
@@ -1632,7 +1632,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mo",
@@ -1667,12 +1667,12 @@
     {
       "title": "should replace :D",
       "fullTitle": "middleware dates should replace :D",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :dddd",
       "fullTitle": "middleware dates should replace :dddd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :ddd",
@@ -1717,12 +1717,12 @@
     {
       "title": "should replace :minute",
       "fullTitle": "middleware dates should replace :minute",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mm",
@@ -1767,7 +1767,7 @@
     {
       "title": "should replace :P",
       "fullTitle": "middleware dates should replace :P",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :p",
@@ -1812,12 +1812,12 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should have an empty structure",
@@ -1867,7 +1867,7 @@
     {
       "title": "should build the final string from a one time setup",
       "fullTitle": "strings run should build the final string from a one time setup",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol",

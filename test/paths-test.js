@@ -16,11 +16,11 @@ describe('middleware', function() {
 
   describe('paths', function() {
 
-  	var filePath = '/path/to/foo.html';
-  	var structure = null;
-  	before(function(){
-  		structure = strings().use(strings.paths(filePath));
-  	});
+    var filePath = '/path/to/foo.html';
+    var structure = null;
+    before(function(){
+      structure = strings().use(strings.paths(filePath));
+    });
   
     it('should replace :basename', function() {
       var expected = 'foo';

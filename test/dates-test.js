@@ -17,15 +17,15 @@ describe('middleware', function() {
 
   describe('dates', function() {
 
-  	var now = new Date();
+    var now = new Date();
     var formatter = function(f) {
       return moment(now).format(f);
     };
 
-  	var structure = null;
-  	before(function(){
-  		structure = strings().use(strings.dates(now));
-  	});
+    var structure = null;
+    before(function(){
+      structure = strings().use(strings.dates(now));
+    });
   
     // YYYY/MM/DD
     it('should replace :date', function() {

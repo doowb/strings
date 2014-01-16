@@ -16,11 +16,11 @@ describe('middleware', function() {
 
   describe('urls', function() {
 
-  	var url = 'https://github.com/sellside/strings.git?sortby=name';
-  	var structure = null;
-  	before(function(){
-  		structure = strings().use(strings.urls(url));
-  	});
+    var url = 'https://github.com/sellside/strings.git?sortby=name';
+    var structure = null;
+    before(function(){
+      structure = strings().use(strings.urls(url));
+    });
   
     it('should replace :protocol', function() {
       var expected = 'https:';
