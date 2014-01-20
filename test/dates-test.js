@@ -24,13 +24,21 @@ describe('middleware', function() {
 
     var structure = null;
     before(function(){
-      structure = strings().use(strings.dates(now));
+      structure = strings()
+                    .use(strings.dates(now))
+                    .use(strings.paths('test/actual/structure_date/index.html'));
     });
   
     // YYYY/MM/DD
     it('should replace :date', function() {
       var expected = formatter("YYYY/MM/DD");
       var actual = structure.run(':date');
+      expect(actual).to.eql(expected);
+    });
+
+    it('should replace :date and :ext', function() {
+      var expected = formatter("YYYY/MM/DD") + '/index.html';
+      var actual = structure.run(':date/index:ext');
       expect(actual).to.eql(expected);
     });
 
