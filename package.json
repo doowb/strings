@@ -1,6 +1,6 @@
 {
   "name": "strings",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Manipulate and rename strings using patterns, structures and presets.",
   "main": "index.js",
   "scripts": {
