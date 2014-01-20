@@ -82,7 +82,7 @@
         },
         "18": {
           "source": "  return new Strings(structure, options);",
-          "coverage": 16
+          "coverage": 19
         },
         "19": {
           "source": "};",
@@ -1024,7 +1024,7 @@
         },
         "19": {
           "source": "    if (_.isPlainObject(structure)) {",
-          "coverage": 16
+          "coverage": 19
         },
         "20": {
           "source": "      options = structure;",
@@ -1040,7 +1040,7 @@
         },
         "23": {
           "source": "      this.structure = structure || '';",
-          "coverage": 15
+          "coverage": 18
         },
         "24": {
           "source": "    }",
@@ -1048,11 +1048,11 @@
         },
         "25": {
           "source": "    this.options = options || {};",
-          "coverage": 16
+          "coverage": 19
         },
         "26": {
           "source": "    this.middleware = [];",
-          "coverage": 16
+          "coverage": 19
         },
         "27": {
           "source": "  };",
@@ -1120,7 +1120,7 @@
         },
         "43": {
           "source": "    return function (context) {",
-          "coverage": 13
+          "coverage": 16
         },
         "44": {
           "source": "      return _.extend(context, ensureMiddleware(middleware)());",
@@ -1144,7 +1144,7 @@
         },
         "49": {
           "source": "    return function (context) {",
-          "coverage": 3
+          "coverage": 5
         },
         "50": {
           "source": "      return _.omit(context, ensureMiddleware(middleware)());",
@@ -1168,11 +1168,11 @@
         },
         "55": {
           "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 13
+          "coverage": 16
         },
         "56": {
           "source": "  return this;",
-          "coverage": 13
+          "coverage": 16
         },
         "57": {
           "source": "};",
@@ -1188,11 +1188,11 @@
         },
         "60": {
           "source": "  this.middleware.push(remove(middleware));",
-          "coverage": 3
+          "coverage": 5
         },
         "61": {
           "source": "  return this;",
-          "coverage": 3
+          "coverage": 5
         },
         "62": {
           "source": "};",
@@ -1319,12 +1319,12 @@
   ],
   "stats": {
     "suites": 12,
-    "tests": 61,
-    "passes": 61,
+    "tests": 64,
+    "passes": 64,
     "pending": 0,
     "failures": 0,
-    "start": "2014-01-20T03:04:21.060Z",
-    "end": "2014-01-20T03:04:21.094Z",
+    "start": "2014-01-20T03:10:30.175Z",
+    "end": "2014-01-20T03:10:30.209Z",
     "duration": 34
   },
   "tests": [
@@ -1361,7 +1361,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :monthname",
@@ -1376,7 +1376,7 @@
     {
       "title": "should replace :MMM",
       "fullTitle": "middleware dates should replace :MMM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :month",
@@ -1396,7 +1396,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :DDDD",
@@ -1461,7 +1461,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :h",
@@ -1606,12 +1606,27 @@
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
+      "duration": 1
+    },
+    {
+      "title": "should add middleware with use as object",
+      "fullTitle": "strings middleware should add middleware with use as object",
+      "duration": 0
+    },
+    {
+      "title": "should add middleware with exclude as object",
+      "fullTitle": "strings middleware should add middleware with exclude as object",
+      "duration": 0
+    },
+    {
+      "title": "should add middlware with exclude as array",
+      "fullTitle": "strings middleware should add middlware with exclude as array",
       "duration": 0
     },
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
@@ -1626,7 +1641,7 @@
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol and slugify",
@@ -1669,7 +1684,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :monthname",
@@ -1684,7 +1699,7 @@
     {
       "title": "should replace :MMM",
       "fullTitle": "middleware dates should replace :MMM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :month",
@@ -1704,7 +1719,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :DDDD",
@@ -1769,7 +1784,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :h",
@@ -1914,12 +1929,27 @@
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
+      "duration": 1
+    },
+    {
+      "title": "should add middleware with use as object",
+      "fullTitle": "strings middleware should add middleware with use as object",
+      "duration": 0
+    },
+    {
+      "title": "should add middleware with exclude as object",
+      "fullTitle": "strings middleware should add middleware with exclude as object",
+      "duration": 0
+    },
+    {
+      "title": "should add middlware with exclude as array",
+      "fullTitle": "strings middleware should add middlware with exclude as array",
       "duration": 0
     },
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
@@ -1934,7 +1964,7 @@
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol and slugify",
