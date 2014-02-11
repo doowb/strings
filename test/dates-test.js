@@ -24,7 +24,8 @@ describe('middleware', function() {
 
     var structure = null;
     before(function(){
-      structure = strings()
+      strings();
+      structure = strings.instance()
                     .use(strings.dates(now))
                     .use(strings.paths('test/actual/structure_date/index.html'));
     });

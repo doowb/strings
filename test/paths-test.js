@@ -19,7 +19,8 @@ describe('middleware', function() {
     var filePath = '/path/to/foo.html';
     var structure = null;
     before(function(){
-      structure = strings().use(strings.paths(filePath));
+      strings();
+      structure = strings.instance().use(strings.paths(filePath));
     });
   
     it('should replace :basename', function() {
@@ -53,7 +54,8 @@ describe('middleware', function() {
     var filePath = '/path_with/slugs_to/foo_bar.html';
     var structure = null;
     before(function() {
-      structure = strings().use(strings.paths(filePath, { slugify: true }));
+      strings();
+      structure = strings.instance().use(strings.paths(filePath, { slugify: true }));
     });
 
     it('should replace :basename and slugify', function() {

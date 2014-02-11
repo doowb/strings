@@ -19,7 +19,8 @@ describe('middleware', function() {
     var url = 'https://github.com/sellside/strings.git?sortby=name';
     var structure = null;
     before(function(){
-      structure = strings().use(strings.urls(url));
+      strings();
+      structure = strings.instance().use(strings.urls(url));
     });
   
     it('should replace :protocol', function() {
@@ -36,7 +37,8 @@ describe('middleware', function() {
     var url = 'h.ttps://github.com/sellside/strings.git?sortby=name';
     var structure = null;
     before(function() {
-      structure = strings().use(strings.urls(url, { slugify: true }));
+      strings();
+      structure = strings.instance().use(strings.urls(url, { slugify: true }));
     });
 
     it('should replace :protocol and slugify', function() {
