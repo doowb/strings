@@ -1,15 +1,15 @@
 {
   "instrumentation": "node-jscoverage",
   "sloc": 120,
-  "hits": 110,
-  "misses": 10,
-  "coverage": 91.66666666666666,
+  "hits": 114,
+  "misses": 6,
+  "coverage": 95,
   "files": [
     {
       "filename": "c:/Work/sellside/strings/lib/index.js",
-      "coverage": 78.57142857142857,
-      "hits": 22,
-      "misses": 6,
+      "coverage": 82.14285714285714,
+      "hits": 23,
+      "misses": 5,
       "sloc": 28,
       "source": {
         "1": {
@@ -90,11 +90,11 @@
         },
         "20": {
           "source": "\t_instance = null;",
-          "coverage": 19
+          "coverage": 20
         },
         "21": {
           "source": "\tstrings.instance();",
-          "coverage": 19
+          "coverage": 20
         },
         "22": {
           "source": "",
@@ -102,19 +102,19 @@
         },
         "23": {
           "source": "\tif (data) {",
-          "coverage": 19
+          "coverage": 20
         },
         "24": {
           "source": "\t  _instance.use(data);",
-          "coverage": 0
+          "coverage": 1
         },
         "25": {
           "source": "\t}",
           "coverage": ""
         },
         "26": {
-          "source": "  _instance.run(structure);",
-          "coverage": 19
+          "source": "  return _instance.run(structure);",
+          "coverage": 20
         },
         "27": {
           "source": "};",
@@ -130,11 +130,11 @@
         },
         "30": {
           "source": "\tif (_instance === null ) {",
-          "coverage": 38
+          "coverage": 39
         },
         "31": {
           "source": "\t\treturn _instance = new Strings({",
-          "coverage": 19
+          "coverage": 20
         },
         "32": {
           "source": "\t\t\tstructure: structure",
@@ -1087,11 +1087,11 @@
         },
         "14": {
           "source": "  this.pattern = pattern;",
-          "coverage": 262
+          "coverage": 264
         },
         "15": {
           "source": "  this.replacement = replacement;",
-          "coverage": 262
+          "coverage": 264
         },
         "16": {
           "source": "};",
@@ -1101,9 +1101,9 @@
     },
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
-      "coverage": 90.69767441860465,
-      "hits": 39,
-      "misses": 4,
+      "coverage": 97.67441860465115,
+      "hits": 42,
+      "misses": 1,
       "sloc": 43,
       "source": {
         "1": {
@@ -1180,19 +1180,19 @@
         },
         "19": {
           "source": "  this.config = config || {};",
-          "coverage": 19
+          "coverage": 20
         },
         "20": {
           "source": "  this.options = config.options || {};",
-          "coverage": 19
+          "coverage": 20
         },
         "21": {
           "source": "  this.structure = config.structure || '';",
-          "coverage": 19
+          "coverage": 20
         },
         "22": {
           "source": "  this.middleware = config.middleware || [];",
-          "coverage": 19
+          "coverage": 20
         },
         "23": {
           "source": "};",
@@ -1208,11 +1208,11 @@
         },
         "26": {
           "source": "    return function () {",
-          "coverage": 0
+          "coverage": 1
         },
         "27": {
           "source": "      return ctx;",
-          "coverage": 0
+          "coverage": 1
         },
         "28": {
           "source": "    };",
@@ -1232,11 +1232,11 @@
         },
         "32": {
           "source": "  if (_.isFunction(middleware) === false) {",
-          "coverage": 98
+          "coverage": 99
         },
         "33": {
           "source": "    return wrap(middleware);",
-          "coverage": 0
+          "coverage": 1
         },
         "34": {
           "source": "  }",
@@ -1260,11 +1260,11 @@
         },
         "39": {
           "source": "    return function (context) {",
-          "coverage": 16
+          "coverage": 17
         },
         "40": {
           "source": "      return _.extend(context, ensureMiddleware(middleware)());",
-          "coverage": 96
+          "coverage": 97
         },
         "41": {
           "source": "    };",
@@ -1308,11 +1308,11 @@
         },
         "51": {
           "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 16
+          "coverage": 17
         },
         "52": {
           "source": "  return this;",
-          "coverage": 16
+          "coverage": 17
         },
         "53": {
           "source": "};",
@@ -1348,11 +1348,11 @@
         },
         "61": {
           "source": "  return _.reduce(this.middleware, function (ctx, middleware) {",
-          "coverage": 75
+          "coverage": 76
         },
         "62": {
           "source": "    return middleware(ctx);",
-          "coverage": 98
+          "coverage": 99
         },
         "63": {
           "source": "  }, {});",
@@ -1372,15 +1372,15 @@
         },
         "67": {
           "source": "  var context = this.context();",
-          "coverage": 73
+          "coverage": 74
         },
         "68": {
           "source": "  var patterns = _.map(context, function (value, key) {",
-          "coverage": 73
+          "coverage": 74
         },
         "69": {
           "source": "    if (value instanceof Pattern) {",
-          "coverage": 1783
+          "coverage": 1785
         },
         "70": {
           "source": "      return value;",
@@ -1392,7 +1392,7 @@
         },
         "72": {
           "source": "    return new Pattern(",
-          "coverage": 223
+          "coverage": 225
         },
         "73": {
           "source": "    new RegExp(':\\\\b' + key + '\\\\b'), // pattern",
@@ -1412,7 +1412,7 @@
         },
         "77": {
           "source": "  return patterns;",
-          "coverage": 73
+          "coverage": 74
         },
         "78": {
           "source": "};",
@@ -1428,7 +1428,7 @@
         },
         "81": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 73
+          "coverage": 74
         },
         "82": {
           "source": "    options = structure;",
@@ -1440,7 +1440,7 @@
         },
         "84": {
           "source": "    this.structure = structure || this.structure || '';",
-          "coverage": 73
+          "coverage": 74
         },
         "85": {
           "source": "  }",
@@ -1448,7 +1448,7 @@
         },
         "86": {
           "source": "  return frep.strWithArr(this.structure, this.patterns());",
-          "coverage": 73
+          "coverage": 74
         },
         "87": {
           "source": "};",
@@ -1458,25 +1458,25 @@
     }
   ],
   "stats": {
-    "suites": 12,
-    "tests": 64,
-    "passes": 64,
+    "suites": 13,
+    "tests": 65,
+    "passes": 65,
     "pending": 0,
     "failures": 0,
-    "start": "2014-02-11T22:17:10.146Z",
-    "end": "2014-02-11T22:17:10.180Z",
-    "duration": 34
+    "start": "2014-02-13T05:08:38.704Z",
+    "end": "2014-02-13T05:08:38.736Z",
+    "duration": 32
   },
   "tests": [
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :date and :ext",
       "fullTitle": "middleware dates should replace :date and :ext",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :L",
@@ -1486,12 +1486,12 @@
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :year",
       "fullTitle": "middleware dates should replace :year",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :YYYY",
@@ -1526,7 +1526,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mo",
@@ -1536,7 +1536,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 0
+      "duration": 2
     },
     {
       "title": "should replace :DDDD",
@@ -1571,12 +1571,12 @@
     {
       "title": "should replace :ddd",
       "fullTitle": "middleware dates should replace :ddd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :dd",
       "fullTitle": "middleware dates should replace :dd",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :d",
@@ -1586,7 +1586,7 @@
     {
       "title": "should replace :hour",
       "fullTitle": "middleware dates should replace :hour",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :HH",
@@ -1601,7 +1601,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :h",
@@ -1616,7 +1616,7 @@
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mm",
@@ -1691,7 +1691,7 @@
     {
       "title": "should replace :basename and slugify",
       "fullTitle": "middleware paths-slugify should replace :basename and slugify",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :filename and slugify",
@@ -1706,6 +1706,11 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
+      "duration": 1
+    },
+    {
+      "title": "should convert structure to string given an object",
+      "fullTitle": "strings default should convert structure to string given an object",
       "duration": 0
     },
     {
@@ -1731,7 +1736,7 @@
     {
       "title": "should add middleware with use",
       "fullTitle": "strings middleware should add middleware with use",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with exclude",
@@ -1741,7 +1746,7 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
@@ -1766,7 +1771,7 @@
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
@@ -1781,7 +1786,7 @@
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol and slugify",
@@ -1794,12 +1799,12 @@
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :date and :ext",
       "fullTitle": "middleware dates should replace :date and :ext",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :L",
@@ -1809,12 +1814,12 @@
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :year",
       "fullTitle": "middleware dates should replace :year",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :YYYY",
@@ -1849,7 +1854,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mo",
@@ -1859,7 +1864,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 0
+      "duration": 2
     },
     {
       "title": "should replace :DDDD",
@@ -1894,12 +1899,12 @@
     {
       "title": "should replace :ddd",
       "fullTitle": "middleware dates should replace :ddd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :dd",
       "fullTitle": "middleware dates should replace :dd",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :d",
@@ -1909,7 +1914,7 @@
     {
       "title": "should replace :hour",
       "fullTitle": "middleware dates should replace :hour",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :HH",
@@ -1924,7 +1929,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :h",
@@ -1939,7 +1944,7 @@
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :mm",
@@ -2014,7 +2019,7 @@
     {
       "title": "should replace :basename and slugify",
       "fullTitle": "middleware paths-slugify should replace :basename and slugify",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :filename and slugify",
@@ -2029,6 +2034,11 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
+      "duration": 1
+    },
+    {
+      "title": "should convert structure to string given an object",
+      "fullTitle": "strings default should convert structure to string given an object",
       "duration": 0
     },
     {
@@ -2054,7 +2064,7 @@
     {
       "title": "should add middleware with use",
       "fullTitle": "strings middleware should add middleware with use",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with exclude",
@@ -2064,7 +2074,7 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build context from middleware with exclusions",
@@ -2089,7 +2099,7 @@
     {
       "title": "should build the final string with no exclusions",
       "fullTitle": "strings run should build the final string with no exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should build the final string with exclusions",
@@ -2104,7 +2114,7 @@
     {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :protocol and slugify",

@@ -35,6 +35,19 @@ var testStructure = '/:basename/index:ext';
 
 describe('strings', function () {
 
+  describe('default', function() {
+  
+    it('should convert structure to string given an object', function() {
+      var expected = '/file/index.html';
+      var actual = strings(testStructure, {
+        basename: 'file',
+        ext: '.html'
+      });
+      expect(actual).to.eql(expected);
+    });
+  
+  });
+
   describe('structure', function () {
 
     it('should save the structure', function () {
