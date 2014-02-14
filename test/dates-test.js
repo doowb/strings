@@ -25,11 +25,12 @@ describe('middleware', function() {
     var structure = null;
     before(function(){
       strings();
-      structure = strings.instance()
-                    .use(strings.dates(now))
-                    .use(strings.paths('test/actual/structure_date/index.html'));
+      structure = strings
+        .instance()
+        .use(strings.dates(now))
+        .use(strings.paths('test/actual/structure_date/index.html'));
     });
-  
+
     // YYYY/MM/DD
     it('should replace :date', function() {
       var expected = formatter("YYYY/MM/DD");
@@ -319,17 +320,16 @@ describe('middleware', function() {
       var actual = structure.run(':p');
       expect(actual).to.eql(expected);
     });
-  
+
   });
 
   describe('dates-slugify', function() {
-  
+
     var now = new Date();
     var structure = null;
     before(function() {
       structure = strings().use(strings.dates(now, { slugify: true }));
     });
-  
-  });
 
+  });
 });
