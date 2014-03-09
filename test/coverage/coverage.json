@@ -1,275 +1,10 @@
 {
   "instrumentation": "node-jscoverage",
-  "sloc": 120,
-  "hits": 114,
-  "misses": 6,
-  "coverage": 95,
+  "sloc": 101,
+  "hits": 97,
+  "misses": 4,
+  "coverage": 96.03960396039604,
   "files": [
-    {
-      "filename": "c:/Work/sellside/strings/lib/index.js",
-      "coverage": 82.14285714285714,
-      "hits": 23,
-      "misses": 5,
-      "sloc": 28,
-      "source": {
-        "1": {
-          "source": "/**",
-          "coverage": ""
-        },
-        "2": {
-          "source": " * Sellside",
-          "coverage": ""
-        },
-        "3": {
-          "source": " *",
-          "coverage": ""
-        },
-        "4": {
-          "source": " * Sellside <http://www.sellside.com>",
-          "coverage": ""
-        },
-        "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
-          "source": " * Licensed under the MIT License (MIT).",
-          "coverage": ""
-        },
-        "9": {
-          "source": " */",
-          "coverage": ""
-        },
-        "10": {
-          "source": "",
-          "coverage": ""
-        },
-        "11": {
-          "source": "'use strict';",
-          "coverage": 1
-        },
-        "12": {
-          "source": "",
-          "coverage": ""
-        },
-        "13": {
-          "source": "var _ = require('lodash');",
-          "coverage": 1
-        },
-        "14": {
-          "source": "",
-          "coverage": ""
-        },
-        "15": {
-          "source": "var Strings = require('./strings');",
-          "coverage": 1
-        },
-        "16": {
-          "source": "",
-          "coverage": ""
-        },
-        "17": {
-          "source": "var _instance = null;",
-          "coverage": 1
-        },
-        "18": {
-          "source": "",
-          "coverage": ""
-        },
-        "19": {
-          "source": "var strings = module.exports = function(structure, data) {",
-          "coverage": 1
-        },
-        "20": {
-          "source": "\t_instance = null;",
-          "coverage": 20
-        },
-        "21": {
-          "source": "\tstrings.instance();",
-          "coverage": 20
-        },
-        "22": {
-          "source": "",
-          "coverage": ""
-        },
-        "23": {
-          "source": "\tif (data) {",
-          "coverage": 20
-        },
-        "24": {
-          "source": "\t  _instance.use(data);",
-          "coverage": 1
-        },
-        "25": {
-          "source": "\t}",
-          "coverage": ""
-        },
-        "26": {
-          "source": "  return _instance.run(structure);",
-          "coverage": 20
-        },
-        "27": {
-          "source": "};",
-          "coverage": ""
-        },
-        "28": {
-          "source": "",
-          "coverage": ""
-        },
-        "29": {
-          "source": "strings.instance = function (structure) {",
-          "coverage": 1
-        },
-        "30": {
-          "source": "\tif (_instance === null ) {",
-          "coverage": 39
-        },
-        "31": {
-          "source": "\t\treturn _instance = new Strings({",
-          "coverage": 20
-        },
-        "32": {
-          "source": "\t\t\tstructure: structure",
-          "coverage": ""
-        },
-        "33": {
-          "source": "\t\t});",
-          "coverage": ""
-        },
-        "34": {
-          "source": "\t}",
-          "coverage": ""
-        },
-        "35": {
-          "source": "\treturn _instance;",
-          "coverage": 19
-        },
-        "36": {
-          "source": "};",
-          "coverage": ""
-        },
-        "37": {
-          "source": "",
-          "coverage": ""
-        },
-        "38": {
-          "source": "strings.use = function (middleware) {",
-          "coverage": 1
-        },
-        "39": {
-          "source": "\treturn strings.instance().use(middleware);",
-          "coverage": 0
-        },
-        "40": {
-          "source": "};",
-          "coverage": ""
-        },
-        "41": {
-          "source": "",
-          "coverage": ""
-        },
-        "42": {
-          "source": "strings.exclude = function (middleware) {",
-          "coverage": 1
-        },
-        "43": {
-          "source": "\treturn strings.instance().exclude(middleware);",
-          "coverage": 0
-        },
-        "44": {
-          "source": "};",
-          "coverage": ""
-        },
-        "45": {
-          "source": "",
-          "coverage": ""
-        },
-        "46": {
-          "source": "strings.context = function () {",
-          "coverage": 1
-        },
-        "47": {
-          "source": "\treturn strings.instance().context();",
-          "coverage": 0
-        },
-        "48": {
-          "source": "};",
-          "coverage": ""
-        },
-        "49": {
-          "source": "",
-          "coverage": ""
-        },
-        "50": {
-          "source": "strings.patterns = function () {",
-          "coverage": 1
-        },
-        "51": {
-          "source": "\treturn strings.instance().patterns();",
-          "coverage": 0
-        },
-        "52": {
-          "source": "};",
-          "coverage": ""
-        },
-        "53": {
-          "source": "",
-          "coverage": ""
-        },
-        "54": {
-          "source": "strings.run = function (structure, options) {",
-          "coverage": 1
-        },
-        "55": {
-          "source": "\treturn strings.instance().run(structure, options);",
-          "coverage": 0
-        },
-        "56": {
-          "source": "};",
-          "coverage": ""
-        },
-        "57": {
-          "source": "",
-          "coverage": ""
-        },
-        "58": {
-          "source": "strings.Pattern = require('./pattern');",
-          "coverage": 1
-        },
-        "59": {
-          "source": "",
-          "coverage": ""
-        },
-        "60": {
-          "source": "// middleware",
-          "coverage": ""
-        },
-        "61": {
-          "source": "var middleware = require('./middleware');",
-          "coverage": 1
-        },
-        "62": {
-          "source": "_.map(middleware, function(value, key) {",
-          "coverage": 1
-        },
-        "63": {
-          "source": "  strings[key] = value;",
-          "coverage": 3
-        },
-        "64": {
-          "source": "});",
-          "coverage": ""
-        }
-      }
-    },
     {
       "filename": "c:/Work/sellside/strings/lib/middleware/dates.js",
       "coverage": 100,
@@ -282,7 +17,7 @@
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -290,35 +25,35 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
           "coverage": ""
         },
-        "10": {
+        "7": {
           "source": "",
           "coverage": ""
         },
-        "11": {
+        "8": {
           "source": "'use strict';",
+          "coverage": 1
+        },
+        "9": {
+          "source": "",
+          "coverage": ""
+        },
+        "10": {
+          "source": "var _s = require('underscore.string');",
+          "coverage": 1
+        },
+        "11": {
+          "source": "var moment = require('moment');",
           "coverage": 1
         },
         "12": {
@@ -326,334 +61,382 @@
           "coverage": ""
         },
         "13": {
-          "source": "var _s = require('underscore.string');",
-          "coverage": 1
-        },
-        "14": {
-          "source": "var moment = require('moment');",
-          "coverage": 1
-        },
-        "15": {
-          "source": "",
-          "coverage": ""
-        },
-        "16": {
           "source": "var Pattern = require('../pattern');",
           "coverage": 1
         },
-        "17": {
+        "14": {
           "source": "",
           "coverage": ""
         },
-        "18": {
+        "15": {
           "source": "var slugified = function(str, slugify) {",
           "coverage": 1
         },
-        "19": {
+        "16": {
           "source": "  return slugify ? _s.slugify(str) : str;",
           "coverage": 39
         },
-        "20": {
+        "17": {
           "source": "};",
           "coverage": ""
         },
-        "21": {
+        "18": {
           "source": "",
           "coverage": ""
         },
-        "22": {
+        "19": {
           "source": "var format = function(d, options) {",
           "coverage": 1
         },
-        "23": {
+        "20": {
           "source": "  moment.lang(options.lang);",
           "coverage": 1
         },
-        "24": {
+        "21": {
           "source": "  return function(f) {",
           "coverage": 1
         },
-        "25": {
+        "22": {
           "source": "    return moment(d).format(f);",
           "coverage": 39
         },
-        "26": {
+        "23": {
           "source": "  };",
           "coverage": ""
         },
-        "27": {
+        "24": {
           "source": "};",
           "coverage": ""
         },
-        "28": {
+        "25": {
           "source": "",
           "coverage": ""
         },
-        "29": {
+        "26": {
           "source": "var dates = module.exports = function(d, options) {",
           "coverage": 1
         },
-        "30": {
+        "27": {
           "source": "",
           "coverage": ""
         },
-        "31": {
+        "28": {
           "source": "  options = options || { slugify: false };",
           "coverage": 1
         },
-        "32": {
+        "29": {
           "source": "  var slugify = ((typeof options.slugify === 'undefined') || options.slugify === false) ? false : true;",
           "coverage": 1
         },
-        "33": {
+        "30": {
           "source": "  options.lang = options.lang || 'en';",
           "coverage": 1
         },
-        "34": {
+        "31": {
           "source": "",
           "coverage": ""
         },
-        "35": {
+        "32": {
           "source": "  var formatter = format(d, options);",
           "coverage": 1
         },
-        "36": {
+        "33": {
           "source": "",
+          "coverage": ""
+        },
+        "34": {
+          "source": "  /**",
+          "coverage": ""
+        },
+        "35": {
+          "source": "   * Date patterns",
+          "coverage": ""
+        },
+        "36": {
+          "source": "   */",
           "coverage": ""
         },
         "37": {
+          "source": "",
+          "coverage": ""
+        },
+        "38": {
           "source": "  var datePatterns = {",
           "coverage": 1
         },
-        "38": {
+        "39": {
           "source": "    // Full date",
           "coverage": ""
         },
-        "39": {
-          "source": "    'date': new Pattern(/:\\bdate\\b/,          slugified(formatter(\"YYYY/MM/DD\"), slugify)),",
-          "coverage": ""
-        },
         "40": {
-          "source": "    // Long date formats",
+          "source": "    'date': new Pattern(/:\\bdate\\b/,            slugified(formatter(\"YYYY/MM/DD\"), slugify)),",
           "coverage": ""
         },
         "41": {
-          "source": "    'L': new Pattern(/:\\bL\\b/,                slugified(formatter(\"MM/DD/YYYY\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "42": {
-          "source": "    '1': new Pattern(/:\\b1\\b/,                slugified(formatter(\"M/D/YYYY\"), slugify)),",
+          "source": "    // Long date formats",
           "coverage": ""
         },
         "43": {
-          "source": "    // Year (2013, 13)",
+          "source": "    'L': new Pattern(/:\\bL\\b/,                  slugified(formatter(\"MM/DD/YYYY\"), slugify)),",
           "coverage": ""
         },
         "44": {
-          "source": "    'year': new Pattern(/:\\byear\\b/,          slugified(formatter(\"YYYY\"), slugify)),",
+          "source": "    '1': new Pattern(/:\\b1\\b/,                  slugified(formatter(\"M/D/YYYY\"), slugify)),",
           "coverage": ""
         },
         "45": {
-          "source": "    'YYYY': new Pattern(/:\\bYYYY\\b/,          slugified(formatter(\"YYYY\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "46": {
-          "source": "    'YY': new Pattern(/:\\bYY\\b/,              slugified(formatter(\"YY\"), slugify)),",
+          "source": "    // Year (2013, 13)",
           "coverage": ""
         },
         "47": {
-          "source": "    // Month name (January, Jan)",
+          "source": "    'year': new Pattern(/:\\byear\\b/,            slugified(formatter(\"YYYY\"), slugify)),",
           "coverage": ""
         },
         "48": {
-          "source": "    'monthname': new Pattern(/:\\bmonthname\\b/,slugified(formatter(\"MMMM\"), slugify)),",
+          "source": "    'YYYY': new Pattern(/:\\bYYYY\\b/,            slugified(formatter(\"YYYY\"), slugify)),",
           "coverage": ""
         },
         "49": {
-          "source": "    'MMMM': new Pattern(/:\\bMMMM\\b/,          slugified(formatter(\"MMMM\"), slugify)),",
+          "source": "    'YY': new Pattern(/:\\bYY\\b/,                slugified(formatter(\"YY\"), slugify)),",
           "coverage": ""
         },
         "50": {
-          "source": "    'MMM': new Pattern(/:\\bMMM\\b/,            slugified(formatter(\"MMM\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "51": {
-          "source": "    // Month number (1, 01)",
+          "source": "    // Month name (January, Jan)",
           "coverage": ""
         },
         "52": {
-          "source": "    'month': new Pattern(/:\\bmonth\\b/,        slugified(formatter(\"MM\"), slugify)),",
+          "source": "    'monthname': new Pattern(/:\\bmonthname\\b/,  slugified(formatter(\"MMMM\"), slugify)),",
           "coverage": ""
         },
         "53": {
-          "source": "    'MM': new Pattern(/:\\bMM\\b/,              slugified(formatter(\"MM\"), slugify)),",
+          "source": "    'MMMM': new Pattern(/:\\bMMMM\\b/,            slugified(formatter(\"MMMM\"), slugify)),",
           "coverage": ""
         },
         "54": {
-          "source": "    'mo': new Pattern(/:\\bmo\\b/,              slugified(formatter(\"MM\"), slugify)),",
+          "source": "    'MMM': new Pattern(/:\\bMMM\\b/,              slugified(formatter(\"MMM\"), slugify)),",
           "coverage": ""
         },
         "55": {
-          "source": "    'M': new Pattern(/:\\bM\\b/,                slugified(formatter(\"M\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "56": {
-          "source": "    // Day of the year",
+          "source": "    // Month number (1, 01)",
           "coverage": ""
         },
         "57": {
-          "source": "    'DDDD': new Pattern(/:\\bDDDD\\b/,          slugified(formatter(\"DDDD\"), slugify)),",
+          "source": "    'month': new Pattern(/:\\bmonth\\b/,          slugified(formatter(\"MM\"), slugify)),",
           "coverage": ""
         },
         "58": {
-          "source": "    'DDD': new Pattern(/:\\bDDD\\b/,            slugified(formatter(\"DDD\"), slugify)),",
+          "source": "    'MM': new Pattern(/:\\bMM\\b/,                slugified(formatter(\"MM\"), slugify)),",
           "coverage": ""
         },
         "59": {
-          "source": "    // Day of the month",
+          "source": "    'mo': new Pattern(/:\\bmo\\b/,                slugified(formatter(\"MM\"), slugify)),",
           "coverage": ""
         },
         "60": {
-          "source": "    'day': new Pattern(/:\\bday\\b/,            slugified(formatter(\"DD\"), slugify)),",
+          "source": "    'M': new Pattern(/:\\bM\\b/,                  slugified(formatter(\"M\"), slugify)),",
           "coverage": ""
         },
         "61": {
-          "source": "    'DD': new Pattern(/:\\bDD\\b/,              slugified(formatter(\"DD\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "62": {
-          "source": "    'D': new Pattern(/:\\bD\\b/,                slugified(formatter(\"D\"), slugify)),",
+          "source": "    // Day of the year",
           "coverage": ""
         },
         "63": {
-          "source": "    // Day of the week (wednesday/wed)",
+          "source": "    'DDDD': new Pattern(/:\\bDDDD\\b/,            slugified(formatter(\"DDDD\"), slugify)),",
           "coverage": ""
         },
         "64": {
-          "source": "    'dddd': new Pattern(/:\\bdddd\\b/,          slugified(formatter(\"dddd\"), slugify)),",
+          "source": "    'DDD': new Pattern(/:\\bDDD\\b/,              slugified(formatter(\"DDD\"), slugify)),",
           "coverage": ""
         },
         "65": {
-          "source": "    'ddd': new Pattern(/:\\bddd\\b/,            slugified(formatter(\"ddd\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "66": {
-          "source": "    'dd': new Pattern(/:\\bdd\\b/,              slugified(formatter(\"dd\"), slugify)),",
+          "source": "    // Day of the month",
           "coverage": ""
         },
         "67": {
-          "source": "    'd': new Pattern(/:\\bd\\b/,                slugified(formatter(\"d\"), slugify)),",
+          "source": "    'day': new Pattern(/:\\bday\\b/,              slugified(formatter(\"DD\"), slugify)),",
           "coverage": ""
         },
         "68": {
-          "source": "    // Hour",
+          "source": "    'DD': new Pattern(/:\\bDD\\b/,                slugified(formatter(\"DD\"), slugify)),",
           "coverage": ""
         },
         "69": {
-          "source": "    'hour': new Pattern(/:\\bhour\\b/,          slugified(formatter(\"HH\"), slugify)),",
+          "source": "    'D': new Pattern(/:\\bD\\b/,                  slugified(formatter(\"D\"), slugify)),",
           "coverage": ""
         },
         "70": {
-          "source": "    'HH': new Pattern(/:\\bHH\\b/,              slugified(formatter(\"HH\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "71": {
-          "source": "    'H': new Pattern(/:\\bH\\b/,                slugified(formatter(\"H\"), slugify)),",
+          "source": "    // Day of the week (wednesday/wed)",
           "coverage": ""
         },
         "72": {
-          "source": "    'hh': new Pattern(/:\\bhh\\b/,              slugified(formatter(\"hh\"), slugify)),",
+          "source": "    'dddd': new Pattern(/:\\bdddd\\b/,            slugified(formatter(\"dddd\"), slugify)),",
           "coverage": ""
         },
         "73": {
-          "source": "    'h': new Pattern(/:\\bh\\b/,                slugified(formatter(\"h\"), slugify)),",
+          "source": "    'ddd': new Pattern(/:\\bddd\\b/,              slugified(formatter(\"ddd\"), slugify)),",
           "coverage": ""
         },
         "74": {
-          "source": "    // Minute",
+          "source": "    'dd': new Pattern(/:\\bdd\\b/,                slugified(formatter(\"dd\"), slugify)),",
           "coverage": ""
         },
         "75": {
-          "source": "    'minute': new Pattern(/:\\bminute\\b/,      slugified(formatter(\"mm\"), slugify)),",
+          "source": "    'd': new Pattern(/:\\bd\\b/,                  slugified(formatter(\"d\"), slugify)),",
           "coverage": ""
         },
         "76": {
-          "source": "    'min': new Pattern(/:\\bmin\\b/,            slugified(formatter(\"mm\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "77": {
-          "source": "    'mm': new Pattern(/:\\bmm\\b/,              slugified(formatter(\"mm\"), slugify)),",
+          "source": "    // Hour",
           "coverage": ""
         },
         "78": {
-          "source": "    'm': new Pattern(/:\\bm\\b/,                slugified(formatter(\"m\"), slugify)),",
+          "source": "    'hour': new Pattern(/:\\bhour\\b/,            slugified(formatter(\"HH\"), slugify)),",
           "coverage": ""
         },
         "79": {
-          "source": "    // Second",
+          "source": "    'HH': new Pattern(/:\\bHH\\b/,                slugified(formatter(\"HH\"), slugify)),",
           "coverage": ""
         },
         "80": {
-          "source": "    'second': new Pattern(/:\\bsecond\\b/,      slugified(formatter(\"ss\"), slugify)),",
+          "source": "    'H': new Pattern(/:\\bH\\b/,                  slugified(formatter(\"H\"), slugify)),",
           "coverage": ""
         },
         "81": {
-          "source": "    'sec': new Pattern(/:\\bsec\\b/,            slugified(formatter(\"ss\"), slugify)),",
+          "source": "    'hh': new Pattern(/:\\bhh\\b/,                slugified(formatter(\"hh\"), slugify)),",
           "coverage": ""
         },
         "82": {
-          "source": "    'ss': new Pattern(/:\\bss\\b/,              slugified(formatter(\"ss\"), slugify)),",
+          "source": "    'h': new Pattern(/:\\bh\\b/,                  slugified(formatter(\"h\"), slugify)),",
           "coverage": ""
         },
         "83": {
-          "source": "    's': new Pattern(/:\\bs\\b/,                slugified(formatter(\"s\"), slugify)),",
+          "source": "",
           "coverage": ""
         },
         "84": {
-          "source": "    // AM/PM, am/pm",
+          "source": "    // Minute",
           "coverage": ""
         },
         "85": {
-          "source": "    'A': new Pattern(/:\\bA\\b/,                slugified(formatter(\"A\"), slugify)),",
+          "source": "    'minute': new Pattern(/:\\bminute\\b/,        slugified(formatter(\"mm\"), slugify)),",
           "coverage": ""
         },
         "86": {
-          "source": "    'a': new Pattern(/:\\ba\\b/,                slugified(formatter(\"a\"), slugify)),",
+          "source": "    'min': new Pattern(/:\\bmin\\b/,              slugified(formatter(\"mm\"), slugify)),",
           "coverage": ""
         },
         "87": {
-          "source": "    'P': new Pattern(/:\\bP\\b/,                slugified(formatter(\"P\"), slugify)),",
+          "source": "    'mm': new Pattern(/:\\bmm\\b/,                slugified(formatter(\"mm\"), slugify)),",
           "coverage": ""
         },
         "88": {
-          "source": "    'p': new Pattern(/:\\bp\\b/,                slugified(formatter(\"p\"), slugify))",
+          "source": "    'm': new Pattern(/:\\bm\\b/,                  slugified(formatter(\"m\"), slugify)),",
           "coverage": ""
         },
         "89": {
-          "source": "  };",
+          "source": "",
           "coverage": ""
         },
         "90": {
-          "source": "",
+          "source": "    // Second",
           "coverage": ""
         },
         "91": {
-          "source": "",
+          "source": "    'second': new Pattern(/:\\bsecond\\b/,        slugified(formatter(\"ss\"), slugify)),",
           "coverage": ""
         },
         "92": {
-          "source": "  return function() {",
-          "coverage": 1
+          "source": "    'sec': new Pattern(/:\\bsec\\b/,              slugified(formatter(\"ss\"), slugify)),",
+          "coverage": ""
         },
         "93": {
-          "source": "    return datePatterns;",
-          "coverage": 40
+          "source": "    'ss': new Pattern(/:\\bss\\b/,                slugified(formatter(\"ss\"), slugify)),",
+          "coverage": ""
         },
         "94": {
-          "source": "  };",
+          "source": "    's': new Pattern(/:\\bs\\b/,                  slugified(formatter(\"s\"), slugify)),",
           "coverage": ""
         },
         "95": {
+          "source": "",
+          "coverage": ""
+        },
+        "96": {
+          "source": "    // AM/PM, am/pm",
+          "coverage": ""
+        },
+        "97": {
+          "source": "    'A': new Pattern(/:\\bA\\b/,                  slugified(formatter(\"A\"), slugify)),",
+          "coverage": ""
+        },
+        "98": {
+          "source": "    'a': new Pattern(/:\\ba\\b/,                  slugified(formatter(\"a\"), slugify)),",
+          "coverage": ""
+        },
+        "99": {
+          "source": "    'P': new Pattern(/:\\bP\\b/,                  slugified(formatter(\"P\"), slugify)),",
+          "coverage": ""
+        },
+        "100": {
+          "source": "    'p': new Pattern(/:\\bp\\b/,                  slugified(formatter(\"p\"), slugify))",
+          "coverage": ""
+        },
+        "101": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "102": {
+          "source": "",
+          "coverage": ""
+        },
+        "103": {
+          "source": "",
+          "coverage": ""
+        },
+        "104": {
+          "source": "  return function() {",
+          "coverage": 1
+        },
+        "105": {
+          "source": "    return datePatterns;",
+          "coverage": 40
+        },
+        "106": {
+          "source": "  };",
+          "coverage": ""
+        },
+        "107": {
           "source": "};",
           "coverage": ""
         }
@@ -671,7 +454,7 @@
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -679,50 +462,38 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
           "coverage": ""
         },
-        "10": {
+        "7": {
           "source": "",
           "coverage": ""
         },
-        "11": {
+        "8": {
           "source": "module.exports = {",
           "coverage": 1
         },
-        "12": {
+        "9": {
           "source": "  dates: require('./dates'),",
           "coverage": ""
         },
-        "13": {
+        "10": {
           "source": "  paths: require('./paths'),",
           "coverage": ""
         },
-        "14": {
+        "11": {
           "source": "  urls: require('./urls')",
           "coverage": ""
         },
-        "15": {
+        "12": {
           "source": "};",
           "coverage": ""
         }
@@ -740,7 +511,7 @@
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -748,35 +519,35 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
           "coverage": ""
         },
-        "10": {
+        "7": {
           "source": "",
           "coverage": ""
         },
-        "11": {
+        "8": {
           "source": "'use strict';",
+          "coverage": 1
+        },
+        "9": {
+          "source": "",
+          "coverage": ""
+        },
+        "10": {
+          "source": "var _s = require('underscore.string');",
+          "coverage": 1
+        },
+        "11": {
+          "source": "var path = require('path');",
           "coverage": 1
         },
         "12": {
@@ -784,90 +555,78 @@
           "coverage": ""
         },
         "13": {
-          "source": "var _s = require('underscore.string');",
+          "source": "var paths = module.exports = function(filePath, options) {",
           "coverage": 1
         },
         "14": {
-          "source": "var path = require('path');",
-          "coverage": 1
-        },
-        "15": {
           "source": "",
           "coverage": ""
         },
+        "15": {
+          "source": "  options = options || { slugify: false };",
+          "coverage": 3
+        },
         "16": {
-          "source": "var paths = module.exports = function(filePath, options) {",
-          "coverage": 1
+          "source": "  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
+          "coverage": 3
         },
         "17": {
           "source": "",
           "coverage": ""
         },
         "18": {
-          "source": "  options = options || { slugify: false };",
-          "coverage": 3
-        },
-        "19": {
-          "source": "  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;",
-          "coverage": 3
-        },
-        "20": {
-          "source": "",
-          "coverage": ""
-        },
-        "21": {
           "source": "  var dir = path.dirname(filePath);",
           "coverage": 3
         },
-        "22": {
+        "19": {
           "source": "  var ext = path.extname(filePath);",
           "coverage": 3
         },
-        "23": {
+        "20": {
           "source": "  var filename = path.basename(filePath);",
           "coverage": 3
         },
-        "24": {
+        "21": {
           "source": "  var basename = path.basename(filePath, ext);",
           "coverage": 3
         },
-        "25": {
+        "22": {
           "source": "",
           "coverage": ""
         },
-        "26": {
+        "23": {
           "source": "  return function() {",
           "coverage": 3
         },
-        "27": {
+        "24": {
           "source": "    return {",
           "coverage": 48
         },
-        "28": {
+        "25": {
           "source": "      basename: slugify ? _s.slugify(basename) : basename,",
           "coverage": ""
         },
-        "29": {
+        "26": {
           "source": "      filename: slugify ? _s.slugify(filename) : filename,",
           "coverage": ""
         },
-        "30": {
+        "27": {
           "source": "      ext: slugify ? _s.slugify(ext) : ext,",
           "coverage": ""
         },
-        "31": {
+        "28": {
           "source": "      dir: slugify ? _s.slugify(dir) : dir",
           "coverage": ""
         },
-        "32": {
+        "29": {
           "source": "    };",
           "coverage": ""
         },
-        "33": {
+        "30": {
           "source": "  };",
           "coverage": ""
         },
-        "34": {
+        "31": {
           "source": "};",
           "coverage": ""
         }
@@ -876,16 +635,16 @@
     {
       "filename": "c:/Work/sellside/strings/lib/middleware/urls.js",
       "coverage": 100,
-      "hits": 14,
+      "hits": 15,
       "misses": 0,
-      "sloc": 14,
+      "sloc": 15,
       "source": {
         "1": {
           "source": "/**",
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -893,27 +652,27 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
+          "coverage": ""
+        },
+        "7": {
+          "source": "",
+          "coverage": ""
+        },
+        "8": {
+          "source": "'use strict';",
+          "coverage": 1
+        },
+        "9": {
+          "source": "",
           "coverage": ""
         },
         "10": {
@@ -1038,7 +797,7 @@
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -1046,54 +805,42 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
           "coverage": ""
         },
-        "10": {
+        "7": {
           "source": "",
           "coverage": ""
         },
-        "11": {
+        "8": {
           "source": "'use strict';",
           "coverage": 1
         },
-        "12": {
+        "9": {
           "source": "",
           "coverage": ""
         },
-        "13": {
+        "10": {
           "source": "var Pattern = module.exports = function(pattern, replacement) {",
           "coverage": 1
         },
-        "14": {
+        "11": {
           "source": "  this.pattern = pattern;",
-          "coverage": 264
+          "coverage": 267
         },
-        "15": {
+        "12": {
           "source": "  this.replacement = replacement;",
-          "coverage": 264
+          "coverage": 267
         },
-        "16": {
+        "13": {
           "source": "};",
           "coverage": ""
         }
@@ -1101,17 +848,17 @@
     },
     {
       "filename": "c:/Work/sellside/strings/lib/strings.js",
-      "coverage": 97.67441860465115,
-      "hits": 42,
-      "misses": 1,
-      "sloc": 43,
+      "coverage": 92.15686274509804,
+      "hits": 47,
+      "misses": 4,
+      "sloc": 51,
       "source": {
         "1": {
           "source": "/**",
           "coverage": ""
         },
         "2": {
-          "source": " * Sellside",
+          "source": " * Strings <https://github.com/sellside/strings>",
           "coverage": ""
         },
         "3": {
@@ -1119,35 +866,35 @@
           "coverage": ""
         },
         "4": {
-          "source": " * Sellside <http://www.sellside.com>",
+          "source": " * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward",
           "coverage": ""
         },
         "5": {
-          "source": " * Created and maintained by Jon Schlinkert and Brian Woodward",
-          "coverage": ""
-        },
-        "6": {
-          "source": " *",
-          "coverage": ""
-        },
-        "7": {
-          "source": " * Copyright (c) 2013 Sellside.",
-          "coverage": ""
-        },
-        "8": {
           "source": " * Licensed under the MIT License (MIT).",
           "coverage": ""
         },
-        "9": {
+        "6": {
           "source": " */",
           "coverage": ""
         },
-        "10": {
+        "7": {
           "source": "",
           "coverage": ""
         },
-        "11": {
+        "8": {
           "source": "'use strict';",
+          "coverage": 1
+        },
+        "9": {
+          "source": "",
+          "coverage": ""
+        },
+        "10": {
+          "source": "var _ = require('lodash');",
+          "coverage": 1
+        },
+        "11": {
+          "source": "var frep = require('frep');",
           "coverage": 1
         },
         "12": {
@@ -1155,302 +902,398 @@
           "coverage": ""
         },
         "13": {
-          "source": "var _ = require('lodash');",
-          "coverage": 1
-        },
-        "14": {
-          "source": "var frep = require('frep');",
-          "coverage": 1
-        },
-        "15": {
-          "source": "",
-          "coverage": ""
-        },
-        "16": {
           "source": "var Pattern = require('./pattern');",
           "coverage": 1
         },
-        "17": {
+        "14": {
           "source": "",
           "coverage": ""
         },
-        "18": {
+        "15": {
           "source": "var Strings = module.exports = function (config) {",
           "coverage": 1
         },
-        "19": {
+        "16": {
           "source": "  this.config = config || {};",
-          "coverage": 20
+          "coverage": 21
+        },
+        "17": {
+          "source": "  this.options = config.options || {};",
+          "coverage": 21
+        },
+        "18": {
+          "source": "  this.structure = config.structure || '';",
+          "coverage": 21
+        },
+        "19": {
+          "source": "  this.middleware = config.middleware || [];",
+          "coverage": 21
         },
         "20": {
-          "source": "  this.options = config.options || {};",
-          "coverage": 20
-        },
-        "21": {
-          "source": "  this.structure = config.structure || '';",
-          "coverage": 20
-        },
-        "22": {
-          "source": "  this.middleware = config.middleware || [];",
-          "coverage": 20
-        },
-        "23": {
           "source": "};",
           "coverage": ""
         },
-        "24": {
+        "21": {
           "source": "",
           "coverage": ""
         },
-        "25": {
+        "22": {
           "source": "var wrap = function (ctx) {",
           "coverage": 1
         },
-        "26": {
-          "source": "    return function () {",
+        "23": {
+          "source": "  return function () {",
           "coverage": 1
         },
-        "27": {
-          "source": "      return ctx;",
+        "24": {
+          "source": "    return ctx;",
           "coverage": 1
         },
-        "28": {
-          "source": "    };",
-          "coverage": ""
-        },
-        "29": {
+        "25": {
           "source": "  };",
           "coverage": ""
         },
-        "30": {
+        "26": {
+          "source": "};",
+          "coverage": ""
+        },
+        "27": {
           "source": "",
           "coverage": ""
         },
-        "31": {
+        "28": {
           "source": "var ensureMiddleware = function (middleware) {",
           "coverage": 1
         },
-        "32": {
+        "29": {
           "source": "  if (_.isFunction(middleware) === false) {",
-          "coverage": 99
+          "coverage": 101
         },
-        "33": {
+        "30": {
           "source": "    return wrap(middleware);",
           "coverage": 1
         },
-        "34": {
+        "31": {
           "source": "  }",
           "coverage": ""
         },
-        "35": {
+        "32": {
           "source": "  return middleware;",
-          "coverage": 98
+          "coverage": 100
         },
-        "36": {
+        "33": {
           "source": "};",
           "coverage": ""
         },
-        "37": {
+        "34": {
           "source": "",
           "coverage": ""
         },
-        "38": {
+        "35": {
           "source": "var extend = function (middleware) {",
           "coverage": 1
         },
-        "39": {
-          "source": "    return function (context) {",
-          "coverage": 17
+        "36": {
+          "source": "  return function (context) {",
+          "coverage": 19
         },
-        "40": {
-          "source": "      return _.extend(context, ensureMiddleware(middleware)());",
-          "coverage": 97
+        "37": {
+          "source": "    return _.extend(context, ensureMiddleware(middleware)());",
+          "coverage": 99
         },
-        "41": {
-          "source": "    };",
-          "coverage": ""
-        },
-        "42": {
+        "38": {
           "source": "  };",
           "coverage": ""
         },
-        "43": {
+        "39": {
+          "source": "};",
+          "coverage": ""
+        },
+        "40": {
           "source": "",
           "coverage": ""
         },
-        "44": {
+        "41": {
           "source": "var remove = function (middleware) {",
           "coverage": 1
         },
-        "45": {
-          "source": "    return function (context) {",
+        "42": {
+          "source": "  return function (context) {",
           "coverage": 5
         },
-        "46": {
-          "source": "      return _.omit(context, ensureMiddleware(middleware)());",
+        "43": {
+          "source": "    return _.omit(context, ensureMiddleware(middleware)());",
           "coverage": 2
         },
-        "47": {
-          "source": "    };",
-          "coverage": ""
-        },
-        "48": {
+        "44": {
           "source": "  };",
           "coverage": ""
         },
-        "49": {
+        "45": {
+          "source": "};",
+          "coverage": ""
+        },
+        "46": {
           "source": "",
           "coverage": ""
         },
-        "50": {
+        "47": {
           "source": "Strings.prototype.use = function (middleware) {",
           "coverage": 1
         },
-        "51": {
+        "48": {
           "source": "  this.middleware.push(extend(middleware));",
-          "coverage": 17
+          "coverage": 19
         },
-        "52": {
+        "49": {
           "source": "  return this;",
-          "coverage": 17
+          "coverage": 19
         },
-        "53": {
+        "50": {
           "source": "};",
           "coverage": ""
         },
-        "54": {
+        "51": {
           "source": "",
           "coverage": ""
         },
-        "55": {
+        "52": {
           "source": "Strings.prototype.exclude = function (middleware) {",
           "coverage": 1
         },
-        "56": {
+        "53": {
           "source": "  this.middleware.push(remove(middleware));",
           "coverage": 5
         },
-        "57": {
+        "54": {
           "source": "  return this;",
           "coverage": 5
         },
-        "58": {
+        "55": {
           "source": "};",
           "coverage": ""
         },
-        "59": {
+        "56": {
           "source": "",
           "coverage": ""
         },
-        "60": {
+        "57": {
           "source": "Strings.prototype.context = function () {",
           "coverage": 1
         },
-        "61": {
+        "58": {
           "source": "  return _.reduce(this.middleware, function (ctx, middleware) {",
-          "coverage": 76
+          "coverage": 78
         },
-        "62": {
+        "59": {
           "source": "    return middleware(ctx);",
-          "coverage": 99
+          "coverage": 101
         },
-        "63": {
+        "60": {
           "source": "  }, {});",
           "coverage": ""
         },
-        "64": {
+        "61": {
           "source": "};",
           "coverage": ""
+        },
+        "62": {
+          "source": "",
+          "coverage": ""
+        },
+        "63": {
+          "source": "Strings.prototype.patterns = function () {",
+          "coverage": 1
+        },
+        "64": {
+          "source": "  var context = this.context();",
+          "coverage": 76
         },
         "65": {
           "source": "",
           "coverage": ""
         },
         "66": {
-          "source": "Strings.prototype.patterns = function () {",
-          "coverage": 1
+          "source": "  /**",
+          "coverage": ""
         },
         "67": {
-          "source": "  var context = this.context();",
-          "coverage": 74
+          "source": "   * @param { RegExp,String }    key     String or RegExp pattern to find strings to replace",
+          "coverage": ""
         },
         "68": {
-          "source": "  var patterns = _.map(context, function (value, key) {",
-          "coverage": 74
+          "source": "   * @param { String|Function }  value   Replacement string or function",
+          "coverage": ""
         },
         "69": {
-          "source": "    if (value instanceof Pattern) {",
-          "coverage": 1785
+          "source": "   * @example `new RegExp(  pattern  ), replacement )`",
+          "coverage": ""
         },
         "70": {
-          "source": "      return value;",
-          "coverage": 1560
+          "source": "   *",
+          "coverage": ""
         },
         "71": {
-          "source": "    }",
+          "source": "   * @return {String} Returns the transformed string.",
           "coverage": ""
         },
         "72": {
-          "source": "    return new Pattern(",
-          "coverage": 225
+          "source": "   * @api Public",
+          "coverage": ""
         },
         "73": {
-          "source": "    new RegExp(':\\\\b' + key + '\\\\b'), // pattern",
+          "source": "   */",
           "coverage": ""
         },
         "74": {
-          "source": "    value // replacement",
-          "coverage": ""
+          "source": "  var patterns = _.map(context, function (value, key) {",
+          "coverage": 76
         },
         "75": {
-          "source": "    );",
+          "source": "",
           "coverage": ""
         },
         "76": {
-          "source": "  });",
+          "source": "    // if the value is a Pattern",
           "coverage": ""
         },
         "77": {
-          "source": "  return patterns;",
-          "coverage": 74
+          "source": "    // it's already in the correct format",
+          "coverage": ""
         },
         "78": {
-          "source": "};",
-          "coverage": ""
+          "source": "    if (value instanceof Pattern) {",
+          "coverage": 1788
         },
         "79": {
           "source": "",
           "coverage": ""
         },
         "80": {
+          "source": "      // if replacement is a function, make sure it runs",
+          "coverage": ""
+        },
+        "81": {
+          "source": "      // with the correct context",
+          "coverage": ""
+        },
+        "82": {
+          "source": "      if (_.isFunction(value.replacement)) {",
+          "coverage": 1561
+        },
+        "83": {
+          "source": "        var fn = value.replacement;",
+          "coverage": 1
+        },
+        "84": {
+          "source": "        value.replacement = function () {",
+          "coverage": 1
+        },
+        "85": {
+          "source": "          return fn.apply(context, [].slice(arguments));",
+          "coverage": 1
+        },
+        "86": {
+          "source": "        };",
+          "coverage": ""
+        },
+        "87": {
+          "source": "      }",
+          "coverage": ""
+        },
+        "88": {
+          "source": "      return value;",
+          "coverage": 1561
+        },
+        "89": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "90": {
+          "source": "",
+          "coverage": ""
+        },
+        "91": {
+          "source": "    // if value is a function, make sure it runs",
+          "coverage": ""
+        },
+        "92": {
+          "source": "    // with the correct context",
+          "coverage": ""
+        },
+        "93": {
+          "source": "    if (_.isFunction(value)) {",
+          "coverage": 227
+        },
+        "94": {
+          "source": "      var fn = value;",
+          "coverage": 0
+        },
+        "95": {
+          "source": "      value = function () {",
+          "coverage": 0
+        },
+        "96": {
+          "source": "        return fn.apply(context, [].slice(arguments));",
+          "coverage": 0
+        },
+        "97": {
+          "source": "      };",
+          "coverage": ""
+        },
+        "98": {
+          "source": "    }",
+          "coverage": ""
+        },
+        "99": {
+          "source": "    return new Pattern(new RegExp(':\\\\b' + key + '\\\\b'), value );",
+          "coverage": 227
+        },
+        "100": {
+          "source": "  });",
+          "coverage": ""
+        },
+        "101": {
+          "source": "  return patterns;",
+          "coverage": 76
+        },
+        "102": {
+          "source": "};",
+          "coverage": ""
+        },
+        "103": {
+          "source": "",
+          "coverage": ""
+        },
+        "104": {
           "source": "Strings.prototype.run = function (structure, options) {",
           "coverage": 1
         },
-        "81": {
+        "105": {
           "source": "  if (_.isPlainObject(structure)) {",
-          "coverage": 74
+          "coverage": 76
         },
-        "82": {
+        "106": {
           "source": "    options = structure;",
           "coverage": 0
         },
-        "83": {
+        "107": {
           "source": "  } else {",
           "coverage": ""
         },
-        "84": {
+        "108": {
           "source": "    this.structure = structure || this.structure || '';",
-          "coverage": 74
+          "coverage": 76
         },
-        "85": {
+        "109": {
           "source": "  }",
           "coverage": ""
         },
-        "86": {
+        "110": {
           "source": "  return frep.strWithArr(this.structure, this.patterns());",
-          "coverage": 74
+          "coverage": 76
         },
-        "87": {
+        "111": {
           "source": "};",
           "coverage": ""
         }
@@ -1459,12 +1302,12 @@
   ],
   "stats": {
     "suites": 13,
-    "tests": 65,
-    "passes": 65,
+    "tests": 66,
+    "passes": 66,
     "pending": 0,
     "failures": 0,
-    "start": "2014-02-13T05:08:38.704Z",
-    "end": "2014-02-13T05:08:38.736Z",
+    "start": "2014-03-09T15:32:01.989Z",
+    "end": "2014-03-09T15:32:02.021Z",
     "duration": 32
   },
   "tests": [
@@ -1516,7 +1359,7 @@
     {
       "title": "should replace :MMM",
       "fullTitle": "middleware dates should replace :MMM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :month",
@@ -1526,7 +1369,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :mo",
@@ -1536,7 +1379,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 2
+      "duration": 0
     },
     {
       "title": "should replace :DDDD",
@@ -1601,7 +1444,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :h",
@@ -1616,7 +1459,7 @@
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :mm",
@@ -1626,7 +1469,7 @@
     {
       "title": "should replace :m",
       "fullTitle": "middleware dates should replace :m",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :second",
@@ -1736,7 +1579,7 @@
     {
       "title": "should add middleware with use",
       "fullTitle": "strings middleware should add middleware with use",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with exclude",
@@ -1751,7 +1594,7 @@
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with use as object",
@@ -1784,9 +1627,14 @@
       "duration": 0
     },
     {
+      "title": "should run replacement functions with `context` as `this`",
+      "fullTitle": "strings run should run replacement functions with `context` as `this`",
+      "duration": 0
+    },
+    {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol and slugify",
@@ -1844,7 +1692,7 @@
     {
       "title": "should replace :MMM",
       "fullTitle": "middleware dates should replace :MMM",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :month",
@@ -1854,7 +1702,7 @@
     {
       "title": "should replace :MM",
       "fullTitle": "middleware dates should replace :MM",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :mo",
@@ -1864,7 +1712,7 @@
     {
       "title": "should replace :M",
       "fullTitle": "middleware dates should replace :M",
-      "duration": 2
+      "duration": 0
     },
     {
       "title": "should replace :DDDD",
@@ -1929,7 +1777,7 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :h",
@@ -1944,7 +1792,7 @@
     {
       "title": "should replace :min",
       "fullTitle": "middleware dates should replace :min",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :mm",
@@ -1954,7 +1802,7 @@
     {
       "title": "should replace :m",
       "fullTitle": "middleware dates should replace :m",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :second",
@@ -2064,7 +1912,7 @@
     {
       "title": "should add middleware with use",
       "fullTitle": "strings middleware should add middleware with use",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with exclude",
@@ -2079,7 +1927,7 @@
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should add middleware with use as object",
@@ -2112,9 +1960,14 @@
       "duration": 0
     },
     {
+      "title": "should run replacement functions with `context` as `this`",
+      "fullTitle": "strings run should run replacement functions with `context` as `this`",
+      "duration": 0
+    },
+    {
       "title": "should replace :protocol",
       "fullTitle": "middleware urls should replace :protocol",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :protocol and slugify",

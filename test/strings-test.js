@@ -183,6 +183,25 @@ describe('strings', function () {
       expect(actual).to.eql(expected);
     });
 
+    it('should run replacement functions with `context` as `this`', function () {
+      strings();
+      var structure = strings.instance();
+      structure.use(pathMiddleware('path/to/some/file.html'));
+      structure.use(function () {
+        return [
+          new strings.Pattern(':BASENAME', function (src) {
+            //console.log(this);
+            return this.basename.toUpperCase();
+          })
+        ];
+      });
+
+      var expected = 'file-FILE';
+      var actual = structure.run(':basename-:BASENAME');
+      expect(actual).to.eql(expected);
+
+    })
+
   });
 
 });
