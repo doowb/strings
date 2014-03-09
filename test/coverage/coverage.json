@@ -1190,7 +1190,7 @@
           "coverage": 1
         },
         "85": {
-          "source": "          return fn.apply(context, [].slice(arguments));",
+          "source": "          return fn.apply(context, [].slice.call(arguments));",
           "coverage": 1
         },
         "86": {
@@ -1234,7 +1234,7 @@
           "coverage": 0
         },
         "96": {
-          "source": "        return fn.apply(context, [].slice(arguments));",
+          "source": "        return fn.apply(context, [].slice.call(arguments));",
           "coverage": 0
         },
         "97": {
@@ -1306,15 +1306,15 @@
     "passes": 66,
     "pending": 0,
     "failures": 0,
-    "start": "2014-03-09T16:02:54.096Z",
-    "end": "2014-03-09T16:02:54.127Z",
+    "start": "2014-03-09T16:41:16.859Z",
+    "end": "2014-03-09T16:41:16.890Z",
     "duration": 31
   },
   "tests": [
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :date and :ext",
@@ -1324,12 +1324,12 @@
     {
       "title": "should replace :L",
       "fullTitle": "middleware dates should replace :L",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :year",
@@ -1344,7 +1344,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :monthname",
@@ -1374,7 +1374,7 @@
     {
       "title": "should replace :mo",
       "fullTitle": "middleware dates should replace :mo",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :M",
@@ -1384,7 +1384,7 @@
     {
       "title": "should replace :DDDD",
       "fullTitle": "middleware dates should replace :DDDD",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :DDD",
@@ -1394,7 +1394,7 @@
     {
       "title": "should replace :day",
       "fullTitle": "middleware dates should replace :day",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :DD",
@@ -1419,7 +1419,7 @@
     {
       "title": "should replace :dd",
       "fullTitle": "middleware dates should replace :dd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :d",
@@ -1434,7 +1434,7 @@
     {
       "title": "should replace :HH",
       "fullTitle": "middleware dates should replace :HH",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :H",
@@ -1444,12 +1444,12 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :h",
       "fullTitle": "middleware dates should replace :h",
-      "duration": 0
+      "duration": 2
     },
     {
       "title": "should replace :minute",
@@ -1469,7 +1469,7 @@
     {
       "title": "should replace :m",
       "fullTitle": "middleware dates should replace :m",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :second",
@@ -1489,7 +1489,7 @@
     {
       "title": "should replace :s",
       "fullTitle": "middleware dates should replace :s",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :A",
@@ -1559,7 +1559,7 @@
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should have an empty structure",
@@ -1589,12 +1589,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use as object",
@@ -1639,7 +1639,7 @@
     {
       "title": "should replace :protocol and slugify",
       "fullTitle": "middleware urls-slugify should replace :protocol and slugify",
-      "duration": 1
+      "duration": 0
     }
   ],
   "failures": [],
@@ -1647,7 +1647,7 @@
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :date and :ext",
@@ -1657,12 +1657,12 @@
     {
       "title": "should replace :L",
       "fullTitle": "middleware dates should replace :L",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :year",
@@ -1677,7 +1677,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :monthname",
@@ -1707,7 +1707,7 @@
     {
       "title": "should replace :mo",
       "fullTitle": "middleware dates should replace :mo",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :M",
@@ -1717,7 +1717,7 @@
     {
       "title": "should replace :DDDD",
       "fullTitle": "middleware dates should replace :DDDD",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :DDD",
@@ -1727,7 +1727,7 @@
     {
       "title": "should replace :day",
       "fullTitle": "middleware dates should replace :day",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :DD",
@@ -1752,7 +1752,7 @@
     {
       "title": "should replace :dd",
       "fullTitle": "middleware dates should replace :dd",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :d",
@@ -1767,7 +1767,7 @@
     {
       "title": "should replace :HH",
       "fullTitle": "middleware dates should replace :HH",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :H",
@@ -1777,12 +1777,12 @@
     {
       "title": "should replace :hh",
       "fullTitle": "middleware dates should replace :hh",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :h",
       "fullTitle": "middleware dates should replace :h",
-      "duration": 0
+      "duration": 2
     },
     {
       "title": "should replace :minute",
@@ -1802,7 +1802,7 @@
     {
       "title": "should replace :m",
       "fullTitle": "middleware dates should replace :m",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :second",
@@ -1822,7 +1822,7 @@
     {
       "title": "should replace :s",
       "fullTitle": "middleware dates should replace :s",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :A",
@@ -1892,7 +1892,7 @@
     {
       "title": "should save the structure",
       "fullTitle": "strings structure should save the structure",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should have an empty structure",
@@ -1922,12 +1922,12 @@
     {
       "title": "should build context from middleware",
       "fullTitle": "strings middleware should build context from middleware",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should build context from middleware with exclusions",
       "fullTitle": "strings middleware should build context from middleware with exclusions",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should add middleware with use as object",
@@ -1972,7 +1972,7 @@
     {
       "title": "should replace :protocol and slugify",
       "fullTitle": "middleware urls-slugify should replace :protocol and slugify",
-      "duration": 1
+      "duration": 0
     }
   ]
 }
