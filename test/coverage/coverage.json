@@ -1306,15 +1306,15 @@
     "passes": 66,
     "pending": 0,
     "failures": 0,
-    "start": "2014-03-09T15:32:01.989Z",
-    "end": "2014-03-09T15:32:02.021Z",
-    "duration": 32
+    "start": "2014-03-09T16:02:54.096Z",
+    "end": "2014-03-09T16:02:54.127Z",
+    "duration": 31
   },
   "tests": [
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :date and :ext",
@@ -1324,12 +1324,12 @@
     {
       "title": "should replace :L",
       "fullTitle": "middleware dates should replace :L",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :year",
@@ -1344,7 +1344,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :monthname",
@@ -1384,12 +1384,12 @@
     {
       "title": "should replace :DDDD",
       "fullTitle": "middleware dates should replace :DDDD",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :DDD",
       "fullTitle": "middleware dates should replace :DDD",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :day",
@@ -1534,7 +1534,7 @@
     {
       "title": "should replace :basename and slugify",
       "fullTitle": "middleware paths-slugify should replace :basename and slugify",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :filename and slugify",
@@ -1549,7 +1549,7 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should convert structure to string given an object",
@@ -1639,7 +1639,7 @@
     {
       "title": "should replace :protocol and slugify",
       "fullTitle": "middleware urls-slugify should replace :protocol and slugify",
-      "duration": 0
+      "duration": 1
     }
   ],
   "failures": [],
@@ -1647,7 +1647,7 @@
     {
       "title": "should replace :date",
       "fullTitle": "middleware dates should replace :date",
-      "duration": 1
+      "duration": 2
     },
     {
       "title": "should replace :date and :ext",
@@ -1657,12 +1657,12 @@
     {
       "title": "should replace :L",
       "fullTitle": "middleware dates should replace :L",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :1",
       "fullTitle": "middleware dates should replace :1",
-      "duration": 2
+      "duration": 1
     },
     {
       "title": "should replace :year",
@@ -1677,7 +1677,7 @@
     {
       "title": "should replace :YY",
       "fullTitle": "middleware dates should replace :YY",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :monthname",
@@ -1717,12 +1717,12 @@
     {
       "title": "should replace :DDDD",
       "fullTitle": "middleware dates should replace :DDDD",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :DDD",
       "fullTitle": "middleware dates should replace :DDD",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should replace :day",
@@ -1867,7 +1867,7 @@
     {
       "title": "should replace :basename and slugify",
       "fullTitle": "middleware paths-slugify should replace :basename and slugify",
-      "duration": 0
+      "duration": 1
     },
     {
       "title": "should replace :filename and slugify",
@@ -1882,7 +1882,7 @@
     {
       "title": "should replace :dir and slugify",
       "fullTitle": "middleware paths-slugify should replace :dir and slugify",
-      "duration": 1
+      "duration": 0
     },
     {
       "title": "should convert structure to string given an object",
@@ -1972,7 +1972,7 @@
     {
       "title": "should replace :protocol and slugify",
       "fullTitle": "middleware urls-slugify should replace :protocol and slugify",
-      "duration": 0
+      "duration": 1
     }
   ]
 }

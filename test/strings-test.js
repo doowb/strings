@@ -95,25 +95,23 @@ describe('strings', function () {
 
     it('should build context from middleware', function () {
       strings(testStructure);
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
+      strings.use(pathMiddleware('path/to/some/file.html'));
       var expected = {
         basename: 'file',
         ext: '.html'
       };
-      var actual = structure.context();
+      var actual = strings.context();
       expect(actual).to.eql(expected);
     });
 
     it('should build context from middleware with exclusions', function () {
       strings(testStructure);
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
-      structure.exclude(excludeMiddleware);
+      strings.use(pathMiddleware('path/to/some/file.html'));
+      strings.exclude(excludeMiddleware);
       var expected = {
         basename: 'file'
       };
-      var actual = structure.context();
+      var actual = strings.context();
       expect(actual).to.eql(expected);
     });
 
@@ -151,43 +149,39 @@ describe('strings', function () {
 
     it('should build the final string with no exclusions', function () {
       strings(testStructure);
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
+      strings.use(pathMiddleware('path/to/some/file.html'));
       var expected = '/file/index.html';
-      var actual = structure.run();
+      var actual = strings.run();
       expect(actual).to.eql(expected);
     });
 
     it('should build the final string with exclusions', function () {
       strings(testStructure);
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
-      structure.exclude(excludeMiddleware);
+      strings.use(pathMiddleware('path/to/some/file.html'));
+      strings.exclude(excludeMiddleware);
 
       var expected = '/file/index:ext';
-      var actual = structure.run();
+      var actual = strings.run();
       expect(actual).to.eql(expected);
     });
 
     it('should build the final string from a one time setup', function () {
       strings();
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
+      strings.use(pathMiddleware('path/to/some/file.html'));
 
       var expected = 'file';
-      var actual = structure.run(':basename');
+      var actual = strings.run(':basename');
       expect(actual).to.eql(expected);
 
       expected = '.html';
-      actual = structure.run(':ext');
+      actual = strings.run(':ext');
       expect(actual).to.eql(expected);
     });
 
     it('should run replacement functions with `context` as `this`', function () {
       strings();
-      var structure = strings.instance();
-      structure.use(pathMiddleware('path/to/some/file.html'));
-      structure.use(function () {
+      strings.use(pathMiddleware('path/to/some/file.html'));
+      strings.use(function () {
         return [
           new strings.Pattern(':BASENAME', function (src) {
             //console.log(this);
@@ -197,7 +191,7 @@ describe('strings', function () {
       });
 
       var expected = 'file-FILE';
-      var actual = structure.run(':basename-:BASENAME');
+      var actual = strings.run(':basename-:BASENAME');
       expect(actual).to.eql(expected);
 
     })
