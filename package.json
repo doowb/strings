@@ -1,6 +1,6 @@
 {
   "name": "strings",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "String replacement and transformation library.",
   "main": "index.js",
   "scripts": {
