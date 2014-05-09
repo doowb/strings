@@ -7,13 +7,17 @@
 
 'use strict';
 
-var _s = require('underscore.string');
 var path = require('path');
+var _str = require('underscore.string');
+var noop = function(str) { return str; }
 
-var paths = module.exports = function(filePath, options) {
+var parsePath = module.exports = function parsePath(filePath, options) {
+  options = options || {};
+  var slugify = noop;
 
-  options = options || { slugify: false };
-  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;
+  if (options.slugify) {
+    slugify = _str.slugify;
+  }
 
   var dir = path.dirname(filePath);
   var ext = path.extname(filePath);
@@ -22,10 +26,10 @@ var paths = module.exports = function(filePath, options) {
 
   return function() {
     return {
-      basename: slugify ? _s.slugify(basename) : basename,
-      filename: slugify ? _s.slugify(filename) : filename,
-      ext: slugify ? _s.slugify(ext) : ext,
-      dir: slugify ? _s.slugify(dir) : dir
+      basename: slugify(basename),
+      filename: slugify(filename),
+      ext: slugify(ext),
+      dir: slugify(dir)
     };
   };
 };
