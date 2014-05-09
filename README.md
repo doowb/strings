@@ -2,7 +2,7 @@
 
 > Replace :props in strings.
 
-Please [report any bugs or feature requests](https://github.com/sellside/strings/issues), thanks!
+Please [report any bugs or feature requests](https://github.com/assemble/strings/issues), thanks!
 
 ## Install
 Install with [npm](npmjs.org):
