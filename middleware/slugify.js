@@ -1,6 +1,6 @@
 var _str = require('underscore.string');
 
-module.exports = function slugify(str, slugify) {
+module.exports = function(str, slugify) {
   if (typeof slugify === 'function') {
     return slugify(str);
   }

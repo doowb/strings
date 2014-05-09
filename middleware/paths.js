@@ -8,28 +8,22 @@
 'use strict';
 
 var path = require('path');
-var _str = require('underscore.string');
-var noop = function(str) { return str; }
+var slugify = require('./slugify');
 
-var parsePath = module.exports = function parsePath(filePath, options) {
+var parsePath = module.exports = function parsePath(filepath, options) {
   options = options || {};
-  var slugify = noop;
 
-  if (options.slugify) {
-    slugify = _str.slugify;
-  }
-
-  var dir = path.dirname(filePath);
-  var ext = path.extname(filePath);
-  var filename = path.basename(filePath);
-  var basename = path.basename(filePath, ext);
+  var dir = path.dirname(filepath);
+  var ext = path.extname(filepath);
+  var filename = path.basename(filepath);
+  var basename = path.basename(filepath, ext);
 
   return function() {
     return {
-      basename: slugify(basename),
-      filename: slugify(filename),
-      ext: slugify(ext),
-      dir: slugify(dir)
+      basename: slugify(basename, options.slugify),
+      filename: slugify(filename, options.slugify),
+      ext: slugify(ext, options.slugify),
+      dir: slugify(dir, options.slugify)
     };
   };
 };

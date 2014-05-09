@@ -9,20 +9,18 @@
  */
 
 var path = require('path');
-var basename = require('path').basename;
-var extname = require('path').extname;
 var inspect = require('util').inspect;
 var expect = require('chai').expect
 var assert = require('chai').assert;
 var _ = require('lodash');
 
-var Strings = require('../lib/strings2.js');
+var Strings = require('../i.js');
 
 var parseFile = function (filePath) {
   return function () {
     return {
-      basename: basename(filePath, extname(filePath)),
-      ext: extname(filePath)
+      basename: path.basename(filePath, path.extname(filePath)),
+      ext: path.extname(filePath)
     };
   };
 };
@@ -94,14 +92,10 @@ describe('strings', function () {
         var expected = '/file' + i + '/index.html';
         var parsed = parseFile(src);
 
-
         var actual = strings.run(testStructure, 'path');
         expect(actual).to.eql(expected);
       }
 
     });
-
-
   });
-
 });

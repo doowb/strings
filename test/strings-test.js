@@ -32,11 +32,10 @@ var excludeMiddleware = function () {
 
 var testStructure = '/:basename/index:ext';
 
-
 describe('strings', function () {
 
   describe('default', function() {
-  
+
     it('should convert structure to string given an object', function() {
       var expected = '/file/index.html';
       var actual = strings(testStructure, {
@@ -45,7 +44,7 @@ describe('strings', function () {
       });
       expect(actual).to.eql(expected);
     });
-  
+
   });
 
   describe('structure', function () {
