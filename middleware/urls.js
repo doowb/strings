@@ -7,30 +7,22 @@
 
 'use strict';
 
-var _s = require('underscore.string');
 var url = require('url');
+var slugify = require('./slugify');
 
-var slugified = function(str, slugify) {
-  return slugify ? _s.slugify(str) : str;
-};
-
-var urls = module.exports = function(str, options) {
-
-  options = options || { slugify: false };
-  var slugify = ((typeof options.slugify !== 'undefined') && options.slugify === false) ? false : true;
-
+module.exports = function urls(str, options) {
   var parsed = url.parse(str);
 
-  // TODO: figure out if we need more info here.
+  options = options || {};
+  var _slugify = options.slugify || false;
 
   return function() {
-    var rtn = {};
+    var result = {};
     for (var key in parsed) {
       if (parsed.hasOwnProperty(key)) {
-        rtn[key] = slugified(parsed[key], slugify);
+        result[key] = slugify(parsed[key], _slugify);
       }
     }
-
-    return rtn;
+    return result;
   };
 };
