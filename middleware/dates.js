@@ -7,14 +7,12 @@
 
 'use strict';
 
-var _s = require('underscore.string');
 var moment = require('moment');
+var _str = require('underscore.string');
+var slugify = require('./slugify');
 
-var Pattern = require('../pattern');
+var Pattern = require('../lib/pattern');
 
-var slugified = function(str, slugify) {
-  return slugify ? _s.slugify(str) : str;
-};
 
 var format = function(d, options) {
   moment.lang(options.lang);
@@ -23,10 +21,9 @@ var format = function(d, options) {
   };
 };
 
-var dates = module.exports = function(d, options) {
-
-  options = options || { slugify: false };
-  var slugify = ((typeof options.slugify === 'undefined') || options.slugify === false) ? false : true;
+module.exports = function dates(d, options) {
+  options = options || {};
+  var _slugify = options.slugify || false;
   options.lang = options.lang || 'en';
 
   var formatter = format(d, options);
@@ -37,67 +34,67 @@ var dates = module.exports = function(d, options) {
 
   var datePatterns = {
     // Full date
-    'date': new Pattern(/:\bdate\b/,            slugified(formatter("YYYY/MM/DD"), slugify)),
+    'date': new Pattern(/:\bdate\b/,            slugify(formatter("YYYY/MM/DD"), _slugify)),
 
     // Long date formats
-    'L': new Pattern(/:\bL\b/,                  slugified(formatter("MM/DD/YYYY"), slugify)),
-    '1': new Pattern(/:\b1\b/,                  slugified(formatter("M/D/YYYY"), slugify)),
+    'L': new Pattern(/:\bL\b/,                  slugify(formatter("MM/DD/YYYY"), _slugify)),
+    '1': new Pattern(/:\b1\b/,                  slugify(formatter("M/D/YYYY"), _slugify)),
 
     // Year (2013, 13)
-    'year': new Pattern(/:\byear\b/,            slugified(formatter("YYYY"), slugify)),
-    'YYYY': new Pattern(/:\bYYYY\b/,            slugified(formatter("YYYY"), slugify)),
-    'YY': new Pattern(/:\bYY\b/,                slugified(formatter("YY"), slugify)),
+    'year': new Pattern(/:\byear\b/,            slugify(formatter("YYYY"), _slugify)),
+    'YYYY': new Pattern(/:\bYYYY\b/,            slugify(formatter("YYYY"), _slugify)),
+    'YY': new Pattern(/:\bYY\b/,                slugify(formatter("YY"), _slugify)),
 
     // Month name (January, Jan)
-    'monthname': new Pattern(/:\bmonthname\b/,  slugified(formatter("MMMM"), slugify)),
-    'MMMM': new Pattern(/:\bMMMM\b/,            slugified(formatter("MMMM"), slugify)),
-    'MMM': new Pattern(/:\bMMM\b/,              slugified(formatter("MMM"), slugify)),
+    'monthname': new Pattern(/:\bmonthname\b/,  slugify(formatter("MMMM"), _slugify)),
+    'MMMM': new Pattern(/:\bMMMM\b/,            slugify(formatter("MMMM"), _slugify)),
+    'MMM': new Pattern(/:\bMMM\b/,              slugify(formatter("MMM"), _slugify)),
 
     // Month number (1, 01)
-    'month': new Pattern(/:\bmonth\b/,          slugified(formatter("MM"), slugify)),
-    'MM': new Pattern(/:\bMM\b/,                slugified(formatter("MM"), slugify)),
-    'mo': new Pattern(/:\bmo\b/,                slugified(formatter("MM"), slugify)),
-    'M': new Pattern(/:\bM\b/,                  slugified(formatter("M"), slugify)),
+    'month': new Pattern(/:\bmonth\b/,          slugify(formatter("MM"), _slugify)),
+    'MM': new Pattern(/:\bMM\b/,                slugify(formatter("MM"), _slugify)),
+    'mo': new Pattern(/:\bmo\b/,                slugify(formatter("MM"), _slugify)),
+    'M': new Pattern(/:\bM\b/,                  slugify(formatter("M"), _slugify)),
 
     // Day of the year
-    'DDDD': new Pattern(/:\bDDDD\b/,            slugified(formatter("DDDD"), slugify)),
-    'DDD': new Pattern(/:\bDDD\b/,              slugified(formatter("DDD"), slugify)),
+    'DDDD': new Pattern(/:\bDDDD\b/,            slugify(formatter("DDDD"), _slugify)),
+    'DDD': new Pattern(/:\bDDD\b/,              slugify(formatter("DDD"), _slugify)),
 
     // Day of the month
-    'day': new Pattern(/:\bday\b/,              slugified(formatter("DD"), slugify)),
-    'DD': new Pattern(/:\bDD\b/,                slugified(formatter("DD"), slugify)),
-    'D': new Pattern(/:\bD\b/,                  slugified(formatter("D"), slugify)),
+    'day': new Pattern(/:\bday\b/,              slugify(formatter("DD"), _slugify)),
+    'DD': new Pattern(/:\bDD\b/,                slugify(formatter("DD"), _slugify)),
+    'D': new Pattern(/:\bD\b/,                  slugify(formatter("D"), _slugify)),
 
     // Day of the week (wednesday/wed)
-    'dddd': new Pattern(/:\bdddd\b/,            slugified(formatter("dddd"), slugify)),
-    'ddd': new Pattern(/:\bddd\b/,              slugified(formatter("ddd"), slugify)),
-    'dd': new Pattern(/:\bdd\b/,                slugified(formatter("dd"), slugify)),
-    'd': new Pattern(/:\bd\b/,                  slugified(formatter("d"), slugify)),
+    'dddd': new Pattern(/:\bdddd\b/,            slugify(formatter("dddd"), _slugify)),
+    'ddd': new Pattern(/:\bddd\b/,              slugify(formatter("ddd"), _slugify)),
+    'dd': new Pattern(/:\bdd\b/,                slugify(formatter("dd"), _slugify)),
+    'd': new Pattern(/:\bd\b/,                  slugify(formatter("d"), _slugify)),
 
     // Hour
-    'hour': new Pattern(/:\bhour\b/,            slugified(formatter("HH"), slugify)),
-    'HH': new Pattern(/:\bHH\b/,                slugified(formatter("HH"), slugify)),
-    'H': new Pattern(/:\bH\b/,                  slugified(formatter("H"), slugify)),
-    'hh': new Pattern(/:\bhh\b/,                slugified(formatter("hh"), slugify)),
-    'h': new Pattern(/:\bh\b/,                  slugified(formatter("h"), slugify)),
+    'hour': new Pattern(/:\bhour\b/,            slugify(formatter("HH"), _slugify)),
+    'HH': new Pattern(/:\bHH\b/,                slugify(formatter("HH"), _slugify)),
+    'H': new Pattern(/:\bH\b/,                  slugify(formatter("H"), _slugify)),
+    'hh': new Pattern(/:\bhh\b/,                slugify(formatter("hh"), _slugify)),
+    'h': new Pattern(/:\bh\b/,                  slugify(formatter("h"), _slugify)),
 
     // Minute
-    'minute': new Pattern(/:\bminute\b/,        slugified(formatter("mm"), slugify)),
-    'min': new Pattern(/:\bmin\b/,              slugified(formatter("mm"), slugify)),
-    'mm': new Pattern(/:\bmm\b/,                slugified(formatter("mm"), slugify)),
-    'm': new Pattern(/:\bm\b/,                  slugified(formatter("m"), slugify)),
+    'minute': new Pattern(/:\bminute\b/,        slugify(formatter("mm"), _slugify)),
+    'min': new Pattern(/:\bmin\b/,              slugify(formatter("mm"), _slugify)),
+    'mm': new Pattern(/:\bmm\b/,                slugify(formatter("mm"), _slugify)),
+    'm': new Pattern(/:\bm\b/,                  slugify(formatter("m"), _slugify)),
 
     // Second
-    'second': new Pattern(/:\bsecond\b/,        slugified(formatter("ss"), slugify)),
-    'sec': new Pattern(/:\bsec\b/,              slugified(formatter("ss"), slugify)),
-    'ss': new Pattern(/:\bss\b/,                slugified(formatter("ss"), slugify)),
-    's': new Pattern(/:\bs\b/,                  slugified(formatter("s"), slugify)),
+    'second': new Pattern(/:\bsecond\b/,        slugify(formatter("ss"), _slugify)),
+    'sec': new Pattern(/:\bsec\b/,              slugify(formatter("ss"), _slugify)),
+    'ss': new Pattern(/:\bss\b/,                slugify(formatter("ss"), _slugify)),
+    's': new Pattern(/:\bs\b/,                  slugify(formatter("s"), _slugify)),
 
     // AM/PM, am/pm
-    'A': new Pattern(/:\bA\b/,                  slugified(formatter("A"), slugify)),
-    'a': new Pattern(/:\ba\b/,                  slugified(formatter("a"), slugify)),
-    'P': new Pattern(/:\bP\b/,                  slugified(formatter("P"), slugify)),
-    'p': new Pattern(/:\bp\b/,                  slugified(formatter("p"), slugify))
+    'A': new Pattern(/:\bA\b/,                  slugify(formatter("A"), _slugify)),
+    'a': new Pattern(/:\ba\b/,                  slugify(formatter("a"), _slugify)),
+    'P': new Pattern(/:\bP\b/,                  slugify(formatter("P"), _slugify)),
+    'p': new Pattern(/:\bp\b/,                  slugify(formatter("p"), _slugify))
   };
 
 
