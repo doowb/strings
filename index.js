@@ -55,7 +55,7 @@ strings.run = function (structure, options) {
 strings.Pattern = require('./lib/pattern');
 
 // middleware
-var middleware = require('./lib/middleware');
+var middleware = require('./middleware');
 _.map(middleware, function(value, key) {
   strings[key] = value;
 });
