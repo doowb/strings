@@ -9,7 +9,7 @@
 var basename = require('path').basename;
 var extname = require('path').extname;
 var expect = require('chai').expect;
-var Strings = require('../lib/strings2.js');
+var Strings = require('../strings.js');
 
 
 describe('strings', function () {
@@ -104,12 +104,18 @@ describe('strings', function () {
 
         var strings = new Strings();
         strings.set('path', [
-          { pattern: ':basename', replacement: function () {
-          return basename(this.filepath, extname(this.filepath));
-        }},
-        { pattern: ':ext', replacement: function () {
-          return extname(this.filepath);
-        }}
+          {
+            pattern: ':basename',
+            replacement: function () {
+              return basename(this.filepath, extname(this.filepath));
+            }
+          },
+          {
+            pattern: ':ext',
+            replacement: function () {
+              return extname(this.filepath);
+            }
+          }
         ]);
 
         var structure = '/:basename/index:ext';
