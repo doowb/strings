@@ -7,13 +7,15 @@
 
 'use strict';
 
-var _ = require('lodash');
 
+var _ = require('lodash');
+var middleware = require('./middleware');
 var Strings = require('./lib/strings');
+
 
 var _instance = null;
 
-var strings = module.exports = function(structure, data) {
+function strings(structure, data) {
   _instance = null;
   strings.instance();
 
@@ -21,7 +23,7 @@ var strings = module.exports = function(structure, data) {
     _instance.use(data);
   }
   return _instance.run(structure);
-};
+}
 
 strings.instance = function (structure) {
   if (_instance === null ) {
@@ -55,7 +57,8 @@ strings.run = function (structure, options) {
 strings.Pattern = require('./lib/pattern');
 
 // middleware
-var middleware = require('./middleware');
-_.map(middleware, function(value, key) {
+_(middleware).map(function(value, key) {
   strings[key] = value;
 });
+
+module.exports = strings;

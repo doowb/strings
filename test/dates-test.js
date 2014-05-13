@@ -1,22 +1,18 @@
 /**
- * Sellside
- *
  * Sellside <http://www.sellside>
  * Created and maintained by Jon Schlinkert and Brian Woodward
  *
- * Copyright (c) 2013 Sellside.
+ * Copyright (c) 2014 Sellside.
  * Licensed under the MIT License (MIT).
  */
 
 var expect = require('chai').expect;
 var moment = require('moment');
-
 var strings = require('../');
 
+
 describe('middleware', function() {
-
   describe('dates', function() {
-
     var now = new Date();
     var formatter = function(f) {
       return moment(now).format(f);

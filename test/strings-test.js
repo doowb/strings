@@ -1,21 +1,24 @@
 /**
- * Sellside
- *
- * Sellside <http://www.sellside.com>
+ * Sellside <http://www.sellside>
  * Created and maintained by Jon Schlinkert and Brian Woodward
  *
  * Copyright (c) 2013 Sellside.
  * Licensed under the MIT License (MIT).
  */
 
-var basename = require('path').basename;
-var extname = require('path').extname;
-var inspect = require('util').inspect;
-var expect = require('chai').expect
-var assert = require('chai').assert;
+var path = require('path');
+var util = require('util');
+var chai = require('chai');
 var _ = require('lodash');
 
 var strings = require('../');
+
+var basename = path.basename;
+var extname = path.extname;
+var inspect = util.inspect;
+var expect = chai.expect;
+var assert = chai.assert;
+
 
 var pathMiddleware = function (path) {
   return function () {
@@ -26,6 +29,7 @@ var pathMiddleware = function (path) {
   };
 };
 
+
 var excludeMiddleware = function () {
   return ['ext'];
 };
@@ -33,9 +37,7 @@ var excludeMiddleware = function () {
 var testStructure = '/:basename/index:ext';
 
 describe('strings', function () {
-
   describe('default', function() {
-
     it('should convert structure to string given an object', function() {
       var expected = '/file/index.html';
       var actual = strings(testStructure, {
@@ -44,7 +46,6 @@ describe('strings', function () {
       });
       expect(actual).to.eql(expected);
     });
-
   });
 
   describe('structure', function () {
@@ -183,7 +184,6 @@ describe('strings', function () {
       strings.use(function () {
         return [
           new strings.Pattern(':BASENAME', function (src) {
-            //console.log(this);
             return this.basename.toUpperCase();
           })
         ];
