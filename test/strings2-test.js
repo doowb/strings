@@ -135,6 +135,27 @@ describe('strings', function () {
         expect(actual).to.eql(expected);
       });
 
+      it('when given a named replacement group, a structure, and a context', function() {
+
+        var strings = new Strings();
+        strings.set('path', [
+          { pattern: /(:basename)/, replacement: function (bname) {
+          return basename(this.filepath, extname(this.filepath));
+        }},
+        { pattern: ':ext', replacement: function () {
+          return extname(this.filepath);
+        }}
+        ]);
+
+        var structure = '/:basename/index:ext';
+        var expected = '/file/index.html';
+        var actual = strings.process(structure, 'path', {
+          filepath: '/path/to/my/file.html'
+        });
+        expect(actual).to.eql(expected);
+      });
+
+
     });
 
   });
