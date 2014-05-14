@@ -122,7 +122,7 @@ Strings.prototype.parsers = function (parsers) {
     }
 
     // find the parser and return it
-    if (parser in this._parsers) {
+    if (this._parsers.hasOwnProperty(parser)) {
       return this._parsers[parser];
     }
   }, this);
