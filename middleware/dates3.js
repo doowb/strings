@@ -60,7 +60,7 @@ function makeParsers(dates, options) {
   var results = [];
   _(dates).forOwn(function (value, key) {
     var parser = {
-      pattern: new RegExp('\\b' + key + '\\b'),
+      pattern: new RegExp(':\\b' + key + '\\b'),
       replacement: function () {
         return momentFormat(this.date, value);
       }
