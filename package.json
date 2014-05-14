@@ -21,18 +21,11 @@
     "url": "https://github.com/assemble/strings/issues"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec",
-    "travis-cov": {
-      "threshold": 70
-    },
-    "blanket": {
-      "pattern": "lib",
-      "data-cover-never": "node_modules"
-    }
+    "test": "mocha -R spec"
   },
   "dependencies": {
     "lodash": "~2.4.1",
