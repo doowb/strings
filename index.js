@@ -59,7 +59,7 @@ Strings.prototype.structure = function (name, template) {
 };
 
 Strings.prototype.group = function (name, structure, parsers) {
-  if (_.isUndefined(parsers)) {
+  if (_.isUndefined(structure) && _.isUndefined(parsers)) {
     return this._groups[name];
   }
   this._groups[name] = {
@@ -90,10 +90,10 @@ Strings.prototype.parsers = function (parsers) {
     if (parser in this._parsers) {
       return this._parsers[parser];
     }
-  });
+  }, this);
 
   // finally normalize and return parsers
-  return utils._normalize(_parsers);
+  return utils._normalize(_.flatten(_parsers));
 };
 
 
@@ -119,7 +119,7 @@ Strings.prototype.template = function (template, parsers, context) {
  */
 
 Strings.prototype.process = function (structure, parsers, context) {
-  return this.template(this.template(structure), parsers, context);
+  return this.template(this.structure(structure), parsers, context);
 };
 
 
