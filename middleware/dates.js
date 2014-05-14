@@ -10,7 +10,6 @@
 var moment = require('moment');
 var _str = require('underscore.string');
 var slugify = require('./slugify');
-
 var Pattern = require('../lib/pattern');
 
 

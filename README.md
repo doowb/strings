@@ -22,13 +22,12 @@ bower install strings --save
 
 Main concepts:
 
-1. `structures`: a sort of template that tells Strings how to assemble your data into a formatted string.
-2. `patterns`: patterns tell Strings how to parse and tokenize structures. Patterns may be simple strings or RegExp.
-3. `data`: data source that Strings will use to replace the tokens into the provided structure
+1. `structure`: a sort of template that tells Strings how to build the resulting string from the given context.
+2. `parsers`: patterns tell Strings how to parse and tokenize structures. Patterns may be simple strings or RegExp.
 4. `replacements`: string or function used to tranform the data
+3. `context`: data source that Strings will use to replace the tokens into the provided structure
 
 _(TODO)_
-
 
 ## API
 
@@ -41,80 +40,70 @@ var strings = new Strings();
 Optionally pass a default context to use:
 
 ```js
-var strings = new Strings({cwd: 'templates'});
+var strings = new Strings({dirname: 'foo/bar'});
 ```
 
+### .parser( name, replacements )
 
-### .template
-
-Define a new strings template.
+Define a named parser to be used against any given template.
 
 ```js
-// permalinks
-strings.template('pretty', ':basename/index:ext');
+strings.parser('path', {pattern: ':basename', replacement: path.basename(this.src)});
+strings.parser('a', {pattern: /foo/g, replacement: 'aaa'});
+strings.parser('b', {pattern: /bar/g, replacement: 'bbb'});
+strings.parser('c', {pattern: /baz/g, replacement: 'ccc'});
 ```
 
-### .getTemplate()
+### .template( template, groups, context )
 
-Getter method for `.template()`.
+**Explicit** template processed against a string, object or array of replacement patterns using the given context.
 
 ```js
-strings.getTemplate('pretty');
-//=> ':basename/index:ext'
+strings.template(':foo/:bar/:baz/index.html', ['path'], context);
+strings.template(':foo/:bar/:baz/index.html', [
+  {
+    pattern: ':dirname',
+    replacement: function () {
+      return path.dirname(this.filepath);
+    }
+  }
+], context);
 ```
 
-### .parser( name, parser )
+### .structure( name, template )
 
-Define a parser that can be used against any given structures.
-
-Example:
+A **named template** to be used for stringifying an object.
 
 ```js
-strings.parser('foo', {pattern: /foo/g, replacement: 'bar'});
+strings.structure('foo', ':basename/index:ext');
+strings.structure('bar', ':basename/index:ext');
+strings.structure('baz', ':basename/index:ext');
 ```
 
-Params:
+### .process( structure, parsers, context )
 
-* `name` (`String`): the name of the parser
-* `parser` (`Array`|`Object`): the atual parser to store. This can be an object or array of objects.
-
-Parsers must have a `pattern` property and a `replacement` property:
-
-* `pattern` (`String`|`RegExp`): the pattern to be replaced
-* `replacement` (`String`|`Function`): the actual replacement to use.
-
-
-_Notes: should we allow this: `strings.parser('foo', {/foo/g: 'bar'});`_
-
-### .getParser()
+Process a **named structure** against a string or array of named parsers using the given context.
 
 ```js
-strings.getParser('path');
-//=>
+strings.process('foo', 'a', context);
+// or
+strings.process('foo', ['a', 'b']);
 ```
 
-### .parsers
+### .group( name, structure, parsers )
 
 ```js
-strings.parsers();
+strings.group('mapA', 'foo', ['a', 'b', 'c']);
+strings.group('mapB', 'foo', ['d', 'e']);
 ```
 
+### .run( group, context )
 
-### .bar
+Named structure:
 
 ```js
-strings.bar('pretty', {basename: 'foo', ext: '.html'});
-//=> 'foo/index.html'
+strings.run('mapFoo', context);
 ```
-
-
-
-### .process
-
-```js
-strings.process();
-```
-
 
 ## Examples
 
@@ -128,13 +117,6 @@ strings.parser('dirname', {
   }
 });
 ```
-
-
-
-
-## middleware
-
-_(TODO)_
 
 ## Author
 
