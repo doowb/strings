@@ -30,12 +30,12 @@ function Strings(context) {
 
 
 /**
- * .set (name, replacements)
+ * .parser (name, replacements)
  *
- * Set a named collection of replacement patterns
+ * Define a named parser to be used against any given template.
  *
- * @param {String}       name         - Name of the replacements group.
- * @param {Object|Array} replacements - Actual replacement group to set.
+ * @param {String}       name         - Name of the parser.
+ * @param {Object|Array} replacements - Actual parser replacements to store.
  * @return {Object} Instance of the current Strings object
  *
  * @api public
@@ -50,6 +50,18 @@ Strings.prototype.parser = function (name, replacements) {
 };
 
 
+/**
+ * .structure (name, template)
+ *
+ * A named template to be used for stringifying an object.
+ *
+ * @param {String} name - Name of the structure
+ * @param {String} template - Template string to store
+ * @return {Object} Instance of the current Strings object
+ *
+ * @api public
+ */
+
 Strings.prototype.structure = function (name, template) {
   if (_.isUndefined(template)) {
     return this._templates[name];
@@ -57,6 +69,20 @@ Strings.prototype.structure = function (name, template) {
   this._templates[name] = template;
   return this;
 };
+
+
+/**
+ * .group (name, structure, parsers)
+ *
+ * Named groups of structure/parser mappings to use.
+ *
+ * @param {String} name - Name of the group
+ * @param {String} structure - Name of the named template to use.
+ * @param {String|Array} parsers - Named parsers to use.
+ * @return {Object} Instance of the current Strings object
+ *
+ * @api public
+ */
 
 Strings.prototype.group = function (name, structure, parsers) {
   if (_.isUndefined(structure) && _.isUndefined(parsers)) {
@@ -69,6 +95,15 @@ Strings.prototype.group = function (name, structure, parsers) {
   return this;
 };
 
+
+/**
+ * .parsers (parsers)
+ *
+ * Get a list of parsers based on the list of named parsers or parser objects given.
+ *
+ * @param {String|Array} parsers - List of named parsers or parser objects to find/use.
+ * @return {Array} List of parsers to use.
+ */
 
 Strings.prototype.parsers = function (parsers) {
 
@@ -97,6 +132,19 @@ Strings.prototype.parsers = function (parsers) {
 };
 
 
+/**
+ * .template (template, parsers, context)
+ *
+ * Explicit template processed against a string, object or array of replacement patterns using the given context.
+ *
+ * @param {String} template - Template to process
+ * @param {String|Object|Array} parsers- Named parsers or parser objects to use when processing.
+ * @param {Object} context - Optional context to use when processing.
+ * @return {String} Processed string
+ *
+ * @api public
+ */
+
 Strings.prototype.template = function (template, parsers, context) {
   var _parsers = this.parsers(parsers);
   return frep.strWithArr(template, utils._bind(_parsers, _.extend({}, this._context, context)));
@@ -109,7 +157,7 @@ Strings.prototype.template = function (template, parsers, context) {
  * Process the given structure using a named collection
  * of replacement patterns, and a context.
  *
- * @param {String} `structure` Prop string strucuture used for building the final string
+ * @param {String} `structure` Named template used for building the final string
  * @param {String} `name` Name of replacement group to use for building the final string
  * @param {Object} `context` Optional Object to bind to replacment function as `this`
  *
@@ -122,6 +170,20 @@ Strings.prototype.process = function (structure, parsers, context) {
   return this.template(this.structure(structure), parsers, context);
 };
 
+
+/**
+ * .run (group, context)
+ *
+ * Process the structure from the given group using a named collection
+ * of replacement patterns, and a context.
+ *
+ * @param {String} `group` Named group used for building the final string
+ * @param {Object} `context` Optional Object to bind to replacment function as `this`
+ *
+ * @return {String} Final string built from the given structure, named replacement collection and context
+ *
+ * @api public
+ */
 
 Strings.prototype.run = function (group, context) {
   var _group = this.group(group);
