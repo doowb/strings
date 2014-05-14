@@ -9,7 +9,7 @@
 
 var frep = require('frep');
 var _ = require('lodash');
-var utils = require('./utils');
+var utils = require('./lib/utils.js');
 
 
 /**

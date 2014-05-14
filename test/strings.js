@@ -7,7 +7,7 @@
  */
 
 var expect = require('chai').expect;
-var Strings = require('../lib/strings2.js');
+var Strings = require('../');
 
 
 describe('strings', function () {
