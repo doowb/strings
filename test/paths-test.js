@@ -10,78 +10,45 @@
 
 var expect = require('chai').expect;
 
-//var strings = require('../');
+var Strings = require('../');
+var paths = require('../middleware/paths.js');
 
-xdescribe('middleware', function() {
+describe('parsers', function() {
 
   describe('paths', function() {
 
-    var filePath = '/path/to/foo.html';
-    var structure = null;
+    var filepath = '/path/to/foo.html';
+    var strings = null;
+
     before(function(){
-      strings();
-      structure = strings.instance().use(strings.paths(filePath));
+      strings = new Strings();
+      strings.parser('path', paths());
     });
-  
+
     it('should replace :basename', function() {
       var expected = 'foo';
-      var actual = structure.run(':basename');
+      var actual = strings.template(':basename', 'path', {filepath: filepath});
       expect(actual).to.eql(expected);
     });
 
     it('should replace :filename', function() {
       var expected = 'foo.html';
-      var actual = structure.run(':filename');
+      var actual = strings.template(':filename', 'path', {filepath: filepath});
       expect(actual).to.eql(expected);
     });
 
     it('should replace :ext', function() {
       var expected = '.html';
-      var actual = structure.run(':ext');
+      var actual = strings.template(':ext', 'path', {filepath: filepath});
       expect(actual).to.eql(expected);
     });
 
     it('should replace dir', function() {
       var expected = '/path/to';
-      var actual = structure.run(':dir');
-      expect(actual).to.eql(expected);
-    });
-  
-  });
-
-  describe('paths-slugify', function() {
-  
-    var filePath = '/path_with/slugs_to/foo_bar.html';
-    var structure = null;
-    before(function() {
-      strings();
-      structure = strings.instance().use(strings.paths(filePath, { slugify: true }));
-    });
-
-    it('should replace :basename and slugify', function() {
-      var expected = 'foo-bar';
-      var actual = structure.run(':basename');
+      var actual = strings.template(':dir', 'path', {filepath: filepath});
       expect(actual).to.eql(expected);
     });
 
-    it('should replace :filename and slugify', function() {
-      var expected = 'foo-barhtml';
-      var actual = structure.run(':filename');
-      expect(actual).to.eql(expected);
-    });
-
-    it('should replace :ext and slugify', function() {
-      var expected = 'html';
-      var actual = structure.run(':ext');
-      expect(actual).to.eql(expected);
-    });
-
-    it('should replace :dir and slugify', function() {
-      var expected = 'path-withslugs-to';
-      var actual = structure.run(':dir');
-      expect(actual).to.eql(expected);
-    });
-  
   });
 
 });

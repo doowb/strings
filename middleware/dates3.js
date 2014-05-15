@@ -1,7 +1,7 @@
 /**
- * Strings <https://github.com/sellside/strings>
+ * Strings <https://github.com/assemble/strings>
  *
- * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward
+ * Copyright (c) 2014 Jon Schlinkert and Brian Woodward
  * Licensed under the MIT License (MIT).
  */
 
@@ -56,7 +56,7 @@ var dateMappings = {
   'p'         : 'p'
 };
 
-function makeParsers(dates, options) {
+function makeParsers(dates) {
   var results = [];
   _(dates).forOwn(function (value, key) {
     var parser = {

@@ -8,22 +8,26 @@
 'use strict';
 
 var path = require('path');
-var slugify = require('./slugify');
 
-var parsePath = module.exports = function parsePath(filepath, options) {
+function paths(options) {
+
   options = options || {};
 
-  var dir = path.dirname(filepath);
-  var ext = path.extname(filepath);
-  var filename = path.basename(filepath);
-  var basename = path.basename(filepath, ext);
-
-  return function() {
-    return {
-      basename: slugify(basename, options.slugify),
-      filename: slugify(filename, options.slugify),
-      ext: slugify(ext, options.slugify),
-      dir: slugify(dir, options.slugify)
-    };
+  return {
+    ':basename': function () {
+      var filepath = this.filepath || options.filepath || '';
+      return path.basename(filepath, path.extname(filepath));
+    },
+    ':filename': function () {
+      return path.basename(this.filepath || options.filepath || '');
+    },
+    ':ext': function () {
+      return path.extname(this.filepath || options.filepath || '');
+    },
+    ':dir': function () {
+      return path.dirname(this.filepath || options.filepath || '');
+    }
   };
-};
+}
+
+module.exports = paths;
