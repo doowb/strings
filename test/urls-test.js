@@ -9,7 +9,7 @@
 var expect = require('chai').expect;
 
 var Strings = require('../');
-var urls = require('../parsers/urls.js');
+var urls = require('../parsers').urls;
 
 describe('parser', function() {
   describe('urls', function() {

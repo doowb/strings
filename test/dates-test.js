@@ -9,8 +9,8 @@
 var expect = require('chai').expect;
 var moment = require('moment');
 var Strings = require('../');
-var dates = require('../parsers/dates.js');
-var paths = require('../parsers/paths.js');
+var dates = require('../parsers').dates;
+var paths = require('../parsers').paths;
 
 
 describe('parser', function() {
