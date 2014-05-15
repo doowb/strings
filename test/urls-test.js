@@ -8,35 +8,26 @@
 
 var expect = require('chai').expect;
 
-//var strings = require('../');
+var Strings = require('../');
+var urls = require('../middleware/urls.js');
 
-xdescribe('middleware', function() {
+describe('middleware', function() {
   describe('urls', function() {
+
     var url = 'https://github.com/sellside/strings.git?sortby=name';
-    var structure = null;
+    var strings = null;
+
     before(function(){
-      strings();
-      structure = strings.instance().use(strings.urls(url));
+      strings = new Strings();
+      strings.parser('urls', urls());
     });
+
     it('should replace :protocol', function() {
       var expected = 'https:';
-      var actual = structure.run(':protocol');
+      var actual = strings.template(':protocol', 'urls', {url: url});
       expect(actual).to.eql(expected);
     });
+
   });
 
-  describe('urls-slugify', function() {
-    var filePath = '/path_with/slugs_to/foo_bar.html';
-    var url = 'h.ttps://github.com/sellside/strings.git?sortby=name';
-    var structure = null;
-    before(function() {
-      strings();
-      structure = strings.instance().use(strings.urls(url, { slugify: true }));
-    });
-    it('should replace :protocol and slugify', function() {
-      var expected = 'https';
-      var actual = structure.run(':protocol');
-      expect(actual).to.eql(expected);
-    });
-  });
 });

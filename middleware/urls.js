@@ -8,21 +8,24 @@
 'use strict';
 
 var url = require('url');
-var slugify = require('./slugify');
 
-module.exports = function urls(str, options) {
-  var parsed = url.parse(str);
+function urls (options) {
+  var parsed = url.parse('');
 
   options = options || {};
-  var _slugify = options.slugify || false;
 
-  return function() {
-    var result = {};
-    for (var key in parsed) {
-      if (parsed.hasOwnProperty(key)) {
-        result[key] = slugify(parsed[key], _slugify);
-      }
-    }
-    return result;
+  var result = {};
+  var replacement = function (match, segment) {
+    return url.parse(this.url || options.url || '')[segment];
   };
-};
+
+  var key;
+  for (key in parsed) {
+    if (parsed.hasOwnProperty(key)) {
+      result[':(' + key + ')'] = replacement;
+    }
+  }
+  return result;
+}
+
+module.exports = urls;

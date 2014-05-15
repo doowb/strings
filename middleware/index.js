@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  dates: require('./dates'),
-  paths: require('./paths'),
-  urls: require('./urls')
+  dates: require('./dates.js'),
+  paths: require('./paths.js'),
+  urls: require('./urls.js')
 };
