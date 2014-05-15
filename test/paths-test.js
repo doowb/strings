@@ -11,7 +11,7 @@
 var expect = require('chai').expect;
 
 var Strings = require('../');
-var paths = require('../middleware/paths.js');
+var paths = require('../parsers/paths.js');
 
 describe('parsers', function() {
 

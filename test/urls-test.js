@@ -9,9 +9,9 @@
 var expect = require('chai').expect;
 
 var Strings = require('../');
-var urls = require('../middleware/urls.js');
+var urls = require('../parsers/urls.js');
 
-describe('middleware', function() {
+describe('parser', function() {
   describe('urls', function() {
 
     var url = 'https://github.com/sellside/strings.git?sortby=name';
