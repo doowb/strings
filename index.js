@@ -30,7 +30,7 @@ function Strings(context) {
 
 
 /**
- * .set (name, propstring)
+ * .propstring (name, propstring)
  *
  * Set a propstring to be stored for later use.
  *
@@ -40,7 +40,7 @@ function Strings(context) {
  * @api public
  */
 
-Strings.prototype.set = function (name, template) {
+Strings.prototype.propstring = function (name, template) {
   if (_.isUndefined(template)) {
     return this._templates[name];
   }
@@ -66,30 +66,6 @@ Strings.prototype.parser = function (name, replacements) {
     return this._parsers[name];
   }
   this._parsers[name] = replacements;
-  return this;
-};
-
-
-/**
- * .group (name, structure, parsers)
- *
- * Define a named group of structure/parser mappings.
- *
- * @param {String} `name`
- * @param {String} `structure` the name of the structure to use
- * @param {String|Array} `parsers` name or array of names of parsers to use
- * @return {Object} Instance of the current Strings object
- * @api public
- */
-
-Strings.prototype.group = function (name, structure, parsers) {
-  if (_.isUndefined(structure) && _.isUndefined(parsers)) {
-    return this._groups[name];
-  }
-  this._groups[name] = {
-    structure: structure,
-    parsers: parsers
-  };
   return this;
 };
 
@@ -149,36 +125,60 @@ Strings.prototype.template = function (template, parsers, context) {
 
 
 /**
- * .process(structure, parsers, context)
+ * .process(propstring, parsers, context)
  *
- * Process the given structure using a named collection of replacement patterns, and a context.
+ * Process the given propstring using a named collection of replacement patterns, and a context.
  *
- * @param {String} `structure` Named template used for building the final string
+ * @param {String} `propstring` Named template used for building the final string
  * @param {String} `name` Name of replacement group to use for building the final string
- * @param {Object} `context` Optional Object to bind to replacment function as `this`
- * @return {String} Final string built from the given structure, named replacement collection and context
+ * @param {Object} `context` Optional Object to bind to replacement function as `this`
+ * @return {String} Final string built from the given propstring, named replacement collection and context
  * @api public
  */
 
-Strings.prototype.process = function (structure, parsers, context) {
-  return this.template(this.set(structure), parsers, context);
+Strings.prototype.process = function (propstring, parsers, context) {
+  return this.template(this.propstring(propstring), parsers, context);
+};
+
+
+/**
+ * .group (name, propstring, parsers)
+ *
+ * Define a named group of propstring/parser mappings.
+ *
+ * @param {String} `name`
+ * @param {String} `propstring` the name of the propstring to use
+ * @param {String|Array} `parsers` name or array of names of parsers to use
+ * @return {Object} Instance of the current Strings object
+ * @api public
+ */
+
+Strings.prototype.group = function (name, propstring, parsers) {
+  if (_.isUndefined(propstring) && _.isUndefined(parsers)) {
+    return this._groups[name];
+  }
+  this._groups[name] = {
+    propstring: propstring,
+    parsers: parsers
+  };
+  return this;
 };
 
 
 /**
  * .run (group, context)
  *
- * Process the structure from the given group using a named collection of replacement patterns, and a context.
+ * Process the propstring from the given group using a named collection of replacement patterns, and a context.
  *
  * @param {String} `group` Named group used for building the final string
- * @param {Object} `context` Optional Object to bind to replacment function as `this`
- * @return {String} Final string built from the given structure, named replacement collection and context
+ * @param {Object} `context` Optional Object to bind to replacement function as `this`
+ * @return {String} Final string built from the given propstring, named replacement collection and context
  * @api public
  */
 
 Strings.prototype.run = function (group, context) {
   var _group = this.group(group);
-  return this.process(_group.structure, _group.parsers, context);
+  return this.process(_group.propstring, _group.parsers, context);
 };
 
 
