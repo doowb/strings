@@ -1,7 +1,7 @@
 {
   "name": "strings",
-  "version": "0.1.5",
-  "description": "Replace :props in strings.",
+  "version": "0.2.0",
+  "description": "Easily replace and transform :props in strings.",
   "homepage": "https://github.com/doowb/strings",
   "repository": {
     "type": "git",
@@ -39,17 +39,21 @@
     "verb": "^0.2.6"
   },
   "keywords": [
-    "date",
-    "find",
-    "middleware",
-    "modify",
-    "regex",
     "RegExp",
-    "regular expressions",
+    "date",
+    "expressions",
+    "find",
+    "modify",
+    "parse",
+    "re",
+    "regex",
+    "regular",
     "replace",
     "scrub",
     "string",
     "strings",
+    "token",
+    "tokenize",
     "transform"
   ]
 }
