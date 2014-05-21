@@ -1,7 +1,7 @@
 {
   "name": "strings",
-  "version": "0.1.5",
-  "description": "Replace :props in strings.",
+  "version": "0.3.0",
+  "description": "Easily replace and transform :props in strings.",
   "homepage": "https://github.com/doowb/strings",
   "repository": {
     "type": "git",
@@ -21,18 +21,11 @@
     "url": "https://github.com/assemble/strings/issues"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha && mocha -r blanket -R html-cov > test\\coverage\\coverage.html && mocha -r blanket -R json-cov > test\\coverage\\coverage.json && mocha -r blanket -R travis-cov",
-    "travis-cov": {
-      "threshold": 70
-    },
-    "blanket": {
-      "pattern": "lib",
-      "data-cover-never": "node_modules"
-    }
+    "test": "mocha -R spec"
   },
   "dependencies": {
     "lodash": "~2.4.1",
@@ -41,25 +34,26 @@
     "moment": "~2.5.0"
   },
   "devDependencies": {
-    "blanket": "~1.1.5",
     "chai": "~1.8.1",
-    "meld": "~1.3.0",
     "mocha": "~1.15.1",
-    "travis-cov": "~0.2.4",
     "verb": "^0.2.6"
   },
   "keywords": [
-    "date",
-    "find",
-    "middleware",
-    "modify",
-    "regex",
     "RegExp",
-    "regular expressions",
+    "date",
+    "expressions",
+    "find",
+    "modify",
+    "parse",
+    "re",
+    "regex",
+    "regular",
     "replace",
     "scrub",
     "string",
     "strings",
+    "token",
+    "tokenize",
     "transform"
   ]
 }
