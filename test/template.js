@@ -10,33 +10,30 @@ var expect = require('chai').expect;
 var Strings = require('../');
 
 
-describe('.run()', function () {
+describe('.template()', function () {
 
   var strings;
   before(function () {
     strings = new Strings();
-    strings.propstring('pretty', ':basename/index:ext');
   });
 
-  it('when a group without a parser object is passed in', function () {
+  it('when a template is passed in', function () {
     var expected = ':basename/index:ext';
-    strings.group('blog', 'pretty');
-    var actual = strings.run('blog');
+    var actual = strings.template(':basename/index:ext');
     expect(actual).to.eql(expected);
   });
 
-  it('when a group with a parser object are passed in', function () {
+  it('when a template and parser object are passed in', function () {
     var expected = 'file/index.html';
     var parser = {
       ':basename': 'file',
       ':ext': '.html'
     };
-    strings.group('blog', 'pretty', parser);
-    var actual = strings.run('blog');
+    var actual = strings.template(':basename/index:ext', parser);
     expect(actual).to.eql(expected);
   });
 
-  it('when a group with a parser object, and context are passed in', function () {
+  it('when a template, parser object, and context are passed in', function () {
     var path = require('path');
     var expected = 'file/index.html';
     var parser = {
@@ -50,12 +47,11 @@ describe('.run()', function () {
     var context = {
       filepath: 'path/to/my/file.html'
     };
-    strings.group('blog', 'pretty', parser);
-    var actual = strings.run('blog', context);
+    var actual = strings.template(':basename/index:ext', parser, context);
     expect(actual).to.eql(expected);
   });
 
-  it('when a group with a named parser, and context are passed in', function () {
+  it('when a template, named parser, and context are passed in', function () {
     var path = require('path');
     var expected = 'file/index.html';
     var parser = {
@@ -71,8 +67,8 @@ describe('.run()', function () {
     };
 
     strings.parser('path', parser);
-    strings.group('blog', 'pretty', 'path');
-    var actual = strings.run('blog', context);
+    var actual = strings.template(':basename/index:ext', 'path', context);
     expect(actual).to.eql(expected);
   });
+
 });

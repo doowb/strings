@@ -23,7 +23,9 @@ function Strings(context) {
     return new Strings(context);
   }
   this._context = context || {};
-  this._templates = {};
+  this._replacements = {};
+  this._propstrings = {};
+  this._patterns = {};
   this._parsers = {};
   this._groups = {};
 }
@@ -32,7 +34,7 @@ function Strings(context) {
 /**
  * .propstring (name, propstring)
  *
- * Set a propstring to be stored for later use.
+ * Get or set a propstring.
  *
  * @param {String} `name`
  * @param {String} `propstring`
@@ -42,9 +44,52 @@ function Strings(context) {
 
 Strings.prototype.propstring = function (name, template) {
   if (_.isUndefined(template)) {
-    return this._templates[name];
+    return this._propstrings[name];
   }
-  this._templates[name] = template;
+  this._propstrings[name] = template;
+  return this;
+};
+
+
+/**
+ * .pattern (name, pattern)
+ *
+ * Get or set regular expression or string.
+ *
+ * @param {String} `name`
+ * @param {String} `pattern`
+ * @return {Object} Instance of the current Strings object
+ * @api public
+ */
+
+Strings.prototype.pattern = function (name, pattern, flags) {
+  if (_.isUndefined(pattern)) {
+    return this._patterns[name];
+  }
+  if (!(pattern instanceof RegExp)) {
+    pattern = new RegExp(pattern, flags || '');
+  }
+  this._patterns[name] = pattern;
+  return this;
+};
+
+
+/**
+ * .replacement (name, replacement)
+ *
+ * Get or set a replacement string or function.
+ *
+ * @param {String} `name`
+ * @param {String} `replacement`
+ * @return {Object} Instance of the current Strings object
+ * @api public
+ */
+
+Strings.prototype.replacement = function (name, replacement) {
+  if (_.isUndefined(replacement)) {
+    return this._replacements[name];
+  }
+  this._replacements[name] = replacement;
   return this;
 };
 
@@ -120,7 +165,8 @@ Strings.prototype.parsers = function (parsers) {
 
 Strings.prototype.template = function (template, parsers, context) {
   var _parsers = this.parsers(parsers);
-  return frep.strWithArr(template, utils._bind(_parsers, _.extend({}, this._context, context)));
+  var ctx = utils._bind(_parsers, _.extend({}, this._context, context));
+  return frep.strWithArr(template, ctx);
 };
 
 
