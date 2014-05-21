@@ -11,6 +11,12 @@
     "name": "Brian Woodward",
     "url": "http://github.com/doowb"
   },
+  "contributors": [
+    {
+      "name": "Jon Schlinkert",
+      "url": "http://github.com/jonschlinkert"
+    }
+  ],
   "licenses": [
     {
       "type": "MIT",
@@ -26,17 +32,6 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
-  },
-  "dependencies": {
-    "lodash": "~2.4.1",
-    "frep": "~0.1.2",
-    "underscore.string": "~2.3.3",
-    "moment": "~2.5.0"
-  },
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.15.1",
-    "verb": "^0.2.6"
   },
   "keywords": [
     "RegExp",
@@ -55,5 +50,14 @@
     "token",
     "tokenize",
     "transform"
-  ]
+  ],
+  "dependencies": {
+    "frep": "^0.2.1",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.19.0",
+    "verb": "^0.2.7"
+  }
 }
