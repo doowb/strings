@@ -30,12 +30,32 @@ function Strings(context) {
 
 
 /**
+ * .set (name, propstring)
+ *
+ * Set a propstring to be stored for later use.
+ *
+ * @param {String} `name`
+ * @param {String} `propstring`
+ * @return {Object} Instance of the current Strings object
+ * @api public
+ */
+
+Strings.prototype.set = function (name, template) {
+  if (_.isUndefined(template)) {
+    return this._templates[name];
+  }
+  this._templates[name] = template;
+  return this;
+};
+
+
+/**
  * .parser (name, replacements)
  *
- * Define a named parser to be used against any given template.
+ * Define a named parser to be used against any given propstring.
  *
- * @param {String}       name         - Name of the parser.
- * @param {Object|Array} replacements - Actual parser replacements to store.
+ * @param {String} `name` name of the parser.
+ * @param {Object|Array} `replacements` replacements patterns to store with the given name.
  * @return {Object} Instance of the current Strings object
  *
  * @api public
@@ -51,36 +71,14 @@ Strings.prototype.parser = function (name, replacements) {
 
 
 /**
- * .structure (name, template)
- *
- * A named template to be used for stringifying an object.
- *
- * @param {String} name - Name of the structure
- * @param {String} template - Template string to store
- * @return {Object} Instance of the current Strings object
- *
- * @api public
- */
-
-Strings.prototype.structure = function (name, template) {
-  if (_.isUndefined(template)) {
-    return this._templates[name];
-  }
-  this._templates[name] = template;
-  return this;
-};
-
-
-/**
  * .group (name, structure, parsers)
  *
- * Named groups of structure/parser mappings to use.
+ * Define a named group of structure/parser mappings.
  *
- * @param {String} name - Name of the group
- * @param {String} structure - Name of the named template to use.
- * @param {String|Array} parsers - Named parsers to use.
+ * @param {String} `name`
+ * @param {String} `structure` the name of the structure to use
+ * @param {String|Array} `parsers` name or array of names of parsers to use
  * @return {Object} Instance of the current Strings object
- *
  * @api public
  */
 
@@ -99,10 +97,10 @@ Strings.prototype.group = function (name, structure, parsers) {
 /**
  * .parsers (parsers)
  *
- * Get a list of parsers based on the list of named parsers or parser objects given.
+ * Return a list of parsers based on the given list of named parsers or parser objects.
  *
- * @param {String|Array} parsers - List of named parsers or parser objects to find/use.
- * @return {Array} List of parsers to use.
+ * @param {String|Array} `parsers` named parsers or parser objects to use.
+ * @return {Array}
  */
 
 Strings.prototype.parsers = function (parsers) {
@@ -135,13 +133,12 @@ Strings.prototype.parsers = function (parsers) {
 /**
  * .template (template, parsers, context)
  *
- * Explicit template processed against a string, object or array of replacement patterns using the given context.
+ * Directly process the given propstring using a string, object or array of replacement patterns using the given context.
  *
- * @param {String} template - Template to process
- * @param {String|Object|Array} parsers- Named parsers or parser objects to use when processing.
- * @param {Object} context - Optional context to use when processing.
+ * @param {String} `template` template to process
+ * @param {String|Object|Array} `parsers` named parsers or parser objects to use when processing.
+ * @param {Object} `context` context to use. optional if a global context is passed.
  * @return {String} Processed string
- *
  * @api public
  */
 
@@ -154,34 +151,28 @@ Strings.prototype.template = function (template, parsers, context) {
 /**
  * .process(structure, parsers, context)
  *
- * Process the given structure using a named collection
- * of replacement patterns, and a context.
+ * Process the given structure using a named collection of replacement patterns, and a context.
  *
  * @param {String} `structure` Named template used for building the final string
  * @param {String} `name` Name of replacement group to use for building the final string
  * @param {Object} `context` Optional Object to bind to replacment function as `this`
- *
  * @return {String} Final string built from the given structure, named replacement collection and context
- *
  * @api public
  */
 
 Strings.prototype.process = function (structure, parsers, context) {
-  return this.template(this.structure(structure), parsers, context);
+  return this.template(this.set(structure), parsers, context);
 };
 
 
 /**
  * .run (group, context)
  *
- * Process the structure from the given group using a named collection
- * of replacement patterns, and a context.
+ * Process the structure from the given group using a named collection of replacement patterns, and a context.
  *
  * @param {String} `group` Named group used for building the final string
  * @param {Object} `context` Optional Object to bind to replacment function as `this`
- *
  * @return {String} Final string built from the given structure, named replacement collection and context
- *
  * @api public
  */
 
