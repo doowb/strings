@@ -10,32 +10,30 @@ var expect = require('chai').expect;
 var Strings = require('../');
 
 
-
-describe('.process()', function () {
+describe('.template()', function () {
 
   var strings;
   before(function () {
     strings = new Strings();
-    strings.propstring('pretty', ':basename/index:ext');
   });
 
-  it('when a propstring is passed in', function () {
+  it('when a template is passed in', function () {
     var expected = ':basename/index:ext';
-    var actual = strings.process('pretty');
+    var actual = strings.process(':basename/index:ext');
     expect(actual).to.eql(expected);
   });
 
-  it('when a propstring and parser object are passed in', function () {
+  it('when a template and parser object are passed in', function () {
     var expected = 'file/index.html';
     var parser = {
       ':basename': 'file',
       ':ext': '.html'
     };
-    var actual = strings.process('pretty', parser);
+    var actual = strings.process(':basename/index:ext', parser);
     expect(actual).to.eql(expected);
   });
 
-  it('when a propstring, parser object, and context are passed in', function () {
+  it('when a template, parser object, and context are passed in', function () {
     var path = require('path');
     var expected = 'file/index.html';
     var parser = {
@@ -49,11 +47,11 @@ describe('.process()', function () {
     var context = {
       filepath: 'path/to/my/file.html'
     };
-    var actual = strings.process('pretty', parser, context);
+    var actual = strings.process(':basename/index:ext', parser, context);
     expect(actual).to.eql(expected);
   });
 
-  it('when a propstring, named parser, and context are passed in', function () {
+  it('when a template, named parser, and context are passed in', function () {
     var path = require('path');
     var expected = 'file/index.html';
     var parser = {
@@ -69,7 +67,7 @@ describe('.process()', function () {
     };
 
     strings.parser('path', parser);
-    var actual = strings.process('pretty', 'path', context);
+    var actual = strings.process(':basename/index:ext', 'path', context);
     expect(actual).to.eql(expected);
   });
 

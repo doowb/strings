@@ -6,22 +6,23 @@
  * Licensed under the MIT License (MIT).
  */
 
+var path = require('path');
 var expect = require('chai').expect;
 var Strings = require('../');
 
 
 
-describe('.template()', function () {
+describe('.transform()', function () {
 
   var strings;
   before(function () {
     strings = new Strings();
     strings.propstring('pretty', ':destbase/:dirname/:basename/index:ext');
-    strings.parser('path', [
+    strings.parser('pretty', [
       {
         pattern: ':destbase',
         replacement: function () {
-          return this.destbase()
+          return this.destbase;
         }
       },
       {
@@ -43,32 +44,21 @@ describe('.template()', function () {
         }
       }
     ]);
-
-    strings.template('permalinks', 'pretty', ['path']);
+    strings.template('permalinks', 'pretty', ['pretty']);
   });
 
-  describe('when propstring and parsers are passed as params', function () {
-    it('should return the template by name', function () {
-      var expected = {
-        propstring: ':destbase/:dirname/:basename/index:ext',
-        parsers: ['path']
-      };
-      var actual = strings.template('permalinks');
-      expect(actual).to.eql(expected);
-    });
+  it('should get a stored propstring', function () {
+    var expected = '_gh_pages/blog/file/index.html';
+
+    var context = {
+      destbase: '_gh_pages',
+      src: 'blog/file.html',
+    };
+
+    var actual = strings.use('permalinks', context);
+    expect(actual).to.eql(expected);
   });
 
-  describe('when propstring and parsers are passed as properties on an object', function () {
-    it('should return the template by name', function () {
-      strings.template('foo', {propstring: 'pretty', parsers: ['path']});
-      var expected = {
-        propstring: ':destbase/:dirname/:basename/index:ext',
-        parsers: ['path']
-      };
-      var actual = strings.template('foo');
-      expect(actual).to.eql(expected);
-    });
-  });
 
   it('should get a stored propstring', function () {
     var expected = ':destbase/:dirname/:basename/index:ext';

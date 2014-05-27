@@ -14,10 +14,10 @@ describe('.parser() - add', function() {
   describe('when a named parser is defined', function() {
     it('should replace values with strings', function () {
       var name = 'test-parser-1';
-      var actual = {
+      var actual = [{
         ':basename': 'foo',
         ':ext': '.html'
-      };
+      }];
       strings.parser(name, actual);
       expect(strings._parsers).to.have.property(name);
       expect(actual).to.eql(strings._parsers[name]);
@@ -25,14 +25,14 @@ describe('.parser() - add', function() {
 
     it('should replace values with functions', function () {
       var name = 'test-parser-1';
-      var actual = {
+      var actual = [{
         ':basename': function () {
           return 'foo';
         },
         ':ext': function () {
           return '.html';
         }
-      };
+      }];
 
       strings.parser(name, actual);
       expect(strings._parsers).to.have.property(name);
@@ -47,14 +47,14 @@ describe('.parser() - get', function() {
   describe('when only one paramter is passed', function() {
     it('it should retrieve the stored parser with the given name', function () {
       var name = 'test-parser-2';
-      var actual = {
+      var actual = [{
         ':basename': function () {
           return 'foo';
         },
         ':ext': function () {
           return '.html';
         }
-      };
+      }];
       strings.parser(name, actual);
       expect(actual).to.eql(strings.parser(name));
     });
