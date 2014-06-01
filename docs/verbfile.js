@@ -36,7 +36,7 @@ module.exports = function (verb) {
 
     // If a filename was given, but no results are returned, kindly notify the user.
     if (!matches.length) {
-      msg = ' [nomatch] · verb could not find a match for {%%= glob("' + patterns + '") %}';
+      msg = ' [nomatch] · verb could not find a match for {%%= jscomments("' + patterns + '") %}';
       verb.log.warn('  ' + verb.runner.name + msg);
       return;
     }
