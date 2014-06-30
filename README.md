@@ -33,7 +33,7 @@ Create a new instance of `Strings`, optionally passing a default context to use.
 var strings = new Strings({destbase: '_gh_pages/'});
 ```
  
-* `return`{Object} Instance of a Strings object 
+* `return` {Object} Instance of a Strings object  
 
 
 ### .propstring
@@ -52,7 +52,8 @@ strings.propstring('url', ':base/blog/posts/:basename:ext');
 
 * `name` {String} 
 * `propstring` {String}  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .pattern
@@ -72,7 +73,8 @@ strings.pattern('anyProp', ':([\\w]+)');
 * `name` {String}: The name of the stored pattern. 
 * `pattern` {String|RegExp|Function}: The pattern to use for matching. 
 * `flags` {String}: Optionally pass RegExp flags to use.  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .replacement
@@ -94,7 +96,8 @@ strings.replacement('prop', function(match) {
 
 * `name` {String} 
 * `replacement` {String|Function}: The replacement to use when patterns are matched.  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .parser
@@ -134,7 +137,8 @@ strings.parser('prop', [
 
 * `name` {String} 
 * `arr` {Object|Array}: Object or array of replacement patterns to associate.  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .parsers
@@ -186,7 +190,8 @@ var parsers = [
 For an example, see [markdown-symbols](https://github.com/jonschlinkert/markdown-symbols), which uses this to store replacement patterns for custom markdown symbols.
 
 * `parsers` {String|Array}: string or array of parsers to get.  
-* `return`{Array} 
+* `return` {Array} 
+* `api` public 
 
 
 ### .extendParser
@@ -213,7 +218,8 @@ strings.extendParser('prop', {
 * `arr` {Object|Array}: array of replacement patterns to store with the given name. 
 * `pattern` {String|RegExp} 
 * `replacement` {String|Function}  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .template
@@ -240,7 +246,8 @@ strings.template('abc', 'foo', ['a', 'b', 'c']);
 * `name` {String} 
 * `propstring` {String} 
 * `parsers` {Array}: Names of the parsers to use with the template.  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .replace
@@ -264,7 +271,8 @@ strings.replace(':a/:b/:c', {
 
 * `str` {String}: The string with `:propstrings` to replace. 
 * `context` {String}: The object with replacement properties.  
-* `return`{Strings} to allow chaining 
+* `return` {Strings} to allow chaining 
+* `api` public 
 
 
 ### .process
@@ -293,7 +301,8 @@ console.log(strings.process('{foo}/{bar}/{baz}', ['a', 'b', 'c']));
 * `str` {String}: the string to process 
 * `parsers` {String|Object|Array}: named parsers or parser objects to use when processing. 
 * `context` {Object}: context to use. optional if a global context is passed.  
-* `return`{String} 
+* `return` {String} 
+* `api` public 
 
 
 ### .run
@@ -316,7 +325,8 @@ strings.run('blogTemplate', {
 
 * `template` {String}: The template to process. 
 * `context` {Object}: Optional context object, to bind to replacement function as `this`  
-* `return`{String}
+* `return` {String} 
+* `api` public
 
 
 ## Authors

@@ -9,7 +9,7 @@
 
 var path = require('path');
 var expect = require('chai').expect;
-var Strings = require('../');
+var Strings = require('..');
 
 
 describe('.run', function () {

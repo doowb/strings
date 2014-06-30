@@ -8,9 +8,12 @@
 'use strict';
 
 var replace = require('frep');
-var _ = require('lodash');
+var isObject = require('isobject');
+var isEmpty = require('is-empty');
+var flatten = require('array-flatten');
+var union = require('array-union');
+var extend = require('xtend');
 var utils = require('./lib/utils');
-
 
 
 /**
@@ -76,7 +79,7 @@ var isPropstring = function(str) {
 };
 
 Strings.prototype.propstring = function (name, str, options) {
-  options = _.extend({}, this.options, options);
+  options = extend({}, this.options, options);
 
   if (!str) {
     // if `nonull:false` return the propstring or `'__null__'`
@@ -213,15 +216,15 @@ Strings.prototype.parser = function (name, arr) {
 
 Strings.prototype.parsers = function (parsers) {
   // if there are no parsers specified, return them all
-  if (_.isEmpty(parsers)) {
-    parsers = _.keys(this._parsers);
+  if (isEmpty(parsers)) {
+    parsers = Object.keys(this._parsers);
   }
   parsers = utils.arrayify(parsers);
 
   // find the specified parsers
-  var arr = _.flatten(_.map(parsers, function (parser) {
+  var arr = flatten(parsers.map(function (parser) {
     // if this is an actual parser object, just return it
-    if (_.isObject(parser)) {
+    if (isObject(parser)) {
       return parser;
     }
     // find the parser and return it
@@ -266,7 +269,7 @@ Strings.prototype.parsers = function (parsers) {
 
 Strings.prototype.extendParser = function (name, arr) {
   arr = utils.arrayify(arr);
-  var parser = _.union([], this._parsers[name], arr);
+  var parser = union([], this._parsers[name], arr);
   this._parsers[name] = parser;
   return this;
 };
@@ -346,7 +349,7 @@ Strings.prototype.template = function (name, propstring, parsers) {
  */
 
 Strings.prototype.replace = function (str, context) {
-  var ctx = _.extend({}, this.context, context);
+  var ctx = extend({}, this.context, context);
   return replace.strWithArr(str, utils._bind([
     {
       pattern: /:([\w-]+)/g,
@@ -397,7 +400,7 @@ Strings.prototype.process = function (str, arr, context) {
   }
   arr = this.parsers(arr);
 
-  var ctx = _.extend({}, this.context, context);
+  var ctx = extend({}, this.context, context);
   return replace.strWithArr(str, utils._bind(arr, ctx));
 };
 
