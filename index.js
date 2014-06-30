@@ -7,17 +7,18 @@
 
 'use strict';
 
-var frep = require('frep');
+var replace = require('frep');
 var _ = require('lodash');
-var utils = require('./lib/utils.js');
+var utils = require('./lib/utils');
+
 
 
 /**
- * ## new Strings()
+ * ## Strings
  *
  * > Strings constructor method
  *
- * Instantiate a new instance of Strings, optionally passing a default context to use.
+ * Create a new instance of `Strings`, optionally passing a default context to use.
  *
  * **Example**
  *
@@ -25,15 +26,21 @@ var utils = require('./lib/utils.js');
  * var strings = new Strings({destbase: '_gh_pages/'});
  * ```
  *
+ * @class `Strings`
+ * @constructor
  * @return {Object} Instance of a Strings object
  */
 
-function Strings(context) {
+function Strings(context, options) {
   if (!(this instanceof Strings)) {
     return new Strings(context);
   }
 
-  this._context = context || {};
+  this.options = options || {};
+  this.options.nonull = false;
+
+  this.context = context || {};
+
   this._replacements = {};
   this._propstrings = {};
   this._templates = {};
@@ -44,52 +51,73 @@ function Strings(context) {
 
 
 /**
- * ## .propstring (name, propstring)
+ * ## .propstring
  *
- * Get or set a propstring.
+ * Set or get a named propstring.
+ *
+ * ```js
+ * strings.propstring(name, propstring)
+ * ```
  *
  * **Example**
  *
  * ```js
- * strings.propstring('permalinks', ':destBase/:dirname/:basename/index.:ext');
+ * strings.propstring('url', ':base/blog/posts/:basename:ext');
  * ```
  *
  * @param {String} `name`
  * @param {String} `propstring`
- * @return {Object} Instance of the current Strings object
+ * @return {Strings} to allow chaining
  * @api public
  */
 
-Strings.prototype.propstring = function (name, str) {
-  if (_.isUndefined(str)) {
-    return this._propstrings[name];
+var isPropstring = function(str) {
+  return /:/.test(str) ? 'null' : str;
+};
+
+Strings.prototype.propstring = function (name, str, options) {
+  options = _.extend({}, this.options, options);
+
+  if (!str) {
+    // if `nonull:false` return the propstring or `'__null__'`
+    if (options.nonull === false) {
+      return this._propstrings[name] || isPropstring(name);
+    }
+    // if only one argument is passed, lookup the name
+    // and return the propstring. Or just return the
+    // name if it isn't set already.
+    return this._propstrings[name] || name;
   }
+
   this._propstrings[name] = str;
   return this;
 };
 
 
 /**
- * ## .pattern (name, pattern)
+ * ## .pattern
  *
- * Get or set regular expression or string.
+ * Set or get a string or regex pattern to be used for matching.
+ *
+ * ```js
+ * strings.pattern(name, pattern, flags);
+ * ```
  *
  * **Example**
  *
  * ```js
- * strings.pattern('prop', ':([\\w]+)');
+ * strings.pattern('anyProp', ':([\\w]+)');
  * ```
  *
- * @param {String} `name`
- * @param {String} `pattern`
- * @return {Object} Instance of the current Strings object
+ * @param {String} `name` The name of the stored pattern.
+ * @param {String|RegExp|Function} `pattern` The pattern to use for matching.
+ * @param {String} `flags` Optionally pass RegExp flags to use.
+ * @return {Strings} to allow chaining
  * @api public
  */
 
 Strings.prototype.pattern = function (name, pattern, flags) {
-  if (_.isUndefined(pattern)) {
-    return this._patterns[name];
-  }
+  if (!pattern) {return this._patterns[name];}
   if (!(pattern instanceof RegExp)) {
     pattern = new RegExp(pattern, flags || '');
   }
@@ -99,9 +127,14 @@ Strings.prototype.pattern = function (name, pattern, flags) {
 
 
 /**
- * ## .replacement (name, replacement)
+ * ## .replacement
  *
- * Get or set a replacement string or function.
+ * Set or get a replacement pattern. Replacement patterns can be a
+ * regular expression, string or function.
+ *
+ * ```js
+ * strings.replacement(name, replacement)
+ * ```
  *
  * **Example**
  *
@@ -112,76 +145,54 @@ Strings.prototype.pattern = function (name, pattern, flags) {
  * ```
  *
  * @param {String} `name`
- * @param {String} `replacement`
- * @return {Object} Instance of the current Strings object
+ * @param {String|Function} `replacement` The replacement to use when patterns are matched.
+ * @return {Strings} to allow chaining
  * @api public
  */
 
 Strings.prototype.replacement = function (name, replacement) {
-  if (_.isUndefined(replacement)) {
-    return this._replacements[name];
-  }
+  if (!replacement) {return this._replacements[name];}
   this._replacements[name] = replacement;
   return this;
 };
 
 
 /**
- * ## .parser ( name, replacement-patterns )
+ * ## .parser
  *
- * Define a named parser to be used against any given string.
+ * Set a parser that can later be used to parse any given string.
+ *
+ * ```js
+ * strings.parser (name, replacements)
+ * ```
  *
  * **Example**
  *
- * Pass an object:
+ * {%= docs("example-parser.md") %}
  *
- * ```js
- * strings.parser('prop', {
- *   pattern: /:([\\w]+)/,
- *   replacement: function(match) {
- *     return match.toUpperCase();
- *   }
- * );
- * ```
- *
- * Or an array
- *
- * ```js
- * strings.parser('prop', [
- *   {
- *     pattern: 'a',
- *     replacement: 'b'
- *   },
- *   {
- *     pattern: 'c',
- *     replacement: 'd'
- *   }
- * ]);
- * ```
- *
- * @param {String} `name` name of the parser.
- * @param {Object|Array} `pairings` array of replacement patterns to store with the given name.
- *   @param {String|RegExp} `pattern`
- *   @param {String|Function} `replacement`
- * @return {Object} Instance of the current Strings object
- *
+ * @param {String} `name`
+ * @param {Object|Array} `arr` Object or array of replacement patterns to associate.
+ *   @property {String|RegExp} `pattern`
+ *   @property {String|Function} `replacement`
+ * @return {Strings} to allow chaining
  * @api public
  */
 
 Strings.prototype.parser = function (name, arr) {
-  if (_.isUndefined(arr)) {
-    return this._parsers[name];
-  }
-  this._parsers[name] = !Array.isArray(arr) ? [arr] : arr;
+  if (!arr) {return this._parsers[name];}
+  this._parsers[name] = utils.arrayify(arr);
   return this;
 };
 
 
 /**
- * ## .parsers ( parsers )
+ * ## .parsers
  *
- * Return a list of parsers based on the given list of named
- * parsers or parser objects.
+ * Get an array of stored parsers by passing a parser name or array of parser names.
+ *
+ * ```js
+ * strings.parsers(array)
+ * ```
  *
  * **Example**
  *
@@ -193,9 +204,9 @@ Strings.prototype.parser = function (name, arr) {
  * strings.parsers('a');
  * ```
  *
- * {%= docs("parsers-example.md") %}
+ * {%= docs("example-parsers.md") %}
  *
- * @param {String|Array} `parsers` named parsers or parser objects to use.
+ * @param {String|Array} `parsers` string or array of parsers to get.
  * @return {Array}
  * @api public
  */
@@ -205,39 +216,42 @@ Strings.prototype.parsers = function (parsers) {
   if (_.isEmpty(parsers)) {
     parsers = _.keys(this._parsers);
   }
-
-  parsers = Array.isArray(parsers) ? parsers : [parsers];
+  parsers = utils.arrayify(parsers);
 
   // find the specified parsers
-  var _parsers = _.map(parsers, function (parser) {
+  var arr = _.flatten(_.map(parsers, function (parser) {
     // if this is an actual parser object, just return it
     if (_.isObject(parser)) {
       return parser;
     }
-
     // find the parser and return it
     if (this._parsers.hasOwnProperty(parser)) {
       return this._parsers[parser];
     }
-  }, this);
+  }, this));
 
   // finally normalize and return parsers
-  return utils._normalize(_.flatten(_parsers));
+  return utils._normalizePatterns(arr);
 };
 
 
 /**
- * ## .extend ( parser, replacement-patterns )
+ * ## .extendParser
  *
- * Extend a parser.
+ * Extend a parser with additional replacement patterns. Useful if you're using
+ * an external module for replacement patterns and you need to extend it.
+ *
+ * ```js
+ * strings.extendParser(parser, replacements)
+ * ```
  *
  * **Example**
  *
  * ```js
- * strings.extend('prop', {
+ * strings.extendParser('prop', {
  *   pattern: /:([\\w]+)/,
- *   replacement: function(match) {
- *     return match.toUpperCase();
+ *   replacement: function(str) {
+ *     return str.toUpperCase();
  *   }
  * );
  * ```
@@ -246,167 +260,122 @@ Strings.prototype.parsers = function (parsers) {
  * @param {Object|Array} `arr` array of replacement patterns to store with the given name.
  *   @param {String|RegExp} `pattern`
  *   @param {String|Function} `replacement`
- * @return {Object} Instance of the current Strings object
+ * @return {Strings} to allow chaining
  * @api public
  */
 
-Strings.prototype.extend = function (name, arr) {
-  arr = !Array.isArray(arr) ? [arr] : arr;
-  var parser = _.union(this._parsers[name], arr);
+Strings.prototype.extendParser = function (name, arr) {
+  arr = utils.arrayify(arr);
+  var parser = _.union([], this._parsers[name], arr);
   this._parsers[name] = parser;
   return this;
 };
 
 
 /**
- * ## .template( name, propstring, parsers )
+ * ## .template
  *
- * Store, by name, a named propstring and an array of parsers.
+ * Set or get a reusable Strings template, consisting of a propstring
+ * and an array of parsers.
+ *
+ * Templates are useful since they can be stored and then later used
+ * with any context.
+ *
+ * ```js
+ * strings.template(name, propstring, parsers);
+ * ```
  *
  * **Example**
  *
  * ```js
- * // strings.template(name string, array);
- * strings.template('prop', ['prop'], {
- *   foo: 'aaa',
- *   bar: 'bbb',
- *   baz: 'ccc'
- * });
+ * strings.template('abc', ':a/:b/:c', ['a', 'b', 'c']);
+ * // or use a named propstring
+ * strings.template('abc', 'foo', ['a', 'b', 'c']);
+ *                      here ^
  * ```
  *
- * @param {String} `name` The name of the template to store
- * @param {String} `name` Name of replacement group to use for building the final string
- * @param {Object} `context` Optional Object to bind to replacement function as `this`
- * @return {String}
+ * @param {String} `name`
+ * @param {String} `propstring`
+ * @param {Array} `parsers` Names of the parsers to use with the template.
+ * @return {Strings} to allow chaining
  * @api public
  */
 
 Strings.prototype.template = function (name, propstring, parsers) {
-  if (_.isUndefined(propstring) && _.isUndefined(parsers)) {
+  // Get the stored template only the name is passed
+  if (arguments.length === 1) {
     return this._templates[name];
   }
-
   if (arguments.length === 2 && typeof propstring === 'object') {
-    this._templates[name] = {
-      propstring: this.propstring(propstring.propstring),
-      parsers: propstring.parsers
-    };
-  } else {
-    this._templates[name] = {
-      propstring: this.propstring(propstring),
-      parsers: parsers
-    };
+    var opts = propstring;
+    propstring = opts.propstring,
+    parsers = opts.parsers
+  } else if (arguments.length === 2 && typeof propstring === 'string') {
+    throw new Error('Templates must be defined with an object or array of parsers.');
   }
-
+  propstring = this.propstring(propstring);
+  this._templates[name] = {propstring: propstring, parsers: parsers};
   return this;
 };
 
 
 /**
- * ## .transform( named-propstring, named-parsers, context)
+ * ## .replace
  *
- * Similar to `.process`, except that the first parameter is the name
- * of the stored `propstring` to use, rather than any given string.
+ * Replace `:propstrings` with the real values.
+ *
+ * ```js
+ * strings.replace(str, context)
+ * ```
  *
  * **Example**
  *
  * ```js
- * strings.transform('propstring', ['parser'], {
- *   foo: 'aaa',
- *   bar: 'bbb',
- *   baz: 'ccc'
+ * strings.replace(':a/:b/:c', {
+ *   a: 'foo',
+ *   b: 'bar',
+ *   c: 'baz'
  * });
+ * //=> foo/bar/baz
  * ```
  *
- * Or pass an object, `strings.transform({})`:
- *
- * ```js
- * strings.transform({
- *   propstring: 'prop',
- *   parsers: ['prop'],
- *   context: {
- *     foo: 'aaa',
- *     bar: 'bbb',
- *     baz: 'ccc'
- *   }
- * });
- * ```
- *
- * @param {String} `name` The name of the stored template to use
- * @param {Object} `context` The optional context object to bind to replacement functions as `this`
- * @return {String}
+ * @param {String} `str` The string with `:propstrings` to replace.
+ * @param {String} `context` The object with replacement properties.
+ * @return {Strings} to allow chaining
  * @api public
  */
 
-Strings.prototype.transform = function (propstring, parsers, context) {
-  if (arguments.length === 1) {
-    propstring = propstring.propstring;
-    parsers = propstring.parsers;
-    context = propstring.context;
-  }
-  return this.process(this.propstring(propstring), parsers, context);
-};
-
-
-
-/**
- * ## .use( named-propstring, named-parsers, context)
- *
- * Similar to `.process`, except that the first parameter is the name
- * of the stored `propstring` to use, rather than any given string.
- *
- * **Example**
- *
- * ```js
- * strings.use('propstring', ['parser'], {
- *   foo: 'aaa',
- *   bar: 'bbb',
- *   baz: 'ccc'
- * });
- * ```
- *
- * Or pass an object, `strings.use({})`:
- *
- * ```js
- * strings.use({
- *   propstring: 'prop',
- *   parsers: ['prop'],
- *   context: {
- *     foo: 'aaa',
- *     bar: 'bbb',
- *     baz: 'ccc'
- *   }
- * });
- * ```
- *
- * @param {String} `name` The name of the stored template to use
- * @param {Object} `context` The optional context object to bind to replacement functions as `this`
- * @return {String}
- * @api public
- */
-
-Strings.prototype.use = function (template, context) {
-  var tmpl = this.template(template);
-  return this.process(tmpl.propstring, tmpl.parsers, context);
+Strings.prototype.replace = function (str, context) {
+  var ctx = _.extend({}, this.context, context);
+  return replace.strWithArr(str, utils._bind([
+    {
+      pattern: /:([\w-]+)/g,
+      replacement: function(match, prop) {
+        return this[prop] || prop;
+      }
+    },
+    {
+      pattern: /\{([^}]+)}/g,
+      replacement: function(match, prop) {
+        return this[prop] || prop;
+      }
+    }
+  ], ctx));
 };
 
 
 /**
- * ## .process (str, parsers, context)
+ * ## .process
  *
- * Directly process the given string, using a named replacement
+ * Directly process the given prop-string, using a named replacement
  * pattern or array of named replacement patterns, with the given
  * context.
  *
- * **Example**
- *
  * ```js
- * strings.process(':foo/:bar/:baz', ['a', 'b', 'c'], {
- *   foo: 'aaa',
- *   bar: 'bbb',
- *   baz: 'ccc'
- * });
+ * strings.process(str, parsers, context)
  * ```
+ *
+ * {%= docs("example-process") %}
  *
  * @param {String} `str` the string to process
  * @param {String|Object|Array} `parsers` named parsers or parser objects to use when processing.
@@ -416,75 +385,53 @@ Strings.prototype.use = function (template, context) {
  */
 
 Strings.prototype.process = function (str, arr, context) {
-  var parsers = this.parsers(arr);
-  var ctx = _.extend({}, this._context, context);
-  return frep.strWithArr(str, utils._bind(parsers, ctx));
-};
-
-
-/**
- * ## .group ( name, propstring, parsers )
- *
- * Define a named group of propstring/parser mappings, or get a
- * group if only the name is passed.
- *
- * **Example**
- *
- * ```js
- * strings.group('my-group-name', ':foo/:bar/:baz', ['a', 'b', 'c']);
- * ```
- *
- * To get a group:
- *
- * ```js
- * strings.group( name );
- * ```
- *
- * @param {String} `name`
- * @param {String} `propstring` the name of the propstring to use
- * @param {String|Array} `parsers` name or array of names of parsers to use
- * @return {Object} Instance of the current Strings object
- * @api public
- */
-
-Strings.prototype.group = function (groupName, propstring, parsers) {
-  if (_.isUndefined(propstring) && _.isUndefined(parsers)) {
-    return this._groups[groupName];
+  if (arguments.length === 1) {
+    throw new Error('`strings.process()` expects at least two arguments.');
   }
-  this._groups[groupName] = {
-    propstring: propstring,
-    parsers: parsers
-  };
-  return this;
+
+  if (this._templates.hasOwnProperty(str)) {
+    context = arr;
+    var template = this._templates[str];
+    str = template.propstring;
+    arr = template.parsers;
+  }
+  arr = this.parsers(arr);
+
+  var ctx = _.extend({}, this.context, context);
+  return replace.strWithArr(str, utils._bind(arr, ctx));
 };
 
 
 /**
- * ## .run ( groupname, context )
+ * ## .run
  *
- * Process the specified group using the given context.
+ * Process a template with the given context.
+ *
+ * ```js
+ * strings.run(template, context)
+ * ```
  *
  * **Example**
  *
- * Set: (`strings.run( string, object )`)
- *
  * ```js
- * strings.run('my-group-name', {
- *   foo: 'aaa',
- *   bar: 'bbb',
- *   baz: 'ccc'
+ * strings.run('blogTemplate', {
+ *   dest: '_gh_pages',
+ *   basename: '2014-07-01-post',
+ *   ext: '.html'
  * });
  * ```
  *
- * @param {String} `group` The group to run.
+ * @param {String} `template` The template to process.
  * @param {Object} `context` Optional context object, to bind to replacement function as `this`
  * @return {String}
  * @api public
  */
 
-Strings.prototype.run = function (group, context) {
-  var namedGroup = this.group(group);
-  return this.transform(namedGroup.propstring, namedGroup.parsers, context);
+Strings.prototype.run = function (name, context) {
+  var template = this._templates[name];
+  var propstring = template.propstring;
+  var parsers = template.parsers;
+  return this.process(propstring, parsers, context);
 };
 
 

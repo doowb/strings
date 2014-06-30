@@ -21,54 +21,68 @@ bower install strings --save
 ```
 
 ## API
-### new Strings()
+### Strings
 
 > Strings constructor method
 
-Instantiate a new instance of Strings, optionally passing a default context to use.
+Create a new instance of `Strings`, optionally passing a default context to use.
 
 **Example**
 
 ```js
 var strings = new Strings({destbase: '_gh_pages/'});
 ```
+ 
+* `return`{Object} Instance of a Strings object 
 
-* `return` {Object} Instance of a Strings object 
 
+### .propstring
 
-### .propstring ( name, propstring )
+Set or get a named propstring.
 
-Get or set a propstring.
+```js
+strings.propstring(name, propstring)
+```
 
 **Example**
 
 ```js
-strings.propstring('permalinks', ':destBase/:dirname/:basename/index.:ext');
+strings.propstring('url', ':base/blog/posts/:basename:ext');
 ```
 
-* `name` {String}:  
-* `propstring` {String}:  
-* `return` {Object} Instance of the current Strings object 
+* `name` {String} 
+* `propstring` {String}  
+* `return`{Strings} to allow chaining 
 
 
-### .pattern ( name, pattern )
+### .pattern
 
-Get or set regular expression or string.
+Set or get a string or regex pattern to be used for matching.
+
+```js
+strings.pattern(name, pattern, flags);
+```
 
 **Example**
 
 ```js
-strings.pattern('prop', ':([\\w]+)');
+strings.pattern('anyProp', ':([\\w]+)');
 ```
 
-* `name` {String}:  
-* `pattern` {String}:  
-* `return` {Object} Instance of the current Strings object 
+* `name` {String}: The name of the stored pattern. 
+* `pattern` {String|RegExp|Function}: The pattern to use for matching. 
+* `flags` {String}: Optionally pass RegExp flags to use.  
+* `return`{Strings} to allow chaining 
 
 
-### .replacement ( name, replacement )
+### .replacement
 
-Get or set a replacement string or function.
+Set or get a replacement pattern. Replacement patterns can be a
+regular expression, string or function.
+
+```js
+strings.replacement(name, replacement)
+```
 
 **Example**
 
@@ -78,14 +92,18 @@ strings.replacement('prop', function(match) {
 });
 ```
 
-* `name` {String}:  
-* `replacement` {String}:  
-* `return` {Object} Instance of the current Strings object 
+* `name` {String} 
+* `replacement` {String|Function}: The replacement to use when patterns are matched.  
+* `return`{Strings} to allow chaining 
 
 
-### .parser ( name, replacement-patterns )
+### .parser
 
-Define a named parser to be used against any given string.
+Set a parser that can later be used to parse any given string.
+
+```js
+strings.parser (name, replacements)
+```
 
 **Example**
 
@@ -99,7 +117,6 @@ strings.parser('prop', {
   }
 );
 ```
-
 Or an array
 
 ```js
@@ -115,17 +132,18 @@ strings.parser('prop', [
 ]);
 ```
 
-* `name` {String}: name of the parser. 
-* `pairings` {Object|Array}: array of replacement patterns to store with the given name. 
-* `pattern` {String|RegExp}:  
-* `replacement` {String|Function}:  
-* `return` {Object} Instance of the current Strings object 
+* `name` {String} 
+* `arr` {Object|Array}: Object or array of replacement patterns to associate.  
+* `return`{Strings} to allow chaining 
 
 
-### .parsers ( parsers )
+### .parsers
 
-Return a list of parsers based on the given list of named
-parsers or parser objects.
+Get an array of stored parsers by passing a parser name or array of parser names.
+
+```js
+strings.parsers(array)
+```
 
 **Example**
 
@@ -136,6 +154,7 @@ strings.parsers(['a', 'b', 'c']);
 // or a string
 strings.parsers('a');
 ```
+
 
 Using `parsers` like this:
 
@@ -166,199 +185,152 @@ var parsers = [
 
 For an example, see [markdown-symbols](https://github.com/jonschlinkert/markdown-symbols), which uses this to store replacement patterns for custom markdown symbols.
 
-* `parsers` {String|Array}: named parsers or parser objects to use. 
-* `return` {Array} 
+* `parsers` {String|Array}: string or array of parsers to get.  
+* `return`{Array} 
 
 
-### .extend ( parser, replacement-patterns )
+### .extendParser
 
-Extend a parser.
+Extend a parser with additional replacement patterns. Useful if you're using
+an external module for replacement patterns and you need to extend it.
+
+```js
+strings.extendParser(parser, replacements)
+```
 
 **Example**
 
 ```js
-strings.extend('prop', {
+strings.extendParser('prop', {
   pattern: /:([\\w]+)/,
-  replacement: function(match) {
-    return match.toUpperCase();
+  replacement: function(str) {
+    return str.toUpperCase();
   }
 );
 ```
 
 * `name` {String}: name of the parser to extend. 
 * `arr` {Object|Array}: array of replacement patterns to store with the given name. 
-* `pattern` {String|RegExp}:  
-* `replacement` {String|Function}:  
-* `return` {Object} Instance of the current Strings object 
+* `pattern` {String|RegExp} 
+* `replacement` {String|Function}  
+* `return`{Strings} to allow chaining 
 
 
-### .template ( name, propstring, parsers )
+### .template
 
-Store, by name, a named propstring and an array of parsers.
+Set or get a reusable Strings template, consisting of a propstring
+and an array of parsers.
+
+Templates are useful since they can be stored and then later used
+with any context.
+
+```js
+strings.template(name, propstring, parsers);
+```
 
 **Example**
 
 ```js
-// strings.template(name string, array);
-strings.template('prop', ['prop'], {
-  foo: 'aaa',
-  bar: 'bbb',
-  baz: 'ccc'
-});
+strings.template('abc', ':a/:b/:c', ['a', 'b', 'c']);
+// or use a named propstring
+strings.template('abc', 'foo', ['a', 'b', 'c']);
+                     here ^
 ```
 
-* `name` {String}: The name of the template to store 
-* `name` {String}: Name of replacement group to use for building the final string 
-* `context` {Object}: Optional Object to bind to replacement function as `this` 
-* `return` {String} 
+* `name` {String} 
+* `propstring` {String} 
+* `parsers` {Array}: Names of the parsers to use with the template.  
+* `return`{Strings} to allow chaining 
 
 
-### .transform ( named-propstring, named-parsers, context )
+### .replace
 
-Similar to `.process`, except that the first parameter is the name
-of the stored `propstring` to use, rather than any given string.
+Replace `:propstrings` with the real values.
+
+```js
+strings.replace(str, context)
+```
 
 **Example**
 
 ```js
-strings.transform('propstring', ['parser'], {
-  foo: 'aaa',
-  bar: 'bbb',
-  baz: 'ccc'
+strings.replace(':a/:b/:c', {
+  a: 'foo',
+  b: 'bar',
+  c: 'baz'
 });
+//=> foo/bar/baz
 ```
 
-Or pass an object, `strings.transform({})`:
-
-```js
-strings.transform({
-  propstring: 'prop',
-  parsers: ['prop'],
-  context: {
-    foo: 'aaa',
-    bar: 'bbb',
-    baz: 'ccc'
-  }
-});
-```
-
-* `name` {String}: The name of the stored template to use 
-* `context` {Object}: The optional context object to bind to replacement functions as `this` 
-* `return` {String} 
+* `str` {String}: The string with `:propstrings` to replace. 
+* `context` {String}: The object with replacement properties.  
+* `return`{Strings} to allow chaining 
 
 
-### .use ( named-propstring, named-parsers, context )
+### .process
 
-Similar to `.process`, except that the first parameter is the name
-of the stored `propstring` to use, rather than any given string.
-
-**Example**
-
-```js
-strings.use('propstring', ['parser'], {
-  foo: 'aaa',
-  bar: 'bbb',
-  baz: 'ccc'
-});
-```
-
-Or pass an object, `strings.use({})`:
-
-```js
-strings.use({
-  propstring: 'prop',
-  parsers: ['prop'],
-  context: {
-    foo: 'aaa',
-    bar: 'bbb',
-    baz: 'ccc'
-  }
-});
-```
-
-* `name` {String}: The name of the stored template to use 
-* `context` {Object}: The optional context object to bind to replacement functions as `this` 
-* `return` {String} 
-
-
-### .process ( str, parsers, context )
-
-Directly process the given string, using a named replacement
+Directly process the given prop-string, using a named replacement
 pattern or array of named replacement patterns, with the given
 context.
 
-**Example**
+```js
+strings.process(str, parsers, context)
+```
+
+**Examples:**
+
+Pass a propstring and the parsers to use:
 
 ```js
-strings.process(':foo/:bar/:baz', ['a', 'b', 'c'], {
-  foo: 'aaa',
-  bar: 'bbb',
-  baz: 'ccc'
-});
+// define some parsers to do simple key-value replacements
+strings.parser('a', {'{foo}': 'AAA'});
+strings.parser('b', {'{bar}': 'BBB'});
+strings.parser('c', {'{baz}': 'CCC'});
+console.log(strings.process('{foo}/{bar}/{baz}', ['a', 'b', 'c']));
+// => 'AAA/BBB/CCC'
 ```
 
 * `str` {String}: the string to process 
 * `parsers` {String|Object|Array}: named parsers or parser objects to use when processing. 
-* `context` {Object}: context to use. optional if a global context is passed. 
-* `return` {String} 
+* `context` {Object}: context to use. optional if a global context is passed.  
+* `return`{String} 
 
 
-### .group ( name, propstring, parsers )
+### .run
 
-Define a named group of propstring/parser mappings, or get a
-group if only the name is passed.
+Process a template with the given context.
+
+```js
+strings.run(template, context)
+```
 
 **Example**
 
 ```js
-strings.group('my-group-name', ':foo/:bar/:baz', ['a', 'b', 'c']);
-```
-
-To get a group:
-
-```js
-strings.group( name );
-```
-
-* `name` {String}:  
-* `propstring` {String}: the name of the propstring to use 
-* `parsers` {String|Array}: name or array of names of parsers to use 
-* `return` {Object} Instance of the current Strings object 
-
-
-### .run ( groupname, context )
-
-Process the specified group using the given context.
-
-**Example**
-
-Set: (`strings.run( string, object )`)
-
-```js
-strings.run('my-group-name', {
-  foo: 'aaa',
-  bar: 'bbb',
-  baz: 'ccc'
+strings.run('blogTemplate', {
+  dest: '_gh_pages',
+  basename: '2014-07-01-post',
+  ext: '.html'
 });
 ```
 
-* `group` {String}: The group to run. 
-* `context` {Object}: Optional context object, to bind to replacement function as `this` 
-* `return` {String}
+* `template` {String}: The template to process. 
+* `context` {Object}: Optional context object, to bind to replacement function as `this`  
+* `return`{String}
 
 
 ## Authors
-
-**Brian Woodward**
-
-+ [github/doowb](https://github.com/doowb)
-+ [twitter/doowb](http://twitter.com/doowb)
-
-
+ 
 **Jon Schlinkert**
-
+ 
 + [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
++ [twitter/jonschlinkert](http://twitter.com/jonschlinkert) 
+ 
+**Brian Woodward**
+ 
++ [github/doowb](https://github.com/doowb)
++ [twitter/doowb](http://twitter.com/doowb) 
+
 
 ## License
 Copyright (c) 2014 Brian Woodward, contributors.  
@@ -366,4 +338,4 @@ Released under the MIT license
 
 ***
 
-_This file was generated by [verb-cli](https://github.com/assemble/verb-cli) on May 27, 2014._
+_This file was generated by [verb-cli](https://github.com/assemble/verb-cli) on June 30, 2014._

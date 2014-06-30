@@ -1,6 +1,6 @@
 {
   "name": "strings",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Easily replace and transform :props in strings.",
   "homepage": "https://github.com/doowb/strings",
   "repository": {
@@ -60,7 +60,10 @@
     "fs-utils": "^0.4.3",
     "js-comments": "^0.1.0",
     "mocha": "^1.19.0",
+    "parse-filepath": "^0.3.0",
     "relative": "^0.1.4",
-    "verb": "^0.2.11"
+    "verb": "^0.2.11",
+    "verb-tag-jscomments": "^0.1.4",
+    "verbalize": "^0.1.2"
   }
 }

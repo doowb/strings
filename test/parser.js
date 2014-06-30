@@ -1,30 +1,35 @@
 /**
- * Sellside <http://www.sellside.com>
- * Created and maintained by Jon Schlinkert and Brian Woodward
+ * Strings <https://github.com/assemble/strings>
  *
- * Copyright (c) 2014 Sellside.
+ * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward
  * Licensed under the MIT License (MIT).
  */
+
+'use strict';
 
 var expect = require('chai').expect;
 var Strings = require('../');
 
-describe('.parser() - add', function() {
-  var strings = new Strings();
+
+describe('.parser', function() {
+  var strings;
+
+  beforeEach(function() {
+    strings = new Strings();
+  });
+
   describe('when a named parser is defined', function() {
     it('should replace values with strings', function () {
-      var name = 'test-parser-1';
       var actual = [{
         ':basename': 'foo',
         ':ext': '.html'
       }];
-      strings.parser(name, actual);
-      expect(strings._parsers).to.have.property(name);
-      expect(actual).to.eql(strings._parsers[name]);
+      strings.parser('a', actual);
+      expect(strings._parsers).to.have.property('a');
+      expect(actual).to.eql(strings._parsers['a']);
     });
 
     it('should replace values with functions', function () {
-      var name = 'test-parser-1';
       var actual = [{
         ':basename': function () {
           return 'foo';
@@ -34,29 +39,24 @@ describe('.parser() - add', function() {
         }
       }];
 
-      strings.parser(name, actual);
-      expect(strings._parsers).to.have.property(name);
-      expect(actual).to.eql(strings._parsers[name]);
+      strings.parser('b', actual);
+      expect(strings._parsers).to.have.property('b');
+      expect(actual).to.eql(strings._parsers['b']);
     });
   });
-});
 
-
-describe('.parser() - get', function() {
-  var strings = new Strings();
   describe('when only one paramter is passed', function() {
-    it('it should retrieve the stored parser with the given name', function () {
-      var name = 'test-parser-2';
-      var actual = [{
+    it('it should get the parser with the given name', function () {
+      var parser = {
         ':basename': function () {
           return 'foo';
         },
         ':ext': function () {
           return '.html';
         }
-      }];
-      strings.parser(name, actual);
-      expect(actual).to.eql(strings.parser(name));
+      };
+      strings.parser('c', parser);
+      expect(strings.parser('c')).to.eql([parser]);
     });
   });
 });

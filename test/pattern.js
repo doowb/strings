@@ -1,15 +1,16 @@
 /**
- * Sellside <http://www.sellside.com>
- * Created and maintained by Jon Schlinkert and Brian Woodward
+ * Strings <https://github.com/assemble/strings>
  *
- * Copyright (c) 2014 Sellside.
+ * Copyright (c) 2014 Sellside, Jon Schlinkert and Brian Woodward
  * Licensed under the MIT License (MIT).
  */
+
+'use strict';
 
 var expect = require('chai').expect;
 var Strings = require('../');
 
-describe('.pattern()', function() {
+describe('.pattern', function() {
   var strings = new Strings();
   describe('when a pattern is set', function() {
     it('should be stored by Strings on the `_patterns` object:', function () {
