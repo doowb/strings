@@ -74,12 +74,13 @@ function Strings(context, options) {
  * @api public
  */
 
-var isPropstring = function(str) {
-  return /:/.test(str) ? 'null' : str;
-};
 
 Strings.prototype.propstring = function (name, str, options) {
   options = extend({}, this.options, options);
+
+  function isPropstring(str) {
+    return /:/.test(str) ? '__null__' : str;
+  }
 
   if (!str) {
     // if `nonull:false` return the propstring or `'__null__'`
@@ -121,11 +122,39 @@ Strings.prototype.propstring = function (name, str, options) {
 
 Strings.prototype.pattern = function (name, pattern, flags) {
   if (!pattern) {return this._patterns[name];}
-  if (!(pattern instanceof RegExp)) {
+  if (typeof pattern === 'object' && !(pattern instanceof RegExp)) {
+    pattern = pattern.re;
+  } else if (!(pattern instanceof RegExp)) {
     pattern = new RegExp(pattern, flags || '');
   }
   this._patterns[name] = pattern;
   return this;
+};
+
+
+/**
+ * ## .source
+ *
+ * Return the RegExp source from a stored `pattern`.
+ *
+ * ```js
+ * strings.source(name);
+ * ```
+ *
+ * **Example**
+ *
+ * ```js
+ * strings.pattern('foo', {re: /:([\\w]+)/gm});
+ * strings.source('foo');
+ * //=> ':([\\w]+)'
+ * ```
+ *
+ * @param {String} `name` The name of the stored pattern.
+ * @api public
+ */
+
+Strings.prototype.source = function (name) {
+  return this._patterns[name].source;
 };
 
 
@@ -154,7 +183,9 @@ Strings.prototype.pattern = function (name, pattern, flags) {
  */
 
 Strings.prototype.replacement = function (name, replacement) {
-  if (!replacement) {return this._replacements[name];}
+  if (!replacement) {
+    return this._replacements[name];
+  }
   this._replacements[name] = replacement;
   return this;
 };
@@ -182,7 +213,9 @@ Strings.prototype.replacement = function (name, replacement) {
  */
 
 Strings.prototype.parser = function (name, arr) {
-  if (!arr) {return this._parsers[name];}
+  if (!arr) {
+    return this._parsers[name];
+  }
   this._parsers[name] = utils.arrayify(arr);
   return this;
 };
@@ -316,8 +349,13 @@ Strings.prototype.template = function (name, propstring, parsers) {
   } else if (arguments.length === 2 && typeof propstring === 'string') {
     throw new Error('Templates must be defined with an object or array of parsers.');
   }
+
   propstring = this.propstring(propstring);
-  this._templates[name] = {propstring: propstring, parsers: parsers};
+
+  this._templates[name] = {
+    propstring: propstring,
+    parsers: parsers
+  };
   return this;
 };
 

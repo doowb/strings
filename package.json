@@ -1,6 +1,6 @@
 {
   "name": "strings",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Easily replace and transform :props in strings.",
   "homepage": "https://github.com/assemble/strings",
   "repository": {
